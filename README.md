@@ -24,8 +24,3 @@ No **back-end**, atuo com **.NET (C# / ASP.NET)** e bancos relacionais como **SQ
 - Swiper.js
 - AOS (Animate On Scroll)
 
-## 📂 Como rodar localmente
-### Opção 1 — Simples (abrir no navegador)
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/XavierRLX/SEU-REPO-AQUI.git
