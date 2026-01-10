@@ -3,10 +3,6 @@
 Portfólio pessoal com meus projetos, seção **Sobre**, tecnologias, e **contato**.  
 Foco em uma experiência visual moderna, responsiva e com animações.
 
-## 🔗 Demo
-- Site: https://xavierrlx.github.io/SEU-REPO-AQUI/  
-- GitHub: https://github.com/XavierRLX
-
 ## 🧠 Sobre mim
 Sou **Renan de Lima Xavier**, Desenvolvedor **Full Stack** com **2 anos de experiência** em sistemas corporativos, atuando do levantamento de requisitos e modelagem de banco até a entrega, testes com usuários e sustentação.
 
