@@ -370,6 +370,16 @@ header a :hover {
   color: #ffffff;
   font-family: "Poppins", sans-serif;
 }
+.btn-cv{
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+}
+.btn-dow{
+  background: rgb(12, 14, 53);
+  padding: 12px 16px;
+}
+
 .fundoSobre .imagemSobre img {
   width: 400px;
   margin-right: 80px;
