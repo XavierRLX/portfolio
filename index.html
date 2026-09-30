@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="CSS/hero.css">
     <link rel="stylesheet" href="CSS/content.css">
     <link rel="stylesheet" href="CSS/Animações.css">
+    <link rel="stylesheet" href="CSS/motion.css">
     <title>Renan Xavier — Desenvolvedor Full Stack</title>
     <script type="application/ld+json">
       {"@context":"https://schema.org","@type":"Person","name":"Renan Xavier","jobTitle":"Desenvolvedor Full Stack","url":"https://xavierrlx.github.io/portfolio/","sameAs":["https://github.com/XavierRLX","https://www.linkedin.com/in/renanxavier2000rlx/"]}
@@ -57,7 +58,11 @@
             </header>
 
             <section class="fundoApresentação" aria-labelledby="hmdois">
-                <img class="foto-react" src="Imagens/react.png" width="512" height="512" alt="" decoding="async">
+                <div class="hero-react-scene" aria-hidden="true">
+                    <div class="hero-react-tilt">
+                        <img class="foto-react" src="Imagens/react.png" width="512" height="512" alt="" decoding="async">
+                    </div>
+                </div>
                 <div class="apresentação">
                     <p class="hero-intro">Olá, me chamo</p>
                     <h1 id="hmdois">Renan Xavier.</h1>
@@ -260,6 +265,7 @@
     </main>
 
     <script src="js/navigation.js"></script>
+    <script src="js/motion.js"></script>
     <script src="js/copiarEcolar.js"></script>
 </body>
 </html>

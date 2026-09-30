@@ -1,0 +1,228 @@
+/* Premium motion prototype — isolated progressive enhancement. */
+body.motion-enhanced {
+  --premium-header-space: clamp(72px, 7vw, 100px);
+}
+
+body.motion-enhanced .fundoPrincipal {
+  padding-top: var(--premium-header-space);
+}
+
+body.motion-enhanced #inicio > header {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 100;
+  width: min(calc(100% - clamp(40px, 7vw, 104px)), 1360px);
+  margin: 0;
+  transform: translateX(-50%);
+  transition:
+    top 220ms ease,
+    width 220ms ease,
+    padding 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    border-radius 220ms ease,
+    box-shadow 220ms ease,
+    backdrop-filter 220ms ease;
+}
+body.motion-enhanced #inicio > header.is-scrolled {
+  top: 10px;
+  width: min(calc(100% - 24px), 1320px);
+  padding: 12px 18px;
+  border: 1px solid rgb(255 255 255 / 8%);
+  border-radius: 16px;
+  background: rgb(7 3 53 / 72%);
+  box-shadow: 0 14px 38px rgb(0 0 0 / 20%);
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body.motion-enhanced #inicio > header.is-scrolled {
+    background: rgb(7 3 53 / 94%);
+  }
+}
+
+.hero-react-scene {
+  --hero-rx: 0deg;
+  --hero-ry: 0deg;
+  --hero-x: 0px;
+  --hero-y: 0px;
+  --hero-glow-x: 0px;
+  --hero-glow-y: 0px;
+  grid-area: visual;
+  position: relative;
+  width: min(70%, clamp(300px, 32vw, 500px));
+  aspect-ratio: 1;
+  justify-self: center;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+  perspective: 1000px;
+}
+
+.hero-react-scene::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  z-index: -1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 38% 42%, rgb(17 192 229 / 22%), transparent 48%),
+    radial-gradient(circle at 64% 60%, rgb(151 14 231 / 24%), transparent 54%);
+  filter: blur(30px);
+  opacity: 0.78;
+  transform: translate3d(var(--hero-glow-x), var(--hero-glow-y), 0) scale(1.16);
+  pointer-events: none;
+}
+
+.hero-react-tilt {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transform:
+    perspective(900px)
+    rotateX(var(--hero-rx))
+    rotateY(var(--hero-ry))
+    translate3d(var(--hero-x), var(--hero-y), 18px);
+}
+
+.hero-react-scene.is-pointer-active .hero-react-tilt {
+  will-change: transform;
+}
+
+.hero-react-scene .foto-react {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+body.motion-enhanced .project-case--featured {
+  --awx-rx: 0deg;
+  --awx-ry: 0deg;
+  --awx-enter-y: 18px;
+  --awx-media-x: 0px;
+  --awx-media-y: 0px;
+  --awx-content-x: 0px;
+  --awx-content-y: 0px;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform:
+    perspective(1200px)
+    translate3d(0, var(--awx-enter-y), 0)
+    rotateX(var(--awx-rx))
+    rotateY(var(--awx-ry));
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+}
+
+body.motion-enhanced .project-case--featured.is-motion-visible {
+  --awx-enter-y: 0px;
+  opacity: 1;
+}
+
+body.motion-enhanced .project-case--featured.is-pointer-active {
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms ease,
+    border-color 260ms ease;
+  will-change: transform;
+  border-color: rgb(17 192 229 / 38%);
+  box-shadow: 0 22px 58px rgb(0 0 0 / 34%);
+}
+
+body.motion-enhanced .project-case--featured .project-media {
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+body.motion-enhanced .project-case--featured .project-media img {
+  transform: translate3d(var(--awx-media-x), var(--awx-media-y), 0) scale(1.018);
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+body.motion-enhanced .project-case--featured .project-content {
+  transform: translate3d(var(--awx-content-x), var(--awx-content-y), 12px);
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+body.motion-enhanced .project-case--featured.is-pointer-active .project-media img,
+body.motion-enhanced .project-case--featured.is-pointer-active .project-content {
+  transition: none;
+}
+
+@media (max-width: 900px) {
+  .hero-react-scene {
+    width: min(52vw, 330px);
+  }
+
+  body.motion-enhanced .project-case--featured {
+    --awx-rx: 0deg !important;
+    --awx-ry: 0deg !important;
+  }
+
+  body.motion-enhanced .project-case--featured .project-media img,
+  body.motion-enhanced .project-case--featured .project-content {
+    --awx-media-x: 0px !important;
+    --awx-media-y: 0px !important;
+    --awx-content-x: 0px !important;
+    --awx-content-y: 0px !important;
+  }
+}
+@media (max-width: 700px) {
+  body.motion-enhanced {
+    --premium-header-space: 72px;
+  }
+
+  body.motion-enhanced #inicio > header,
+  body.motion-enhanced #inicio > header.is-scrolled {
+    position: fixed;
+    left: 50%;
+    width: calc(100% - 20px);
+  }
+
+  body.motion-enhanced #inicio > header.is-scrolled {
+    top: 8px;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .hero-react-scene {
+    width: min(62vw, 270px);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .hero-react-tilt {
+    transform: none;
+  }
+
+  .hero-react-scene::before {
+    transform: scale(1.12);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.motion-enhanced #inicio > header {
+    transition: none;
+  }
+
+  .hero-react-tilt,
+  .hero-react-scene::before {
+    transform: none;
+  }
+
+  body.motion-enhanced .project-case--featured,
+  body.motion-enhanced .project-case--featured.is-motion-visible,
+  body.motion-enhanced .project-case--featured .project-media img,
+  body.motion-enhanced .project-case--featured .project-content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
