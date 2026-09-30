@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA B APROVADA — ONDA C AUTORIZADA**
+**ONDA C CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -33,8 +33,8 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 4 — Projetos em destaque | CONCLUÍDA | Vitrine reduzida aos três produtos principais |
 | 5 — Sobre, experiência e stack | CONCLUÍDA | Perfil atual, experiência compacta e stack agrupada |
 | 6 — Contato e navegação | CONCLUÍDA | Canais profissionais e menu mobile acessível |
-| 7 — Motion/performance/acessibilidade | AUTORIZADA | Onda C |
-| 8 — SEO/apresentação externa | AUTORIZADA | Onda C |
+| 7 — Motion/performance/acessibilidade | CONCLUÍDA | Preloader removido; reduced motion, performance e acessibilidade validados |
+| 8 — SEO/apresentação externa | CONCLUÍDA | Metadados, canonical, OG, Twitter e JSON-LD implementados |
 | 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
 | 10 — Release e encerramento | PENDENTE | Revisão, merge e publicação |
 
@@ -215,16 +215,92 @@ Revisão independente concluída em 2026-09-30:
 
 **Onda B aprovada.**
 
-## Próximo passo autorizado
-Executar a **ONDA C — Qualidade de entrega**, cobrindo as Fases 7 e 8 no mesmo ciclo:
-1. concluir motion/performance/acessibilidade sem descaracterizar a identidade visual;
-2. remover ou simplificar definitivamente o preloader bloqueante/dispensável;
-3. implementar `prefers-reduced-motion` e garantir conteúdo funcional sem animações;
-4. revisar assets e referências legadas somente quando a remoção for segura e comprovadamente não utilizada;
-5. revisar carregamento de imagens/fontes/scripts, lazy loading quando aplicável e performance percebida;
-6. executar revisão de acessibilidade básica: teclado, foco, landmarks, nomes acessíveis, contraste e imagens;
-7. implementar SEO técnico e apresentação externa: title, description, canonical, Open Graph, Twitter Card, favicon/theme color e JSON-LD `Person` quando apropriado;
-8. validar visualmente e funcionalmente as viewports mínimas após as mudanças;
-9. atualizar este status e parar antes da Onda D.
+## Onda C — Baseline inicial
+- Branch: `refresh/portfolio-2026`.
+- HEAD/origin inicial: `a5abc32d81fac65752b3ef6507b4b61ac3aaf0b8`.
+- Ahead/behind inicial: `0/0`.
+- Working tree inicial: limpa.
+- `AGENTS.md` e `docs/portfolio-refresh/00–06` foram relidos integralmente antes da primeira alteração.
 
-Não iniciar QA final/release da Onda D por conta própria. Nenhum merge em `main` está autorizado.
+## Fase 7 — Motion
+- O preloader foi removido por completo: markup, `CSS/Loading.css` e `js/preload.js`. Não havia recurso real que exigisse espera antes da UI.
+- Foram preservados o React giratório e as entradas curtas do hero em movimento normal.
+- `CSS/Animações.css` foi reduzido aos keyframes efetivamente usados; animações legadas de preload, vibração, tremor, pisca e digitação foram removidas.
+- `prefers-reduced-motion: reduce` desativa rotação contínua do React e animações de entrada, muda o scroll para `auto` e remove transições não essenciais.
+- Emulação real de reduced motion em 1440 × 900 e 390 × 844 confirmou `animation-name: none`, conteúdo visível e menu mobile funcional.
+
+## Fase 7 — Performance
+- Inventário confirmou que Swiper não era mais referenciado por `index.html` nem pelos arquivos carregados.
+- Removidos com evidência de não uso: `CSS/slide.css`, `CSS/swiper-bundle.min.css`, `js/SliderJs/script.js`, `js/SliderJs/swiper-bundle.min.js` e o source map CSS legado.
+- `CSS/style.css` foi reduzido à base global efetivamente utilizada, eliminando seletores de projetos/Sobre/contato já substituídos na Onda B.
+- CSS local carregado caiu de 30.669 para 18.176 bytes (-12.493; ~40,7%). JS local carregado caiu de 3.044 para 2.839 bytes ao remover o script de preload.
+- Os dois screenshots de projetos foram redimensionados de 1280 × 720 PNG para 960 × 540 JPEG com inspeção visual: 554.538 → 214.563 bytes (~61,3% menor).
+- AWX, Galerows e foto profissional recebem dimensões intrínsecas; imagens abaixo da primeira dobra usam `loading="lazy"` e `decoding="async"`. O React do hero permanece eager.
+- Google Fonts deixou de usar dois `@import` seriais dentro do CSS e passou a um único stylesheet no `<head>`, com `preconnect` para `fonts.googleapis.com` e `fonts.gstatic.com`.
+- Medição local pós-ajuste em 1440 × 900 observou 193.552 bytes de transferência inicial de recursos listados pelo navegador; Galerows e foto profissional não foram solicitados na primeira dobra por lazy loading.
+
+## Fase 7 — Acessibilidade
+- Adicionado skip link `Pular para o conteúdo` e landmark `main` único.
+- O heading principal agora é `h1` em `Renan Xavier.`; a hierarquia segue por `h2`, `h3` e `h4` sem saltos estruturais relevantes.
+- Logo deixou de usar `h1` decorativo. Hero usa introdução textual + `h1` sem alterar a composição visual.
+- Todas as 5 imagens possuem `alt`; imagens decorativas do logo/React usam `alt=""` e screenshots/foto usam descrições factuais.
+- Foco continua explícito em links/botões; o menu mobile mantém botão de 44 × 44 px, `aria-expanded`, `aria-controls` e label dinâmico.
+- Teste real de teclado: primeiro `Tab` alcança skip link; `Enter` move foco para o `main`; no mobile `Enter` abre o menu, `Tab` chega a `Home` e `Escape` fecha o menu devolvendo foco ao botão.
+- Cor pequena de eyebrow foi ajustada para `#b45bea`, mantendo a paleta e elevando contraste sobre o fundo escuro para ~5,13:1. Foco ciano sobre azul profundo fica acima de 9:1.
+- Menu, copiar e-mail, currículo e CTAs continuam acessíveis por elementos nativos.
+
+## Fase 8 — SEO e apresentação externa
+- Title: `Renan Xavier — Desenvolvedor Full Stack`.
+- Meta description factual, `robots=index, follow` e `theme-color=#070335` adicionados.
+- URL canônica confirmada por GitHub Pages e por HTTP 200: `https://xavierrlx.github.io/portfolio/`.
+- Open Graph implementado com type, locale, title, description, url e imagem absoluta.
+- Twitter Card `summary_large_image` com title, description e imagem absoluta.
+- Criado `Imagens/portfolio-og.png` (1200 × 630) a partir de screenshot real do hero aprovado; nenhuma funcionalidade fictícia foi representada.
+- JSON-LD `Person` válido contém somente nome, cargo, URL pública, GitHub e LinkedIn.
+- Favicon foi declarado corretamente como PNG.
+- O LinkedIn permanece com a URL pública existente; probe automatizado continua retornando HTTP 999 por proteção anti-bot.
+
+## Currículo
+- O arquivo foi renomeado para `Imagens/Curriculo_Renan_Xavier.pdf` e o link atualizado.
+- SHA-256 antes/depois permaneceu idêntico (`5cc51abdd91a4f976523568a9b380447b76c735cd0d94af9b4642d6cb6990844`), comprovando que o conteúdo do PDF não foi modificado.
+- PDF validado: 1 página, 130216 bytes.
+
+## Validação visual — Onda C
+| Viewport | Resultado | Observação |
+|---|---|---|
+| 1440 × 900 | PASS | Hero e composição desktop preservados |
+| 1280 × 800 | PASS | Sem regressão ou overflow |
+| 1024 × 768 | PASS | Hero e conteúdo intermediário estáveis |
+| 768 × 1024 | PASS | Tablet portrait preservado |
+| 430 × 932 | PASS | Menu mobile e hero sem clipping |
+| 390 × 844 | PASS | Sem overflow horizontal |
+| 360 × 800 | PASS | Menor viewport continua íntegra |
+
+Em todas as sete viewports, `document.documentElement.scrollWidth <= innerWidth`. Reduced motion também foi capturado visualmente em desktop/mobile sem regressão de layout.
+
+## Validação funcional/técnica — Onda C
+- Console: zero `Runtime.exceptionThrown` e zero logs em nível `error`.
+- Auditoria HTML: zero IDs duplicados, zero anchors aninhados, zero fragments internos sem destino, zero assets locais ausentes e zero `_blank` sem `noopener noreferrer`.
+- Navegação mobile: abrir/fechar, seleção de seção e `Escape` com retorno de foco — PASS.
+- Copiar e-mail — PASS com feedback `E-mail copiado.` / `Copiado`.
+- JavaScript desabilitado em 390 × 844: hero, projetos, Sobre e Contato permanecem no DOM e visíveis; menu básico fica exposto, toggle progressivo some e não há overflow.
+- SEO DOM: uma description, um canonical, um conjunto OG, um conjunto Twitter e um JSON-LD sintaticamente válido; URLs públicas absolutas onde exigidas; OG local existe.
+- Links: canonical `200`, AWX `200`, Galerows web `200`, Galerows GitHub `200`, GitHub pessoal `200`; LinkedIn `999` automatizado conforme limitação conhecida.
+- `git diff --check`: PASS antes do commit funcional.
+
+## Commit funcional da Onda C
+- `f48248fb82a44884e32e09dabb203f246ee137fe` — `perf: streamline portfolio delivery and metadata`.
+
+## Findings e riscos residuais após Onda C
+- LinkedIn continua não validável por probe HTTP comum devido ao `999`; sintaxe/href permanecem corretos e o link não foi removido.
+- A imagem OG passa a existir na URL pública absoluta somente após o release da branch atual em Pages; o asset local foi validado em 1200 × 630.
+- `_config.yml` e imagens históricas não referenciadas foram mantidos por cautela; não foi feita limpeza ampla fora do escopo comprovado.
+- Lighthouse não foi instalado nem usado como gate; as evidências principais são inventário real de recursos, tamanho dos assets, browser runtime e validação visual.
+- QA final publicado, comparação cross-device final e release permanecem para a Onda D.
+
+## Próximo passo
+**PARAR após esta Onda C.**
+
+O próximo ciclo é a **ONDA D — Fechamento (Fases 9 e 10)**, somente após aprovação explícita do orquestrador.
+
+Nenhum merge em `main` foi realizado ou autorizado neste fechamento.
