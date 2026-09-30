@@ -86,7 +86,7 @@ header .menu a:hover {
   position: relative;
   z-index: 2;
 }
-.fundoApresentação h1 {
+.fundoApresentação .hero-intro {
   font-family: "Kdam Thmor Pro", sans-serif;
   font-size: clamp(1rem, 1.55vw, 1.45rem);
   line-height: 1.25;

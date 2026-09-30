@@ -1,28 +1,58 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;1,200;1,300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap");
+
 * {
   box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  scroll-behavior: smooth;
-  cursor: default;
-  word-spacing: 2;
+  margin: 0;
+  padding: 0;
 }
-* span:hover {
-  color: #970ee7;
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: rgb(15, 15, 15);
-}
-
-a {
-  text-decoration: none;
+  min-width: 0;
+  background-color: #0f0f0f;
   color: #ffffff;
 }
 
-/* cor do srcoll*/
+body,
+button,
+a {
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 2000;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #070335;
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 160ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+#conteudo-principal:focus {
+  outline: none;
+}
+
 body::-webkit-scrollbar {
   width: 10px;
 }
@@ -32,546 +62,6 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: #4203ee;
   border: 3px solid #4203ee;
+  background-color: #4203ee;
 }
-
-/* Pngs-fundoPrincipal*/
-.foto-html-css {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10% 2% 0% 0%;
-  cursor: pointer;
-}
-
-.foto-html-css:hover {
-  animation: girando360 1s infinite linear;
-}
-
-.foto-js {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 0% 0% 5% 2%;
-  cursor: pointer;
-}
-
-#foto-jss:hover {
-  animation: vibração 0.5s linear infinite both;
-}
-
-#foto-jss, #foto-html {
-  width: 80px;
-}
-
-#foto-ht {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-right: 10px;
-  width: 100px;
-  cursor: pointer;
-}
-
-#foto-ht:hover {
-  animation: tremer 0.3s linear infinite both;
-}
-
-.redeSocias {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-right: 50%;
-  margin-left: 50%;
-  width: 100px;
-  cursor: pointer;
-}
-.redeSocias .imagensRedes {
-  display: flex;
-  padding: 10px;
-}
-.redeSocias .imagensRedes .RedesContato {
-  max-width: 50px;
-  max-height: 50px;
-}
-.redeSocias .imagensRedes img {
-  max-width: 50px;
-  max-height: 50px;
-  padding: 5px;
-}
-.redeSocias .imagensRedes img:hover {
-  box-shadow: 0 3px 20px 0 #000000;
-  border-radius: 5px;
-  animation: 1s;
-}
-
-/*Projetos*/
-#fundoProjetosDois {
-  position: relative;
-}
-
-.fundoProjetos {
-  background-color: #0f0f0f;
-  padding: 50px 0px 50px 0px;
-}
-.fundoProjetos .FlexButton {
-  display: flex;
-  align-items: center;
-}
-.fundoProjetos #setaEsquerda, .fundoProjetos #setaDireita {
-  width: 50px;
-  height: 50px;
-}
-.fundoProjetos #setaEsquerda {
-  margin: 0px 0px 0px 40px;
-}
-.fundoProjetos #setaDireita {
-  margin: 0px 40px 0px 0px;
-}
-.fundoProjetos .subTituloProjeto {
-  color: #970ee7 !important;
-  font-size: 2em;
-}
-.fundoProjetos .tituloHover, .fundoProjetos .descriçãoHover {
-  text-align: center;
-  letter-spacing: 3px;
-  margin: 40px;
-  font-size: 2em;
-  font-family: "Poppins", sans-serif;
-}
-.fundoProjetos .tituloProjeto {
-  margin-bottom: 100px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-size: 4em;
-  text-align: center;
-  color: #ffffff;
-}
-.fundoProjetos .subTituloProjeto, .fundoProjetos .tituloCardUti {
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  margin-bottom: 50px;
-}
-.fundoProjetos .displayFlex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: auto;
-}
-.fundoProjetos .cardProjeto {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  height: 350px;
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  margin: 0px 10px 50px 10px;
-  cursor: pointer;
-  overflow: hidden;
-  box-shadow: 0 3px 20px 0 #000000;
-}
-.fundoProjetos .cardProjeto:hover {
-  box-shadow: 0 3px 10px 0 #4203ee;
-}
-.fundoProjetos .imagemProjeto {
-  width: 300px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.fundoProjetos .imagemProjeto:hover {
-  transform: scale(1.1);
-}
-.fundoProjetos #projeto3 p {
-  font-size: 0.7em;
-}
-.fundoProjetos #projeto6 p, .fundoProjetos #projeto7 p {
-  font-size: 0.8em;
-}
-.fundoProjetos #projeto8 h1 {
-  font-size: 1.8em;
-}
-.fundoProjetos .descriçãoProjeto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 250px;
-  height: 300px;
-  padding: 10px;
-  color: #ffffff;
-}
-.fundoProjetos .tituloCardUti {
-  margin: 100px 0px 100px 0px;
-}
-.fundoProjetos .botaocard {
-  padding: 10px;
-  display: flex;
-  justify-content: space-around;
-  width: 200px;
-}
-.fundoProjetos .botaocard button {
-  width: 80px;
-  height: 30px;
-  border-style: none;
-  background-color: #A940E8;
-  border-radius: 2px;
-}
-
-.ondaPrincipal {
-  margin-top: -230px;
-}
-
-.separador {
-  border-color: #4203ee;
-  box-sizing: border-box;
-  margin: auto;
-  width: 100%;
-}
-
-#displayFlexProjeto {
-  margin-bottom: 200px;
-}
-
-/*Sobre mim*/
-#ondaFundoSobre {
-  margin: -210px 0px 0px 0px;
-}
-
-.fundoSobre {
-  letter-spacing: 3px;
-  background-color: rgb(5, 8, 114);
-}
-.fundoSobre #hSobre {
-  margin-top: 0px;
-}
-.fundoSobre #testeInline {
-  display: block;
-  padding-top: 0px;
-}
-.fundoSobre h1 {
-  padding: 0px 50px;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-size: 4em;
-  text-align: center;
-  color: #ffffff;
-}
-.fundoSobre h2 {
-  font-size: 1em;
-  font-weight: 400;
-  word-spacing: 5px;
-}
-.fundoSobre .flexSobre {
-  max-width: 1200px;
-  margin: auto;
-  padding-top: 51px;
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-  font-family: "Poppins", sans-serif;
-}
-.btn-cv{
-  margin-top: 20px;
-  color: #fff;
-  text-align: center;
-}
-.btn-dow{
-  background: rgb(12, 14, 53);
-  padding: 12px 16px;
-}
-
-.fundoSobre .imagemSobre img {
-  width: 400px;
-  margin-right: 80px;
-  filter: drop-shadow(10px 10px 10px #000000);
-  cursor: pointer;
-}
-.fundoSobre .imagemSobre img:hover {
-  filter: drop-shadow(0px 10px 10px #A940E8);
-}
-.fundoSobre .tecSobre {
-  margin-top: 100px;
-  text-align: center;
-}
-.fundoSobre .tecSobre .TecImgSobre {
-  display: flex;
-  max-width: 80%;
-  max-height: 500px;
-  margin: auto;
-  justify-content: center;
-}
-.fundoSobre .tecSobre .TecImgSobre img {
-  width: 64px;
-  margin: 30px;
-  filter: contrast(80%);
-  filter: grayscale(100%);
-  cursor: pointer;
-}
-.fundoSobre .tecSobre .TecImgSobre img:hover {
-  filter: brightness(150%);
-  filter: contrast(120%);
-  filter: drop-shadow(10px 10px 10px #000000);
-}
-.fundoSobre .tecSobre .TecImgSobre figure {
-  font-family: "Poppins", sans-serif;
-  color: #ffffff;
-}
-.fundoSobre .tecSobre .TecImgSobre figure figcaption {
-  filter: opacity(0%);
-}
-.fundoSobre .tecSobre .TecImgSobre figure:hover {
-  cursor: pointer;
-}
-.fundoSobre .tecSobre .TecImgSobre figure:hover figcaption {
-  filter: opacity(100%);
-}
-
-/*fundoContato*/
-.fundoContato {
-  width: 100%;
-  margin-top: -100px;
-  height: 100vh;
-  background-color: rgb(15, 15, 15);
-  font-family: "Poppins", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.fundoContato main {
-  color: #ffffff;
-  max-width: 1200px;
-  text-align: center;
-}
-.fundoContato main article {
-  color: #970ee7;
-  margin-top: 80px;
-}
-.fundoContato main article input {
-  width: 212px;
-  background-color: rgb(15, 15, 15);
-  color: #ffffff;
-  border: none;
-  font-family: "Poppins";
-  text-align: center;
-}
-.fundoContato main .imagensRedes {
-  display: flex;
-  justify-content: center;
-  margin-top: 90px;
-  padding: 10px;
-}
-.fundoContato main .imagensRedes img {
-  max-width: 30px;
-  max-height: 30px;
-  padding: 5px;
-}
-.fundoContato main .imagensRedes img:hover {
-  box-shadow: 0 3px 20px 0 #000000;
-  border-radius: 5px;
-  animation: 1s;
-}
-.fundoContato h1 {
-  margin: -50px 0px 100px 0px;
-  text-align: center;
-  font-weight: 300;
-  font-size: 4em;
-  text-align: center;
-  color: #ffffff;
-}
-.fundoContato h2 {
-  margin-bottom: 10px;
-}
-.fundoContato h2 span {
-  color: #970ee7;
-}
-
-.CopiaeCola, .NumberCopiaeCola {
-  display: flex;
-  justify-content: center;
-}
-.CopiaeCola img, .NumberCopiaeCola img {
-  width: 20px;
-  height: 20px;
-  margin: 3px 0px 0px 5px;
-}
-
-.copy-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 5px;
-  padding: 3px 0 0;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-.copy-button img {
-  margin: 0;
-  cursor: pointer;
-}
-
-#copiadoNum, #copiadoEm {
-  margin: auto;
-  margin-top: 10px;
-  padding: 3px;
-  text-align: center;
-  width: 80px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  color: #000000;
-  display: none;
-}
-
-.agradecimento h3, .agradecimento h2 {
-  color: #ffffff;
-}
-
-.ondeContato {
-  margin-top: -220px;
-}
-
-@media (max-width: 1450px) {
-  #foto-jss, #foto-html, #foto-ht {
-    width: 70px;
-  }
-  .fundoProjetos .cardProjeto {
-    max-width: 1000px;
-    margin: 0px 10px 50px 10px;
-  }
-  .fundoProjetos .imagemProjeto {
-    width: 250px;
-  }
-  .fundoProjetos .descriçãoProjeto {
-    width: 250px;
-    margin: auto;
-    font-size: 0.8em;
-  }
-}
-@media (max-width: 1260px) {
-  #foto-jss, #foto-html, #foto-ht {
-    width: 60px;
-  }
-}
-@media (max-width: 1100px) {
-  #foto-jss, #foto-html, #foto-ht {
-    width: 50px;
-  }
-  .flexSobre img {
-    max-width: 250px;
-    margin-left: 30px;
-  }
-  .flexSobre h2 {
-    font-size: 0.8em;
-  }
-  .flexSobre .textoSobre {
-    max-width: 800px;
-  }
-  .flexSobre .tecSobre .TecImgSobre {
-    max-width: 80%;
-    max-height: 400px;
-  }
-  .flexSobre .tecSobre .TecImgSobre img {
-    width: 24px;
-    margin: 30px;
-  }
-}
-.tecSobre figure {
-  width: 80px;
-}
-
-@media (max-width: 800px) {
-  #foto-jss, #foto-html, #foto-ht {
-    width: 40px;
-  }
-}
-@media (max-width: 600px) {
-  #foto-jss, #foto-html, #foto-ht {
-    width: 40px;
-  }
-  .redeSocias {
-    margin-right: 42%;
-  }
-  .redeSocias .imagensRedes {
-    display: flex;
-    padding: 10px;
-  }
-  .redeSocias .imagensRedes img {
-    max-width: 30px;
-    max-height: 30px;
-  }
-  #projeto {
-    font-size: 2em;
-  }
-  .imagemProjeto {
-    max-width: 500px;
-    max-height: 350px;
-    margin: auto;
-  }
-  .descriçãoProjeto {
-    margin-top: 10px;
-    font-size: 0.4em;
-  }
-  .subTituloProjeto, .tituloCardUti {
-    font-size: 0.7em;
-  }
-  .tituloCardUti {
-    margin: 0px;
-  }
-  .fundoSobre h1 {
-    padding: 50px;
-    font-size: 2em;
-  }
-  .fundoSobre h2 {
-    padding: 20px;
-    font-size: 0.8em;
-    font-weight: 400;
-    word-spacing: 1px;
-  }
-  .fundoSobre .flexSobre {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-  }
-  .fundoSobre .imagemSobre img {
-    width: 220px;
-    margin: 0px 30px 20px 0px;
-  }
-  .fundoSobre .tecSobre {
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-  .fundoSobre .tecSobre .TecImgSobre {
-    display: flex;
-  }
-  .fundoSobre .tecSobre .TecImgSobre img {
-    width: 30px;
-    margin: 10px;
-  }
-  .fundoSobre .tecSobre .TecImgSobre figcaption {
-    display: none;
-  }
-  .fundoContato {
-    height: 80vh;
-    margin-top: -10px;
-  }
-  .fundoContato h1 {
-    margin: -80px 0px 20px 0px;
-    padding: 20px 0px 0px 0px;
-    font-size: 2em;
-  }
-  .fundoContato h2 {
-    margin-bottom: 10px;
-    font-size: 1em;
-  }
-  .fundoContato h2 span {
-    color: #970ee7;
-  }
-  .fundoContato h3 {
-    font-size: 0.6em;
-    padding: 10px;
-  }
-}/*# sourceMappingURL=Style.css.map */
