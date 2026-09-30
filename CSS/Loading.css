@@ -1,6 +1,6 @@
 /*pre-laod*/
 #onloadid{
-    display: none;
+    display: block;
 }
 .preload{
     width: 100%;
@@ -9,7 +9,10 @@
     top: 0;
     left: 0;
     background-image: radial-gradient( rgba(5,8,114,1) 0%, rgba(7,3,53,1) 97.5% );
-    transition: 1000s ;
+    z-index: 1000;
+    pointer-events: none;
+    transition: opacity 300ms ease, visibility 300ms ease;
+    animation: preloadFallback 300ms 1600ms forwards;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,3 +27,15 @@
     border-radius: 50%;
     }
 
+
+.preload--hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes preloadFallback{
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

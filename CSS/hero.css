@@ -1,0 +1,217 @@
+/* Onda A — hero responsivo preservando a identidade original */
+header {
+  width: min(calc(100% - clamp(40px, 7vw, 104px)), 1360px);
+  margin: 0 auto;
+  padding: clamp(18px, 2.5vw, 30px) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+}
+
+header .logotipo {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+header .fotoLogo {
+  width: clamp(30px, 3vw, 40px);
+  height: clamp(30px, 3vw, 40px);
+  cursor: pointer;
+}
+header #nomeLogo {
+  margin-left: 10px;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  font-weight: 300;
+  letter-spacing: clamp(3px, 0.35vw, 5px);
+  cursor: pointer;
+}
+
+header .menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2.4vw, 34px);
+  margin: 0;
+  padding: 0;
+  width: auto;
+  list-style: none;
+}
+
+header .menu a {
+  display: block;
+  padding: 7px 9px;
+  border-radius: 6px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+header .menu a:hover {
+  background-color: #a940e8;
+  box-shadow: 0 3px 20px rgb(0 0 0 / 35%);
+}
+.fundoPrincipal {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-image: radial-gradient(circle 610px at 5.2% 51.6%, rgb(5, 8, 114) 0%, rgb(7, 3, 53) 97.5%);
+}
+
+.fundoApresentação {
+  width: min(calc(100% - clamp(48px, 8vw, 120px)), 1360px);
+  min-width: 0;
+  flex: 1;
+  margin: 0 auto;
+  padding: clamp(30px, 4vh, 56px) 0 clamp(150px, 18vh, 210px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  grid-template-areas: "copy visual";
+  align-items: center;
+  gap: clamp(24px, 5vw, 80px);
+  color: #ffffff;
+}
+
+.fundoApresentação .apresentação {
+  grid-area: copy;
+  min-width: 0;
+  display: grid;
+  gap: clamp(8px, 1.4vh, 16px);
+  position: relative;
+  z-index: 2;
+}
+.fundoApresentação h1 {
+  font-family: "Kdam Thmor Pro", sans-serif;
+  font-size: clamp(1rem, 1.55vw, 1.45rem);
+  line-height: 1.25;
+}
+
+.fundoApresentação #hmdois {
+  width: max-content;
+  max-width: 100%;
+  color: #970ee7;
+  border-right: 3px solid #a940e8;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3rem, 5.2vw, 5.25rem);
+  line-height: 1.05;
+  white-space: normal;
+  animation: ponteiro 1s infinite normal;
+}
+
+.fundoApresentação #preEscrição {
+  display: block;
+  max-width: 22ch;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(2.15rem, 4.25vw, 4rem);
+  line-height: 1.12;
+  overflow-wrap: break-word;
+  animation: focandoTexto 700ms 120ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.fundoApresentação #descrição {
+  display: block;
+  max-width: 48ch;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(0.9rem, 1.15vw, 1.05rem);
+  line-height: 1.6;
+  animation: animaTextoDireita 600ms 240ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+}
+
+.fundoApresentação .foto-react {
+  grid-area: visual;
+  width: min(70%, clamp(300px, 32vw, 500px));
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  justify-self: center;
+  position: static;
+  animation: girando360 28s linear infinite;
+}
+
+.ondaHero {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: clamp(-180px, -12vw, -100px);
+  position: relative;
+  z-index: 3;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .fundoApresentação {
+    width: min(calc(100% - clamp(40px, 7vw, 72px)), 760px);
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "copy"
+      "visual";
+    align-content: center;
+    gap: clamp(24px, 4vh, 40px);
+    padding-top: clamp(34px, 6vh, 64px);
+    padding-bottom: clamp(150px, 18vh, 190px);
+  }
+
+  .fundoApresentação .apresentação {
+    max-width: 680px;
+  }
+
+  .fundoApresentação .foto-react {
+    width: min(52vw, 330px);
+    justify-self: center;
+  }
+
+  .fundoApresentação #preEscrição {
+    max-width: 22ch;
+  }
+}
+@media (max-width: 700px) {
+  header {
+    width: calc(100% - 32px);
+    padding: 16px 0;
+  }
+
+  header .menu {
+    display: none;
+  }
+
+  .fundoApresentação {
+    width: calc(100% - 32px);
+    gap: clamp(22px, 4vh, 34px);
+    padding-top: clamp(30px, 5vh, 48px);
+    padding-bottom: clamp(130px, 17vh, 165px);
+  }
+
+  .fundoApresentação #hmdois {
+    font-size: clamp(2.25rem, 10.2vw, 3rem);
+  }
+
+  .fundoApresentação #preEscrição {
+    max-width: 18ch;
+    font-size: clamp(1.4rem, 6.2vw, 1.75rem);
+    line-height: 1.16;
+  }
+
+  .fundoApresentação #descrição {
+    max-width: 34ch;
+    font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  }
+
+  .fundoApresentação .foto-react {
+    width: min(62vw, 270px);
+  }
+
+  .foto-html-css,
+  .foto-js,
+  .html,
+  .redeSocias {
+    display: none;
+  }
+
+  .ondaHero {
+    margin-top: -108px;
+  }
+}
