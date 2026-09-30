@@ -3,57 +3,118 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**PLANEJAMENTO CONCLUÍDO — ONDA A AUTORIZADA**
+**ONDA A CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
 
-Nenhum arquivo funcional, CSS, JavaScript, imagem ou conteúdo do site foi alterado nesta etapa. Somente documentação de governança foi preparada na branch de refresh.
+As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
-## Baseline
+## Baseline Git inicial da Onda A
 - Repositório: `XavierRLX/portfolio`
-- Base: `main`
-- Commit base: `e541970b34a5a6ab74c085530975a1106a20a9d9`
-- Branch de trabalho: `refresh/portfolio-2026`
-- Site atual auditado em desktop e viewport mobile de 390 px.
+- Branch: `refresh/portfolio-2026`
+- HEAD local inicial: `d03a438fa1f8c64916c638f6bc8fa31a241b077a`
+- `origin/refresh/portfolio-2026`: mesmo SHA
+- Ahead/behind inicial: `0/0`
+- Working tree inicial: limpa
+
+## Baseline visual observada antes das alterações
+- Desktop 1440/1280: hero dependia de composição rígida; texto e React mudavam de proporção de forma abrupta entre larguras.
+- Tablet 1024/768: texto e React ficavam excessivamente pequenos, com grande área vazia vertical.
+- Mobile 430: composição ainda dependia de offsets corretivos.
+- Mobile 390/360: headline ultrapassava a viewport e havia corte horizontal.
+- Preloader ocupava a tela antes de liberar o conteúdo.
+- Hero, Sobre e partes da entrada visual dependiam de timers JavaScript.
 
 ## Fases
 | Fase | Estado | Observação |
 |---|---|---|
-| 0 — Planejamento e governança | CONCLUÍDA | Documentação criada |
-| 1 — Baseline visual e inventário | AUTORIZADA | Início da Onda A |
-| 2 — Fundação estrutural/semântica | AUTORIZADA | Executar após registrar baseline |
-| 3 — Hero responsivo | AUTORIZADA | Fechamento da Onda A; validação visual obrigatória |
-| 4 — Projetos em destaque | PENDENTE | AWX, Cursos Pugliese, Galerows |
-| 5 — Sobre, experiência e stack | PENDENTE | Atualização de posicionamento |
-| 6 — Contato e navegação | PENDENTE | Acessibilidade e mobile |
-| 7 — Motion/performance/acessibilidade | PENDENTE | Remover timers bloqueantes |
-| 8 — SEO/apresentação externa | PENDENTE | Metadados profissionais |
-| 9 — QA visual cross-device | PENDENTE | Matriz completa |
+| 0 — Planejamento e governança | CONCLUÍDA | Documentação canônica preservada |
+| 1 — Baseline visual e inventário | CONCLUÍDA | Desktop, tablet e mobile registrados antes da primeira alteração |
+| 2 — Fundação estrutural/semântica | CONCLUÍDA | Sem redesign geral |
+| 3 — Hero responsivo | CONCLUÍDA | Grid/Flex, containers fluidos e validação real em navegador |
+| 4 — Projetos em destaque | PENDENTE | Onda B aguardando aprovação |
+| 5 — Sobre, experiência e stack | PENDENTE | Onda B aguardando aprovação |
+| 6 — Contato e navegação | PENDENTE | Onda B aguardando aprovação |
+| 7 — Motion/performance/acessibilidade | PENDENTE | Onda C; tratamento completo ainda não executado |
+| 8 — SEO/apresentação externa | PENDENTE | Onda C |
+| 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
 | 10 — Release e encerramento | PENDENTE | Revisão, merge e publicação |
 
-## Findings já conhecidos
-- overflow horizontal no hero em mobile de 390 px;
-- hero depende de dimensões/posições rígidas e diversos breakpoints corretivos;
-- conteúdo principal ainda enfatiza projetos introdutórios;
-- HTML possui anchors aninhados, links inconsistentes e IDs repetidos;
-- preloader bloqueia a interface por aproximadamente 2 s;
-- seção Sobre depende de timer de aproximadamente 5 s;
-- textos do hero dependem de timers para aparecer;
-- SEO atual é mínimo.
+## Fase 2 — Fundação estrutural
+- Header passou a usar `nav`, lista válida e links semânticos.
+- Home recebeu destino explícito `#inicio`.
+- 20 anchors aninhados nos cards foram removidos.
+- IDs duplicados de seções/paginação foram eliminados.
+- Wrappers de cards foram alinhados aos destinos já declarados nos CTAs internos.
+- `target="_blank"` passou a usar `rel="noopener noreferrer"`.
+- Controles de cópia passaram de imagens clicáveis para `button` semântico.
+- `box-sizing: border-box` foi estabelecido na base global.
 
-## Próximo passo autorizado
-Executar a **ONDA A — Fundação visual**, cobrindo as Fases 1, 2 e 3 no mesmo ciclo.
+## Fase 3 — Hero responsivo
+- Novo `CSS/hero.css` isola a implementação responsiva da primeira dobra.
+- Desktop usa Grid com texto à esquerda e React à direita.
+- Tablet reorganiza o hero para fluxo vertical sem offsets mágicos.
+- Mobile usa container fluido, tipografia com `clamp()` e React proporcional.
+- Logo `X AVIER`, fundo azul profundo, identidade roxo/azul, React giratório e onda inferior foram preservados.
+- A rotação do React foi dimensionada pelo espaço da coluna para não criar overflow em nenhum ângulo.
+- A frase principal deixou de ser revelada por timer; `js/digitando.js` foi removido.
+- O conteúdo principal agora existe no DOM mesmo se JavaScript falhar.
+- Preloader não bloqueia mais a aplicação por timeout; há fallback CSS caso JavaScript não execute.
+- A seção Sobre também deixou de depender do timer de 5 s apenas para aparecer.
+- Ícones decorativos da seção de projetos passaram a ter a própria seção como containing block, evitando vazamento visual para o hero.
 
-A IA executora deve:
-1. confirmar branch, HEAD, origem e working tree;
-2. subir o site local e registrar a baseline visual antes da primeira alteração;
-3. inventariar problemas e arquivos relevantes;
-4. executar a Fase 2, corrigindo base estrutural/semântica sem redesign;
-5. executar a Fase 3, reconstruindo o hero de forma responsiva preservando a identidade definida;
-6. validar visualmente durante a implementação, não apenas ao final;
-7. testar todas as viewports mínimas;
-8. atualizar este documento com commits, evidências, findings e estado final;
-9. parar ao fim da Onda A e devolver relatório ao orquestrador.
+## Arquivos alterados na Onda A
+- `index.html`
+- `CSS/style.css`
+- `CSS/slide.css`
+- `CSS/Loading.css`
+- `CSS/hero.css` — novo
+- `js/preload.js`
+- `js/digitando.js` — removido
 
-A executora **não precisa parar entre as Fases 1, 2 e 3**. Deve parar antecipadamente somente se encontrar divergência de baseline, regressão grave que exija decisão de design, necessidade de mudança de stack/escopo ou impossibilidade técnica relevante.
+## Validação visual obrigatória
+| Viewport | Resultado | Observação |
+|---|---|---|
+| 1440 × 900 | PASS | Composição desktop equilibrada; texto e React em colunas |
+| 1280 × 800 | PASS | Sem overflow durante rotação; quebra de headline estável |
+| 1024 × 768 | PASS | React e texto mantêm hierarquia sem corte |
+| 768 × 1024 | PASS | Fluxo vertical; navegação desktop ainda visível |
+| 430 × 932 | PASS | Sem corte horizontal; hero reorganizado |
+| 390 × 844 | PASS | Finding original de overflow resolvido |
+| 360 × 800 | PASS | Menor viewport validada sem clipping |
 
-## Critério para avançar
-O orquestrador revisa o relatório completo da Onda A. Se os critérios estiverem atendidos, libera a Onda B (Fases 4, 5 e 6) em um único ciclo.
+A validação usou emulação real de viewport via navegador. Em todas as larguras, `document.documentElement.scrollWidth <= innerWidth`; não foi usado `overflow-x: hidden` para mascarar problemas.
+
+## Validações técnicas
+- Console do navegador em 1440 × 900: zero `Runtime.exceptionThrown` e zero entradas de log em nível `error`.
+- Teste com JavaScript desabilitado em 1280 × 800: hero e conteúdo essencial continuam visíveis após o fallback CSS.
+- Auditoria HTML local: zero IDs duplicados, zero anchors aninhados, zero fragmentos internos sem destino e zero `src` locais ausentes.
+- Links externos com `target="_blank"`: todos com `noopener noreferrer`.
+- `git diff --check`: PASS antes dos commits.
+- Links verificados: AWX `200`, Carteirinha `200`, Jogos da Galera `200`.
+- Findings externos: Hamburgueria retorna `404`; Direction Pack retorna `503` no deploy atual.
+
+## Commits da Onda A
+- `32bf7bed5d015d61ed2dad4a6edcd3061c479232` — `refactor: establish semantic portfolio structure`
+- `5dd5125ab7087ac5d41a368da5e36fe81c208638` — `fix: rebuild responsive hero layout`
+
+## Findings resolvidos
+- overflow horizontal conhecido em 390 px;
+- offsets rígidos do React por resolução;
+- anchors aninhados;
+- IDs repetidos;
+- wrappers de cards com destinos inconsistentes;
+- conteúdo essencial escondido por timers JavaScript.
+
+## Findings e riscos residuais
+- O link da Hamburgueria está indisponível (`404`) e não há destino alternativo inequívoco no inventário atual; revisar na curadoria da Onda B.
+- O deploy atual do Direction Pack responde `503`; o repositório existe, mas trocar o destino exige decisão de conteúdo da Onda B.
+- A navegação mobile continua sem menu dedicado; implementação/acessibilidade pertencem à Fase 6.
+- Reduced motion, revisão completa do preloader, performance e motion permanecem para a Onda C/Fase 7.
+- Conteúdo, hierarquia e seleção dos projetos continuam legados até a Onda B.
+- SEO segue mínimo até a Fase 8.
+
+## Próximo passo
+**PARAR após esta Onda A.**
+
+O próximo ciclo é a **ONDA B — Conteúdo e narrativa profissional (Fases 4, 5 e 6)**, somente após aprovação explícita do orquestrador.
+
+Nenhum merge em `main` faz parte deste fechamento.
