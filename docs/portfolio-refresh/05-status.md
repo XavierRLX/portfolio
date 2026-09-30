@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA A CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
+**ONDA A APROVADA — ONDA B AUTORIZADA**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -30,9 +30,9 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 1 — Baseline visual e inventário | CONCLUÍDA | Desktop, tablet e mobile registrados antes da primeira alteração |
 | 2 — Fundação estrutural/semântica | CONCLUÍDA | Sem redesign geral |
 | 3 — Hero responsivo | CONCLUÍDA | Grid/Flex, containers fluidos e validação real em navegador |
-| 4 — Projetos em destaque | PENDENTE | Onda B aguardando aprovação |
-| 5 — Sobre, experiência e stack | PENDENTE | Onda B aguardando aprovação |
-| 6 — Contato e navegação | PENDENTE | Onda B aguardando aprovação |
+| 4 — Projetos em destaque | AUTORIZADA | Onda B |
+| 5 — Sobre, experiência e stack | AUTORIZADA | Onda B |
+| 6 — Contato e navegação | AUTORIZADA | Onda B |
 | 7 — Motion/performance/acessibilidade | PENDENTE | Onda C; tratamento completo ainda não executado |
 | 8 — SEO/apresentação externa | PENDENTE | Onda C |
 | 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
@@ -112,9 +112,26 @@ A validação usou emulação real de viewport via navegador. Em todas as largur
 - Conteúdo, hierarquia e seleção dos projetos continuam legados até a Onda B.
 - SEO segue mínimo até a Fase 8.
 
-## Próximo passo
-**PARAR após esta Onda A.**
+## Revisão do orquestrador — Onda A
+Revisão independente concluída em 2026-09-30:
+- comparação Git confirmou 3 commits à frente da baseline, 0 atrás;
+- branch local e remota sincronizadas em `686c0345495709409578b293f053c0032864ef48`;
+- working tree limpa;
+- diff consolidado compatível com o escopo autorizado;
+- hero revisado novamente em navegador em 1440 × 900 e 390 × 844 após carregamento;
+- identidade visual preservada e overflow mobile não reproduzido;
+- menu mobile dedicado e refinamento completo do preloader permanecem como pendências planejadas, sem bloquear a aprovação.
 
-O próximo ciclo é a **ONDA B — Conteúdo e narrativa profissional (Fases 4, 5 e 6)**, somente após aprovação explícita do orquestrador.
+**Onda A aprovada.**
 
-Nenhum merge em `main` faz parte deste fechamento.
+## Próximo passo autorizado
+Executar a **ONDA B — Conteúdo e narrativa profissional**, cobrindo as Fases 4, 5 e 6 no mesmo ciclo:
+1. substituir a vitrine legada por AWX, Cursos Pugliese e Galerows, com AI English Coach apenas se não poluir a composição;
+2. transformar projetos principais em apresentações curtas orientadas a problema, papel, stack e complexidade real;
+3. atualizar Sobre, experiência e stack para refletir o trabalho atual;
+4. revisar contato e implementar navegação mobile adequada;
+5. validar visualmente desktop, tablet e mobile durante a implementação;
+6. corrigir/remover links externos quebrados que deixarem de fazer sentido após a curadoria;
+7. atualizar este status e parar antes da Onda C.
+
+Não iniciar Motion/Performance/SEO da Onda C por conta própria. Nenhum merge em `main` está autorizado.
