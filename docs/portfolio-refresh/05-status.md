@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA A APROVADA — ONDA B AUTORIZADA**
+**ONDA B CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -30,9 +30,9 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 1 — Baseline visual e inventário | CONCLUÍDA | Desktop, tablet e mobile registrados antes da primeira alteração |
 | 2 — Fundação estrutural/semântica | CONCLUÍDA | Sem redesign geral |
 | 3 — Hero responsivo | CONCLUÍDA | Grid/Flex, containers fluidos e validação real em navegador |
-| 4 — Projetos em destaque | AUTORIZADA | Onda B |
-| 5 — Sobre, experiência e stack | AUTORIZADA | Onda B |
-| 6 — Contato e navegação | AUTORIZADA | Onda B |
+| 4 — Projetos em destaque | CONCLUÍDA | Vitrine reduzida aos três produtos principais |
+| 5 — Sobre, experiência e stack | CONCLUÍDA | Perfil atual, experiência compacta e stack agrupada |
+| 6 — Contato e navegação | CONCLUÍDA | Canais profissionais e menu mobile acessível |
 | 7 — Motion/performance/acessibilidade | PENDENTE | Onda C; tratamento completo ainda não executado |
 | 8 — SEO/apresentação externa | PENDENTE | Onda C |
 | 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
@@ -124,14 +124,85 @@ Revisão independente concluída em 2026-09-30:
 
 **Onda A aprovada.**
 
-## Próximo passo autorizado
-Executar a **ONDA B — Conteúdo e narrativa profissional**, cobrindo as Fases 4, 5 e 6 no mesmo ciclo:
-1. substituir a vitrine legada por AWX, Cursos Pugliese e Galerows, com AI English Coach apenas se não poluir a composição;
-2. transformar projetos principais em apresentações curtas orientadas a problema, papel, stack e complexidade real;
-3. atualizar Sobre, experiência e stack para refletir o trabalho atual;
-4. revisar contato e implementar navegação mobile adequada;
-5. validar visualmente desktop, tablet e mobile durante a implementação;
-6. corrigir/remover links externos quebrados que deixarem de fazer sentido após a curadoria;
-7. atualizar este status e parar antes da Onda C.
+## Onda B — Baseline inicial
+- Branch: `refresh/portfolio-2026`.
+- HEAD local inicial: `ad7d4ce77012a3a8c6a68235fa0b930ff05ce30b`.
+- `origin/refresh/portfolio-2026`: mesmo SHA.
+- Ahead/behind inicial: `0/0`.
+- Working tree inicial: limpa.
+- Documentação canônica `AGENTS.md` e `docs/portfolio-refresh/00–06` relida integralmente antes das alterações.
 
-Não iniciar Motion/Performance/SEO da Onda C por conta própria. Nenhum merge em `main` está autorizado.
+## Fase 4 — Projetos em destaque
+A vitrine legada com sliders e categorias `Sites`, `Ferramentas` e `Games` foi substituída por três case studies estáticos e responsivos:
+
+1. **AWX / All Wheels Experience** — projeto autoral de gestão automotiva, com Next.js/React/TypeScript, Supabase/PostgreSQL, Auth, RLS, RPCs e Capacitor. O case destaca manutenção, custos, FIPE e compartilhamento/transferência sem expor o repositório privado. CTA público validado em `https://www.awxbrasil.com.br/`.
+2. **Cursos Pugliese** — produto full stack com papéis admin/teacher/student, Supabase Auth SSR, autorização server-side, RLS, RPCs transacionais, conteúdo acadêmico, progresso, planos, entitlements e turmas. Não há CTA de código nem exposição de ambiente privado.
+3. **Galerows** — produto consumer/mobile para jogos sociais, com React, TypeScript, Vite, Vitest e Capacitor. CTAs públicos para o produto e repositório GitHub.
+
+Projetos introdutórios e legados deixaram a vitrine, incluindo Calculadora, Relógio Digital, Lista de Compras, exercícios JavaScript, Android/Guanabara, Vingadores, Bootstrap, Xavierburger, Hamburgueria e Direction Pack. Com isso, os findings `404` da Hamburgueria e `503` do Direction Pack deixam de afetar a experiência publicada.
+
+Foram capturados screenshots reais dos produtos públicos AWX e Galerows para os cards. Nenhum mockup de funcionalidade foi fabricado.
+
+## Fase 5 — Perfil profissional
+- Hero manteve a estrutura aprovada da Onda A e recebeu apenas nova copy: `Desenvolvedor Full Stack` e descrição end-to-end curta.
+- Sobre foi reduzido para dois parágrafos, removendo o tempo exato de experiência e texto autobiográfico longo.
+- Experiência NUCLEP passou a uma apresentação compacta com C#/.NET, SQL Server, sistemas corporativos, manutenção/evolução e contato com requisitos/usuários.
+- Stack foi reorganizada por função: Frontend, Backend, Dados, Mobile/Infra e IA — prática em projetos.
+- A categoria IA comunica uso prático de LLMs, RAG, embeddings, pgvector e agentes sem afirmar especialização profissional.
+- CTA do currículo foi preservado. O PDF existe, é válido e tem uma página; o nome físico `Curriculo_Renan_Analista_25.pdf` permanece como finding de nomenclatura legada para revisão futura, sem alterar o PDF nesta onda.
+
+## Fase 6 — Contato e navegação
+- Contato passou a priorizar E-mail, LinkedIn e GitHub.
+- Telefone e Instagram saíram do CTA profissional principal.
+- E-mail possui `mailto:` e botão real de cópia com feedback em `aria-live`.
+- Criado `js/navigation.js` para menu mobile progressivamente aprimorado.
+- Botão mobile usa `aria-expanded` e `aria-controls`, abre/fecha por clique, fecha após escolher seção, fecha com `Escape` devolvendo foco e fecha ao clicar fora.
+- Sem JavaScript, os links da navegação continuam visíveis no mobile; com JavaScript, passam ao dropdown acessível.
+- Foco de teclado visível foi adicionado aos links e botões novos.
+
+## Validação visual — Onda B
+| Viewport | Resultado | Observação |
+|---|---|---|
+| 1440 × 900 | PASS | Hero equilibrado; cases em duas colunas; perfil, stack e contato com hierarquia clara |
+| 1280 × 800 | PASS | Sem overflow; composição desktop preservada |
+| 1024 × 768 | PASS | Hero e cases intermediários sem corte ou deformação |
+| 768 × 1024 | PASS | Cases passam para uma coluna; header e conteúdo permanecem legíveis |
+| 430 × 932 | PASS | Menu mobile ativo; hero, cards, stack e contato no fluxo natural |
+| 390 × 844 | PASS | Cards e CTAs sem clipping; menu mobile validado aberto e fechado |
+| 360 × 800 | PASS | Menor viewport sem texto cortado ou overflow horizontal |
+
+Em todas as sete larguras, `document.documentElement.scrollWidth <= innerWidth`. A validação foi feita na aplicação real com emulação de viewport pelo navegador; não foi usado `overflow-x: hidden` para mascarar problemas.
+
+## Validação funcional — Onda B
+- Navegação `Home`, `Projetos`, `Sobre` e `Contato`: PASS; todos os fragments existem e os cliques atualizam o hash corretamente.
+- Menu mobile: PASS para abrir, fechar após navegação e fechar por `Escape` com retorno de foco.
+- Copiar e-mail: PASS com interação real no navegador e feedback `E-mail copiado.` / `Copiado`.
+- Currículo: arquivo local existente, PDF válido, 1 página, 130216 bytes.
+- Links: AWX `200`, Galerows web `200`, Galerows GitHub `200`, GitHub pessoal `200`. LinkedIn retornou `999` ao probe automatizado, comportamento de proteção anti-bot do serviço; URL usada é a mesma referência pública já existente no portfólio.
+- Console em 1440 × 900: zero `Runtime.exceptionThrown` e zero logs em nível `error`.
+- Auditoria HTML local: zero IDs duplicados, zero anchors aninhados, zero fragmentos sem destino, zero assets locais ausentes e zero `_blank` sem `noopener noreferrer`.
+- `git diff --check`: PASS.
+
+## Arquivos funcionais da Onda B
+- `index.html`
+- `CSS/content.css` — novo
+- `js/navigation.js` — novo
+- `js/copiarEcolar.js`
+- `Imagens/awx_preview.png` — screenshot real do produto público
+- `Imagens/galerows_preview.png` — screenshot real do produto público
+
+## Commit funcional da Onda B
+- `e01e44917eae66a52f870ae442645a38d5cbdd69` — `feat: present current professional portfolio`
+
+## Findings e riscos residuais após Onda B
+- O arquivo do currículo continua com nome legado `Curriculo_Renan_Analista_25.pdf`; o conteúdo não foi alterado nesta onda.
+- A resposta HTTP automatizada do LinkedIn é `999`; o destino deve continuar sujeito a validação manual/publicada por causa da proteção anti-bot do serviço.
+- CSS e arquivos de Swiper legados permanecem fisicamente no repositório, porém deixaram de ser referenciados pela página principal; limpeza ampla não é necessária para a Onda B.
+- Preloader completo, `prefers-reduced-motion`, auditoria de performance e SEO permanecem deliberadamente para a Onda C.
+
+## Próximo passo
+**PARAR após esta Onda B.**
+
+O próximo ciclo é a **ONDA C — Qualidade de entrega (Fases 7 e 8)**, somente após aprovação explícita do orquestrador.
+
+Nenhum merge em `main` foi realizado ou autorizado neste fechamento.
