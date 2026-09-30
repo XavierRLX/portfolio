@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA C APROVADA — ONDA D AUTORIZADA**
+**REFRESH CONCLUÍDO — RELEASE VALIDADO**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -35,8 +35,8 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 6 — Contato e navegação | CONCLUÍDA | Canais profissionais e menu mobile acessível |
 | 7 — Motion/performance/acessibilidade | CONCLUÍDA | Preloader removido; reduced motion, performance e acessibilidade validados |
 | 8 — SEO/apresentação externa | CONCLUÍDA | Metadados, canonical, OG, Twitter e JSON-LD implementados |
-| 9 — QA visual cross-device | AUTORIZADA | Onda D — validação final |
-| 10 — Release e encerramento | AUTORIZADA | Onda D — merge/publicação condicionados ao QA final |
+| 9 — QA visual cross-device | CONCLUÍDA | Matriz final local e QA publicado validados |
+| 10 — Release e encerramento | CONCLUÍDA | Fast-forward em main, Pages e assets públicos validados |
 
 ## Fase 2 — Fundação estrutural
 - Header passou a usar `nav`, lista válida e links semânticos.
@@ -313,14 +313,82 @@ Revisão independente concluída em 2026-09-30:
 
 **Onda C aprovada.**
 
-## Próximo passo autorizado
-Executar a **ONDA D — Fechamento**, cobrindo as Fases 9 e 10:
-1. executar QA final cross-device e funcional sobre o HEAD aprovado;
-2. corrigir apenas regressões/falhas reais encontradas pelo QA, sem novo redesign;
-3. revisar diff completo da branch contra `main`;
-4. confirmar documentação e README final quando necessário;
-5. preparar o merge/release e validar o GitHub Pages publicado;
-6. confirmar que canonical, OG image e assets públicos respondem após publicação;
-7. registrar evidências finais e encerrar o refresh.
+## Onda D — Baseline e gate pré-release
+- Branch de trabalho inicial: `refresh/portfolio-2026`.
+- HEAD/origin autorizado: `cd55a72c6f7ae4174f7b6a5c598a8deee21faa24`, ahead/behind `0/0`, working tree limpa.
+- `origin/main` foi obtida por fetch explícito e permaneceu em `e541970b34a5a6ab74c085530975a1106a20a9d9`, sem mudanças paralelas.
+- O README estava objetivamente desatualizado (Swiper/AOS/preloader e tempo exato de experiência) e foi alinhado ao site final sem alteração da aplicação.
+- Commit final da branch antes do release: `b3551f8b3bfe8cba0ec338e8d5848e268a125519` — `docs: align portfolio readme with final site`.
 
-O merge em `main` somente deve ocorrer dentro desta Onda D depois do QA pré-release passar. Se houver finding bloqueante, parar antes do merge e reportar ao orquestrador.
+## Fase 9 — QA final pré-release
+| Viewport | Resultado | Evidência |
+|---|---|---|
+| 1440 × 900 | PASS | Desktop completo preservado; `scrollWidth=1430 <= 1440` |
+| 1280 × 800 | PASS | Sem overflow ou regressão visual; `1270 <= 1280` |
+| 1024 × 768 | PASS | Hero e conteúdo intermediário íntegros; `1014 <= 1024` |
+| 768 × 1024 | PASS | Tablet portrait estável; `758 <= 768` |
+| 430 × 932 | PASS | Menu/hero mobile íntegros; `420 <= 430` |
+| 390 × 844 | PASS | Cards e navegação sem clipping; `380 <= 390` |
+| 360 × 800 | PASS | Menor viewport íntegra; `350 <= 360` |
+
+A revisão visual percorreu Hero, projetos, Sobre, experiência, stack e contato em desktop e mobile. Não foram encontrados textos cortados, sobreposições, cards quebrados, imagens deformadas ou regressões provenientes das otimizações da Onda C.
+
+## Interações e acessibilidade finais
+- Navegação Home/Projetos/Sobre/Contato: PASS.
+- Menu mobile: abrir/fechar, selecionar seção, clicar fora, `Escape`, retorno do foco, `Tab` e `Shift+Tab`: PASS.
+- Skip link: primeiro `Tab`; `Enter` move foco ao `main`: PASS.
+- Reduced motion em 1440 × 900 e 390 × 844: React e entradas com `animation-name: none`, scroll `auto`, conteúdo e menu preservados.
+- JavaScript desabilitado em 390 × 844: hero, projetos, Sobre, contato e navegação básica permanecem visíveis, sem overflow.
+- Copiar e-mail local: PASS.
+- Console local: zero `Runtime.exceptionThrown` e zero logs `error` do site.
+- DOM/HTML: 0 IDs duplicados, 0 anchors aninhados, 0 fragments inexistentes, 0 assets locais ausentes, 0 imagens sem `alt` e 0 `_blank` sem `noopener noreferrer`.
+- Hierarquia de headings e landmark `main` único revalidados.
+
+## SEO e assets pré-release
+- Title, description, canonical única, robots, theme-color, Open Graph, Twitter Card, favicon, `lang=pt-BR` e JSON-LD `Person`: PASS.
+- Canonical: `https://xavierrlx.github.io/portfolio/`.
+- `Imagens/portfolio-og.png`: 1200 × 630.
+- `Imagens/Curriculo_Renan_Xavier.pdf`: PDF válido, 1 página; link do site aponta para o arquivo correto.
+- `git diff --check origin/main...HEAD`: PASS.
+
+## Revisão consolidada de segurança e escopo
+- Diff completo `origin/main...refresh/portfolio-2026` revisado antes do merge.
+- Nenhum `.env`, chave privada, banco local, credential file ou secret foi adicionado.
+- Scan do conteúdo adicionado/alterado não encontrou service role, API key, password, bearer token, private key, Supabase privado ou URL de Staging.
+- URLs públicas adicionadas ficaram limitadas a GitHub Pages, AWX, Galerows, GitHub, LinkedIn, Google Fonts, Schema.org e namespace SVG.
+- Nenhum arquivo fora do portfólio foi alterado.
+- Gate de release: **PASS**, sem finding P0/P1 aberto.
+
+## Fase 10 — Merge, publicação e QA publicado
+- Método de integração: fast-forward (`git merge --ff-only`), preservando os commits do refresh.
+- `main` antes do merge: `e541970b34a5a6ab74c085530975a1106a20a9d9`.
+- `main` após o merge de release: `b3551f8b3bfe8cba0ec338e8d5848e268a125519`.
+- Push para `origin/main`: PASS; local/remoto sincronizados `0/0` e working tree limpa após o push.
+- GitHub Pages: `https://xavierrlx.github.io/portfolio/`.
+- Deploy novo detectado no segundo poll (~10 s após o primeiro), pelo title `Renan Xavier — Desenvolvedor Full Stack` e pela seção `Produtos que representam meu trabalho atual.`.
+- QA publicado 1440 × 900: PASS, `scrollWidth=1430 <= 1440`.
+- QA publicado 390 × 844: PASS, `scrollWidth=380 <= 390`; menu mobile revalidado.
+- Console publicado: zero exceções/logs de erro observados.
+- Copiar e-mail publicado com clique real/trusted input: PASS — `E-mail copiado.` / `Copiado`.
+
+## SEO e assets publicados
+- Canonical publicada: `https://xavierrlx.github.io/portfolio/`.
+- `portfolio-og.png`: HTTP 200 (`image/png`).
+- `Curriculo_Renan_Xavier.pdf`: HTTP 200 (`application/pdf`).
+- AWX: HTTP 200.
+- Galerows web: HTTP 200.
+- Galerows GitHub e GitHub pessoal: HTTP 200.
+- LinkedIn continua retornando HTTP 999 em probe automatizado; href permanece correto e este comportamento segue classificado como proteção anti-bot não bloqueante.
+- Metadata publicada contém description, robots, theme-color, Open Graph, Twitter Card, JSON-LD válido e `lang=pt-BR`.
+
+## Findings residuais de encerramento
+- LinkedIn HTTP 999 permanece como limitação de validação automatizada externa, sem evidência de link incorreto.
+- Imagens históricas e `_config.yml` foram mantidos; não houve limpeza estética adicional na Onda D.
+- Não há finding P0/P1 aberto.
+
+## Encerramento
+- Fase 9: **CONCLUÍDA**.
+- Fase 10: **CONCLUÍDA**.
+- Refresh profissional: **CONCLUÍDO / RELEASE VALIDADO** em 2026-09-30.
+- A branch `refresh/portfolio-2026` permanece preservada; não foi deletada.
+- Este bloco é a atualização documental final feita em `main` após a validação publicada. O SHA definitivo de `main` é confirmado pós-commit no relatório de encerramento, evitando autorreferência impossível dentro do próprio commit.
