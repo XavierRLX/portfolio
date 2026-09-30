@@ -1,7 +1,15 @@
 # Plano de Ação — Início ao Encerramento
 
 ## Estratégia
-O refresh será executado em fases pequenas e verificáveis. A ordem abaixo é obrigatória salvo decisão explícita documentada pelo orquestrador.
+O refresh continuará dividido em fases verificáveis, mas a execução operacional será agrupada em ondas para reduzir burocracia. A ordem das fases continua válida; o orquestrador pode liberar várias fases consecutivas no mesmo ciclo quando o risco estiver controlado.
+
+## Ondas de execução
+- **Onda A — Fundação visual:** Fases 1, 2 e 3. Baseline, saneamento estrutural e hero responsivo.
+- **Onda B — Conteúdo profissional:** Fases 4, 5 e 6. Projetos, perfil/stack, contato e navegação.
+- **Onda C — Qualidade de entrega:** Fases 7 e 8. Motion, performance, acessibilidade e SEO.
+- **Onda D — Fechamento:** Fases 9 e 10. QA cross-device, correções finais, release e validação publicada.
+
+O checkpoint obrigatório passa a ocorrer ao final de cada onda, e não necessariamente ao final de cada fase. Findings críticos, regressões ou decisões de redesign interrompem a onda e voltam ao orquestrador.
 
 ## Fase 0 — Planejamento e governança
 Objetivo: registrar baseline, escopo, identidade visual e método de execução antes de tocar no código.

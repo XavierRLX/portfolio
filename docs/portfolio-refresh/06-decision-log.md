@@ -33,12 +33,17 @@ Projetos principais: AWX, Cursos Pugliese e Galerows. AI English Coach pode entr
 ## DEC-007 — Separar orquestração de execução
 **Status:** aceita
 
-O chat orquestrador define escopo, libera fases e revisa evidências. A IA executora altera código e valida visualmente. A executora não avança automaticamente para a fase seguinte.
+O chat orquestrador define escopo, libera ondas de execução e revisa evidências. A IA executora altera código e valida visualmente. Dentro de uma onda autorizada, a executora pode avançar por fases contíguas sem nova aprovação; não avança para a onda seguinte automaticamente.
 
 ## DEC-008 — Preloader não pode bloquear conteúdo
 **Status:** aceita
 
 O efeito visual de entrada pode continuar, mas conteúdo essencial não deve ficar escondido aguardando timers.
+
+## DEC-009 — Execução agrupada em ondas
+**Status:** aceita
+
+Para reduzir overhead, as fases serão executadas em quatro ondas: A (1–3), B (4–6), C (7–8) e D (9–10). O checkpoint obrigatório ocorre ao final da onda, salvo finding crítico ou decisão fora de escopo.
 
 ## Como usar este arquivo
 Adicionar novas decisões somente quando houver escolha relevante de produto, arquitetura, design ou processo. Não registrar detalhes triviais de implementação.
