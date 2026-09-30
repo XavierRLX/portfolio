@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA B CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
+**ONDA B APROVADA — ONDA C AUTORIZADA**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -33,8 +33,8 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 4 — Projetos em destaque | CONCLUÍDA | Vitrine reduzida aos três produtos principais |
 | 5 — Sobre, experiência e stack | CONCLUÍDA | Perfil atual, experiência compacta e stack agrupada |
 | 6 — Contato e navegação | CONCLUÍDA | Canais profissionais e menu mobile acessível |
-| 7 — Motion/performance/acessibilidade | PENDENTE | Onda C; tratamento completo ainda não executado |
-| 8 — SEO/apresentação externa | PENDENTE | Onda C |
+| 7 — Motion/performance/acessibilidade | AUTORIZADA | Onda C |
+| 8 — SEO/apresentação externa | AUTORIZADA | Onda C |
 | 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
 | 10 — Release e encerramento | PENDENTE | Revisão, merge e publicação |
 
@@ -200,9 +200,31 @@ Em todas as sete larguras, `document.documentElement.scrollWidth <= innerWidth`.
 - CSS e arquivos de Swiper legados permanecem fisicamente no repositório, porém deixaram de ser referenciados pela página principal; limpeza ampla não é necessária para a Onda B.
 - Preloader completo, `prefers-reduced-motion`, auditoria de performance e SEO permanecem deliberadamente para a Onda C.
 
-## Próximo passo
-**PARAR após esta Onda B.**
+## Revisão do orquestrador — Onda B
+Revisão independente concluída em 2026-09-30:
+- comparação Git confirmou 2 commits à frente da baseline da Onda B, 0 atrás;
+- branch local e remota sincronizadas em `8c73f2abad1f9c8c6a62850011fce176f5ccdf9f`;
+- working tree limpa;
+- diff consolidado compatível com as Fases 4, 5 e 6;
+- exatamente 3 case studies principais presentes na página;
+- revisão visual independente realizada em desktop e mobile nas seções Hero, Projetos, Sobre/Stack e Contato;
+- em 390 px, `document.documentElement.scrollWidth === innerWidth`;
+- menu mobile revalidado: `aria-expanded` muda `false → true → false` e `Escape` devolve o foco ao botão;
+- findings de Hamburgueria e Direction Pack deixaram de impactar o portfólio porque os projetos foram removidos da vitrine;
+- nome legado do PDF, resposta automatizada `999` do LinkedIn e assets Swiper não referenciados permanecem como riscos residuais não bloqueantes.
 
-O próximo ciclo é a **ONDA C — Qualidade de entrega (Fases 7 e 8)**, somente após aprovação explícita do orquestrador.
+**Onda B aprovada.**
 
-Nenhum merge em `main` foi realizado ou autorizado neste fechamento.
+## Próximo passo autorizado
+Executar a **ONDA C — Qualidade de entrega**, cobrindo as Fases 7 e 8 no mesmo ciclo:
+1. concluir motion/performance/acessibilidade sem descaracterizar a identidade visual;
+2. remover ou simplificar definitivamente o preloader bloqueante/dispensável;
+3. implementar `prefers-reduced-motion` e garantir conteúdo funcional sem animações;
+4. revisar assets e referências legadas somente quando a remoção for segura e comprovadamente não utilizada;
+5. revisar carregamento de imagens/fontes/scripts, lazy loading quando aplicável e performance percebida;
+6. executar revisão de acessibilidade básica: teclado, foco, landmarks, nomes acessíveis, contraste e imagens;
+7. implementar SEO técnico e apresentação externa: title, description, canonical, Open Graph, Twitter Card, favicon/theme color e JSON-LD `Person` quando apropriado;
+8. validar visualmente e funcionalmente as viewports mínimas após as mudanças;
+9. atualizar este status e parar antes da Onda D.
+
+Não iniciar QA final/release da Onda D por conta própria. Nenhum merge em `main` está autorizado.
