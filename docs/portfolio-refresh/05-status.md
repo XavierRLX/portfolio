@@ -3,7 +3,7 @@
 Atualizado em: 2026-09-30
 
 ## Estado geral
-**ONDA C CONCLUÍDA — AGUARDANDO REVISÃO DO ORQUESTRADOR**
+**ONDA C APROVADA — ONDA D AUTORIZADA**
 
 As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeira dobra foi mantida com a identidade original, mas o hero deixou de depender de offsets rígidos e timers para exibir conteúdo essencial.
 
@@ -35,8 +35,8 @@ As Fases 1, 2 e 3 foram executadas na branch `refresh/portfolio-2026`. A primeir
 | 6 — Contato e navegação | CONCLUÍDA | Canais profissionais e menu mobile acessível |
 | 7 — Motion/performance/acessibilidade | CONCLUÍDA | Preloader removido; reduced motion, performance e acessibilidade validados |
 | 8 — SEO/apresentação externa | CONCLUÍDA | Metadados, canonical, OG, Twitter e JSON-LD implementados |
-| 9 — QA visual cross-device | PENDENTE | Matriz completa posterior |
-| 10 — Release e encerramento | PENDENTE | Revisão, merge e publicação |
+| 9 — QA visual cross-device | AUTORIZADA | Onda D — validação final |
+| 10 — Release e encerramento | AUTORIZADA | Onda D — merge/publicação condicionados ao QA final |
 
 ## Fase 2 — Fundação estrutural
 - Header passou a usar `nav`, lista válida e links semânticos.
@@ -298,9 +298,29 @@ Em todas as sete viewports, `document.documentElement.scrollWidth <= innerWidth`
 - Lighthouse não foi instalado nem usado como gate; as evidências principais são inventário real de recursos, tamanho dos assets, browser runtime e validação visual.
 - QA final publicado, comparação cross-device final e release permanecem para a Onda D.
 
-## Próximo passo
-**PARAR após esta Onda C.**
+## Revisão do orquestrador — Onda C
+Revisão independente concluída em 2026-09-30:
+- comparação Git confirmou 2 commits à frente da baseline da Onda C, 0 atrás;
+- branch local e remota sincronizadas em `6102016871705d4854caeaffbca9802e43efb7ee`;
+- working tree limpa;
+- diff consolidado compatível com as Fases 7 e 8, incluindo remoção do preloader e assets legados comprovadamente sem uso;
+- SEO revalidado no DOM local com title, description, canonical, Open Graph, Twitter Card e um JSON-LD;
+- revisão visual independente em 1440 × 900 e 390 × 844 não reproduziu regressão nem overflow;
+- `prefers-reduced-motion` foi revalidado: o React passa de `girando360` para `none` e o conteúdo permanece íntegro;
+- JavaScript desabilitado em 390 × 844 preserva conteúdo, navegação básica e ausência de overflow;
+- preloader não existe mais no DOM;
+- riscos residuais conhecidos (LinkedIn 999 e `og:image` ainda não publicada até o merge) não bloqueiam o fechamento.
 
-O próximo ciclo é a **ONDA D — Fechamento (Fases 9 e 10)**, somente após aprovação explícita do orquestrador.
+**Onda C aprovada.**
 
-Nenhum merge em `main` foi realizado ou autorizado neste fechamento.
+## Próximo passo autorizado
+Executar a **ONDA D — Fechamento**, cobrindo as Fases 9 e 10:
+1. executar QA final cross-device e funcional sobre o HEAD aprovado;
+2. corrigir apenas regressões/falhas reais encontradas pelo QA, sem novo redesign;
+3. revisar diff completo da branch contra `main`;
+4. confirmar documentação e README final quando necessário;
+5. preparar o merge/release e validar o GitHub Pages publicado;
+6. confirmar que canonical, OG image e assets públicos respondem após publicação;
+7. registrar evidências finais e encerrar o refresh.
+
+O merge em `main` somente deve ocorrer dentro desta Onda D depois do QA pré-release passar. Se houver finding bloqueante, parar antes do merge e reportar ao orquestrador.
