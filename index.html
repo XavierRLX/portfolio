@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="Imagens/xavier.ico.png" type="image/x-icon">
-    <link rel="stylesheet" href="CSS/swiper-bundle.min.css">
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/hero.css">
+    <link rel="stylesheet" href="CSS/content.css">
     <link rel="stylesheet" href="CSS/Animações.css">
-    <link rel="stylesheet" href="CSS/slide.css">
     <link rel="stylesheet" href="CSS/Loading.css">
 
 
@@ -27,8 +26,11 @@
                 <a class="logotipo" href="#inicio" aria-label="Ir para o início">
                     <img class="fotoLogo" src="Imagens/xavier.ico.png" alt=""><h1 id="nomeLogo">AVIER</h1>
                 </a>
+                <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu de navegação">
+                    <span></span><span></span><span></span>
+                </button>
                 <nav class="navegacao-principal" aria-label="Navegação principal">
-                    <ul class="menu">
+                    <ul id="menu-principal" class="menu">
                         <li><a href="#inicio">Home</a></li>
                         <li><a href="#projeto">Projetos</a></li>
                         <li><a href="#hSobre">Sobre</a></li>
@@ -42,526 +44,206 @@
                 <div class="apresentação">
                     <h1>Olá, me chamo</h1>
                     <h2 id="hmdois">Renan Xavier.</h2>
-                    <p id="preEscrição">Faço parte do time dos desenvolvedores!</p>
-                    <p id="descrição">Desenvolvedor especializado em construir experiências digitais.</p>
+                    <p id="preEscrição">Desenvolvedor Full Stack</p>
+                    <p id="descrição">Construo produtos digitais end-to-end, da modelagem de dados e autenticação à interface, testes e deploy.</p>
                 </div>
             </section>
         </div>
         <svg class="ondeContato ondaHero" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0f0f0f" fill-opacity="1" d="M0,128L80,138.7C160,149,320,171,480,149.3C640,128,800,64,960,48C1120,32,1280,64,1360,80L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
 
-        <section class="fundoProjetos">
-            
-            <h2  data-aos="fade-down" id="projeto" class="tituloProjeto"> <span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>T</span><span>O</span><span>S</span></h2>
-            <!--h3 data-aos="fade-up" class="subTituloProjeto">Sites</!--h3>
-                
-            <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                       
-                        <a href="https://xavierrlx.github.io/Bootstrap.2/" target="_blank" rel="noopener noreferrer">
-                            <div class="card swiper-slide">
-                                <div class="image-content">
-                                    <span class="overlay"></span>
-                                    <div class="card-image">
-                                        <img src="Imagens/fundo-boot.jpg" alt="" class="card-img">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Bootstrap</h2>
-                                    <p class="description">Desenvolvido pelo framework do css, utilizando DropDown, carrousel e animações</p>
-                                    <span class="button">Visualizar</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://xavierrlx.github.io/osvingadores/" target="_blank" rel="noopener noreferrer">
-                            <div class="card swiper-slide">
-                                <div class="image-content">
-                                    <span class="overlay"></span>
-                                    <div class="card-image">
-                                        <img src="Imagens/fundo-vinga.jpg" alt="" class="card-img">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Paralax</h2>
-                                    <p class="description">Site criado para desmonstrar o efeito "paralax" das imagens com o tema dos VINGADORES</p>
-                                    <span class="button">Visualizar</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://xavierrlx.github.io/Xavierburger/" target="_blank" rel="noopener noreferrer">
-                            <div class="card swiper-slide">
-                                <div class="image-content">
-                                    <span class="overlay"></span>
-                                    <div class="card-image">
-                                        <img src="Imagens/fundo-ham.jpg" alt="" class="card-img">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Buger</h2>
-                                    <p class="description">Primeiro site (responsivo) com as noções básicas de javaScript: funções, events, DOM. Modal, Menu, tela de login, form.</p>
-                                    <span class="button">Visualizar</span>
-                                </div>
-                            </div>        
-                        </a>
-                        <a href="https://xavierrlx.github.io/projeto/" target="_blank" rel="noopener noreferrer">
-                            <div class="card swiper-slide">
-                                <div class="image-content">
-                                    <span class="overlay"></span>
-                                    <div class="card-image">
-                                        <img src="Imagens/fundo-android.jpg" alt="" class="card-img">
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <h2 class="name">Android</h2>
-                                    <p class="description">Primeiro projeto responsivo com as noções básicas de HTML5 E CSS3 junto com o professor Guanabara.</p>
-                                    <span class="button">Visualizar</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-        
-                <div id="setaSlider" class="swiper-button-next swiper-navBtn"></div>
-                <div class="swiper-button-prev swiper-navBtn"></div>
-            </div>
-                
-        </section> -->
+        <section id="projeto" class="projects-section" aria-labelledby="projects-title">
+            <div class="section-container">
+                <header class="section-heading section-heading--left">
+                    <p class="section-eyebrow">Projetos em destaque</p>
+                    <h2 id="projects-title">Produtos que representam meu trabalho atual.</h2>
+                    <p>Cases com foco em produto, regras de negócio, dados, mobile e qualidade de engenharia.</p>
+                </header>
 
-        <section id="fundoProjetosDois" class="fundoProjetos">
-            <h3 data-aos="fade-up" class="subTituloProjeto">Sites</h3>
-            <div data-aos="fade-down" class="slide-container swiper">
-                    <div data-aos="fade-down" class="slide-content">
-                        <div class="card-wrapper swiper-wrapper">
-                       
-                            <a href="https://www.awxbrasil.com.br/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/awx_brasil.jpg" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">AWX Brasil</h2>
-                                        <p class="description">Conectando você em todas experiências sobre rodas.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="https://pedrodealcantara.onrender.com/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/pedrodealcantara.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Carteirinha Pedro de Alcântara</h2>
-                                        <p class="description">Criador de Carteirinha ficticias para você criar cursos engraçados.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="https://xavierrlx.github.io/TemperoDivino/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/TemperoDivino.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Tempero do Divino</h2>
-                                        <p class="description">Primiero site desenvolvido para terceiros. Inspirado no "Linktree" usando botões redirecionando para o site desejado.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://xavierrlx.github.io/Hamburgueria/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/fundo-boot.jpg" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">RLX Burguer</h2>
-                                        <p class="description">Site de uma hamburgueria. Função de carrinho e utlizado API do WhatsAPP para receber os pedidos.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://xavierrlx.github.io/osvingadores/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/fundo-vinga.jpg" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Vingadores</h2>
-                                        <p class="description">Site criado para desmonstrar o efeito "paralax" das imagens com o tema dos VINGADORES</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="https://xavierrlx.github.io/Xavierburger/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/fundo-ham.jpg" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Buger</h2>
-                                        <p class="description">Primeiro site (responsivo) com as noções básicas de javaScript: funções, events, DOM. Modal, Menu, tela de login, form.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>        
-                            </a>
-                            <a href="https://xavierrlx.github.io/projeto/" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/fundo-android.jpg" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Android</h2>
-                                        <p class="description">Primeiro projeto responsivo com as noções básicas de HTML5 E CSS3 junto com o professor Guanabara.</p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
-                             <a href="https://directionpack.onrender.com/home" target="_blank" rel="noopener noreferrer">
-                                <div class="card swiper-slide">
-                                    <div class="image-content">
-                                        <span class="overlay"></span>
-                                        <div class="card-image">
-                                            <img src="Imagens/dpimg.png" alt="" class="card-img">
-                                        </div>
-                                    </div>
-                                    <div class="card-content">
-                                        <h2 class="name">Direction Pack</h2>
-                                        <p class="description">Autenticação de usuário e busca CEP (API).
-                                        </p>
-                                        <span class="button">Visualizar</span>
-                                    </div>
-                                </div>
-                            </a>
+                <div class="project-list">
+                    <article class="project-case project-case--featured">
+                        <div class="project-media">
+                            <img src="Imagens/awx_preview.png" alt="Identidade visual do projeto AWX">
                         </div>
-                            <div class="swiper-button-next swiper-navBtn"></div>
-                            <div class="swiper-button-prev swiper-navBtn"></div>
-                    </div>
-            </div>
-            <div class="swiper-pagination2"></div>
-
-            <div class="foto-html-css">
-                <img id="foto-html" src="Imagens/codificacao.png" alt="icone-html" >
-            </div>
-            <div class="foto-js">
-                <img id="foto-jss" src="Imagens/js.png" alt="icone-js">
-            </div>
-            <div class="redeSocias">
-                <div class="imagensRedes">
-                    <a href="https://www.instagram.com/yxavier_rlx/" target="_blank" rel="noopener noreferrer"><img  src="Imagens/instagram (1).png" alt="instagram"></a>
-                    <a href="https://github.com/XavierRLX" target="_blank" rel="noopener noreferrer"><img src="Imagens/github.png" alt="github"></a>
-                    <a href="https://www.linkedin.com/in/renanxavier2000rlx/" target="_blank" rel="noopener noreferrer"><img src="Imagens/linkedin.png" alt="linkedin"></a>
-                </div>
-            </div>
-            <div class="html">
-                <img id="foto-ht" src="Imagens/programacao.png" alt="icone-fechamento">
-            </div>
-        </section>
-        
-        <hr class="separador">
-
-        <section id="fundoProjetosFerramentas" class="fundoProjetos">
-            <h3 data-aos="fade-up" class="subTituloProjeto">Ferramentas</h3>
-            <div class="slide-container swiper">
-                    <div data-aos="fade-down" class="slide-content">
-                            <div class="card-wrapper swiper-wrapper">
-                                <a href="https://xavierrlx.github.io/calculadora/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                                <img src="Imagens/fundo-calc.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Calculadora</h2>
-                                            <p class="description">Criado com javaScript puro e possuindo a opção de modo de cor.
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://xavierrlx.github.io/RelogioDigital/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                                <img src="Imagens/fundo-relogio.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Relógio Digital</h2>
-                                            <p class="description">Relógio com a API de temperatura local. Junto ao um cronomêtro e um temporiazador.</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://xavierrlx.github.io/AdicionarProdutos/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                                <img src="Imagens/fundo-lista.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Lista de Compras</h2>
-                                            <p class="description">Lista para ajudar com as suas compras junto com o carrinho com preços. </p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://xavierrlx.github.io/javascriptex/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                                <img src="Imagens/fundo-ex.js.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Exercícios JavaScript</h2>
-                                            <p class="description">Alguns exercícios feito meus aprendizados uniciais com linguagem javaScript pelo professor Guanabara.</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
+                        <div class="project-content">
+                            <div class="project-kickers">
+                                <span>Projeto autoral</span>
+                                <span>Web + Mobile</span>
                             </div>
-                            <div class="swiper-button-next swiper-navBtn"></div>
-                            <div class="swiper-button-prev swiper-navBtn"></div>
-                    </div>
-            </div>
-            <div class="swiper-pagination2"></div>
-
-        </section>
-
-        <hr class="separador">
-
-        <section id="fundoProjetosGames" class="fundoProjetos">
-            <h3 data-aos="fade-up" class="subTituloProjeto">Games</h3>
-            <div class="slide-container swiper">
-                    <div data-aos="fade-down" class="slide-content">
-                            <div class="card-wrapper swiper-wrapper">
-                                <a href="https://jogosdagaleraweb.onrender.com/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                            <img src="Imagens/jogos_da_galera.png" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Jogos da Galera</h2>
-                                            <p class="description">Coleção de jogos web para jogar com amigos. Escolha um jogo e comece a diversão!</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://jogosdagaleraweb.onrender.com/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                            <img src="Imagens/ludo_web.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Ludo</h2>
-                                            <p class="description">Seja o primeiro a levar todas as suas 4 peças da base!</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://jogosdagaleraweb.onrender.com/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                            <img src="Imagens/adedonha_sem_papel.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Adedonha</h2>
-                                            <p class="description">Está sem papel? não tem problema, cada jogodor com o seu celular.</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="https://jogosdagaleraweb.onrender.com/" target="_blank" rel="noopener noreferrer">
-                                    <div class="card swiper-slide">
-                                        <div class="image-content">
-                                            <span class="overlay"></span>
-                                            <div class="card-image">
-                                            <img src="Imagens/jogo_da_velha_web.jpg" alt="" class="card-img">
-                                            </div>
-                                        </div>
-                                        <div class="card-content">
-                                            <h2 class="name">Jogo da Velha</h2>
-                                            <p class="description">Jogue esse clássico de um jeito diferente.</p>
-                                            <span class="button">Visualizar</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                
+                            <h3>AWX / All Wheels Experience</h3>
+                            <p class="project-summary">Plataforma de gestão automotiva para organizar histórico de manutenção, despesas, referência FIPE e compartilhamento ou transferência de veículos.</p>
+                            <p class="project-role"><strong>Atuação:</strong> desenvolvimento end-to-end do produto, da modelagem e autorização à experiência web e integração mobile.</p>
+                            <ul class="project-highlights">
+                                <li>Supabase Auth, PostgreSQL, RLS e RPCs para proteger e operar dados do domínio.</li>
+                                <li>Fluxos de manutenção, custos, FIPE e histórico compartilhável do veículo.</li>
+                                <li>Aplicação web com empacotamento Android/iOS via Capacitor.</li>
+                            </ul>
+                            <div class="tech-chips" aria-label="Tecnologias do AWX">
+                                <span>Next.js</span><span>React</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>Capacitor</span>
                             </div>
-                            <div class="swiper-button-next swiper-navBtn"></div>
-                            <div class="swiper-button-prev swiper-navBtn"></div>
-                    </div>
-            </div>
-            <div class="swiper-pagination2"></div>
+                            <div class="project-actions">
+                                <a class="button-link" href="https://www.awxbrasil.com.br/" target="_blank" rel="noopener noreferrer">Ver projeto</a>
+                            </div>
+                        </div>
+                    </article>
 
+                    <article class="project-case project-case--reverse">
+                        <div class="project-visual project-visual--course" aria-hidden="true">
+                            <span class="project-visual__label">Cursos Pugliese</span>
+                            <strong>Full Stack</strong>
+                            <span>Auth · Dados · Segurança</span>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-kickers">
+                                <span>Produto Full Stack</span>
+                                <span>Repositório privado</span>
+                            </div>
+                            <h3>Cursos Pugliese</h3>
+                            <p class="project-summary">Plataforma de cursos com operação de conteúdo, gestão de acesso e acompanhamento de alunos em papéis distintos de admin, teacher e student.</p>
+                            <p class="project-role"><strong>Atuação:</strong> arquitetura e implementação full stack, modelagem de dados, autorização server-side e preparação de segurança para produção.</p>
+                            <ul class="project-highlights">
+                                <li>Supabase Auth SSR e autorização server-side por papel e ownership.</li>
+                                <li>RLS e RPCs transacionais para lifecycle, reordenação e operações sensíveis.</li>
+                                <li>Cursos, módulos, aulas, exercícios, progresso, planos, entitlements e turmas.</li>
+                                <li>Security gate dedicado antes da entrada de usuários reais.</li>
+                            </ul>
+                            <div class="tech-chips" aria-label="Tecnologias do Cursos Pugliese">
+                                <span>Next.js</span><span>TypeScript</span><span>Supabase Auth SSR</span><span>PostgreSQL</span><span>RLS</span>
+                            </div>
+                            <p class="project-note">Código e ambientes operacionais permanecem privados.</p>
+                        </div>
+                    </article>
+
+                    <article class="project-case">
+                        <div class="project-media">
+                            <img src="Imagens/galerows_preview.png" alt="Identidade visual do Galerows">
+                        </div>
+                        <div class="project-content">
+                            <div class="project-kickers">
+                                <span>Consumer / Mobile</span>
+                                <span>Open source</span>
+                            </div>
+                            <h3>Galerows</h3>
+                            <p class="project-summary">Coleção de jogos sociais para grupos, pensada para uso rápido no celular durante encontros presenciais.</p>
+                            <p class="project-role"><strong>Atuação:</strong> arquitetura frontend/mobile, estados e fluxos reutilizáveis por jogo, testes automatizados e empacotamento nativo.</p>
+                            <ul class="project-highlights">
+                                <li>React + TypeScript sobre Vite, com organização por features.</li>
+                                <li>Vitest cobrindo conteúdos e fluxos dos jogos.</li>
+                                <li>Capacitor para Android/iOS e evolução da base mobile.</li>
+                            </ul>
+                            <div class="tech-chips" aria-label="Tecnologias do Galerows">
+                                <span>React</span><span>TypeScript</span><span>Vite</span><span>Vitest</span><span>Capacitor</span>
+                            </div>
+                            <div class="project-actions">
+                                <a class="button-link" href="https://jogosdagaleraweb.onrender.com/" target="_blank" rel="noopener noreferrer">Ver projeto</a>
+                                <a class="button-link button-link--secondary" href="https://github.com/XavierRLX/Galerows" target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
         </section>
 
-        
+        <section id="hSobre" class="profile-section" aria-labelledby="about-title">
+            <div class="section-container">
+                <header class="section-heading">
+                    <p class="section-eyebrow">Sobre</p>
+                    <h2 id="about-title">Full Stack com visão de produto e engenharia.</h2>
+                </header>
 
-        <section class="fundoSobre">
+                <div class="profile-grid">
+                    <div class="profile-summary">
+                        <img class="profile-photo" src="Imagens/renan_perfil.jpeg" alt="Foto de Renan de Lima Xavier">
+                        <div class="profile-copy">
+                            <p>Sou Desenvolvedor Full Stack e já atuei em sistemas corporativos, participando de levantamento de requisitos, modelagem de dados, desenvolvimento, testes com usuários e sustentação.</p>
+                            <p>Hoje concentro meus projetos em Next.js, TypeScript e Supabase/PostgreSQL, mantendo a base profissional em C#/.NET e SQL Server. Trabalho de ponta a ponta, com atenção a autorização, segurança, manutenção e qualidade.</p>
+                            <a class="button-link" href="Imagens/Curriculo_Renan_Analista_25.pdf" download>Baixar currículo</a>
+                        </div>
+                    </div>
 
-            <svg id="ondaFundoSobre" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-              <path fill="rgba(5,8,114,1)" fill-opacity="1"
-                d="M0,128L80,138.7C160,149,320,171,480,149.3C640,128,800,64,960,48C1120,32,1280,64,1360,80L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-              </path>
-            </svg>
-          
-            <div id="testeInline">
-              <h1 id="hSobre" data-aos="fade-down">
-                <span>S</span><span>O</span><span>B</span><span>R</span><span>E</span>
-              </h1>
-          
-              <div id="fundoSobreNone" class="flexSobre">
-                <div data-aos="fade-right" class="imagemSobre">
-                    <img src="Imagens/renan_perfil.jpeg" alt="Foto de Renan de Lima Xavier">
-                  
-                  </div>
-          
-                <main data-aos="fade-up" class="textoSobre">
-                  <h2>
-                    Sou o Renan de Lima Xavier, Desenvolvedor Full Stack com 2 anos de experiência em sistemas corporativos,
-                    atuando do levantamento de requisitos e modelagem de banco até a entrega, testes com usuários e sustentação.
-                  </h2>
-                  <br>
-          
-                  <h2>
-                    No front-end, trabalho com React.js / Next.js e Tailwind CSS, com foco em responsividade, usabilidade e performance.
-                    No back-end, atuo com .NET (C# / ASP.NET) e bancos relacionais como SQL Server (além de PostgreSQL/Supabase em projetos pessoais).
-                  </h2>
-                  <br>
-          
-                  <h2>
-                    Durante minha trajetória na Nuclep, desenvolvi e mantive sistemas internos para aumentar a produtividade e eficiência operacional,
-                    implementando melhorias contínuas, correções e gestão de acessos. Também criei dashboards e monitoramento usando Grafana.
-                  </h2>
-                  <br>
-          
-                  <h2>
-                    Minha virada para tecnologia começou em 2021, quando passei a estudar de forma consistente (faculdade + cursos),
-                    e desde então venho evoluindo com base em prática real: entregando soluções, aprendendo com desafios de produção
-                    e aplicando boas práticas no dia a dia.
-                  </h2>
-                  <br>
-          
-                  <h2>
-                    Hoje busco novos desafios onde eu possa contribuir com código limpo, colaboração em equipe e construção de produtos escaláveis,
-                    sempre com foco em gerar valor para o usuário final.
-                  </h2>
-                  
-                  <div class="btn-cv">
-                      <a class="btn-dow" href="Imagens/Curriculo_Renan_Analista_25.pdf" download>
-                        Baixar currículo
-                      </a>
-                  </div>
-                </main>
-              </div>
-          
-              <main id="imgSobre" class="tecSobre">
-                <div data-aos="fade-up" class="TecImgSobre">
-                  <figure><img src="Imagens/html-5.png" alt="HTML 5"><figcaption>HTML 5</figcaption></figure>
-                  <figure><img src="Imagens/css-3.png" alt="CSS 3"><figcaption>CSS 3</figcaption></figure>
-                  <figure><img src="Imagens/bootstrap.png" alt="Bootstrap"><figcaption>BOOTSTRAP</figcaption></figure>
-                  <figure><img src="Imagens/sass.png" alt="Sass"><figcaption>SASS</figcaption></figure>
-                  <figure><img src="Imagens/jsSobre.png" alt="JavaScript"><figcaption>JAVASCRIPT</figcaption></figure>
-                  <figure><img src="Imagens/icons8-react-64.png" alt="React"><figcaption>REACT</figcaption></figure>
-                  <figure><img src="Imagens/mysql.png" alt="Banco de dados"><figcaption>BANCO DE DADOS</figcaption></figure>
+                    <aside class="experience-card" aria-labelledby="experience-title">
+                        <p class="section-eyebrow">Experiência</p>
+                        <h3 id="experience-title">NUCLEP</h3>
+                        <p>Desenvolvimento e evolução de sistemas internos.</p>
+                        <ul>
+                            <li>C# / .NET</li>
+                            <li>SQL Server</li>
+                            <li>Sistemas corporativos</li>
+                            <li>Manutenção e evolução de aplicações</li>
+                            <li>Contato com requisitos e usuários</li>
+                        </ul>
+                    </aside>
                 </div>
-              </main>
+
+                <div class="stack-section" aria-labelledby="stack-title">
+                    <div class="stack-heading">
+                        <p class="section-eyebrow">Stack atual</p>
+                        <h3 id="stack-title">Tecnologias organizadas pelo papel que cumprem.</h3>
+                    </div>
+                    <div class="stack-grid">
+                        <article class="stack-group">
+                            <h4>Frontend</h4>
+                            <div class="tech-chips"><span>React</span><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span></div>
+                        </article>
+                        <article class="stack-group">
+                            <h4>Backend</h4>
+                            <div class="tech-chips"><span>C#</span><span>.NET / ASP.NET</span><span>Server-side Next.js</span></div>
+                        </article>
+                        <article class="stack-group">
+                            <h4>Dados</h4>
+                            <div class="tech-chips"><span>PostgreSQL</span><span>Supabase</span><span>SQL Server</span><span>RLS</span></div>
+                        </article>
+                        <article class="stack-group">
+                            <h4>Mobile / Infra</h4>
+                            <div class="tech-chips"><span>Capacitor</span><span>Vercel</span><span>GitHub Actions</span></div>
+                        </article>
+                        <article class="stack-group">
+                            <h4>IA — prática em projetos</h4>
+                            <div class="tech-chips"><span>LLMs</span><span>RAG</span><span>Embeddings</span><span>pgvector</span><span>Agentes</span></div>
+                        </article>
+                    </div>
+                </div>
             </div>
-          
-            <svg class="ondeContato" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-              <path fill="#0f0f0f" fill-opacity="1"
-                d="M0,128L80,138.7C160,149,320,171,480,149.3C640,128,800,64,960,48C1120,32,1280,64,1360,80L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z">
-              </path>
-            </svg>
-          
-          </section>
-          
+        </section>
 
-     <section class="fundoContato">
-        <main id="mainContato">
-            <h1><span>C</span><span>O</span><span>N</span><span>T</span><span>A</span><span>T</span><span>O</span></h1>
-                <article>
-                <h2>E-mail :</h2>
-                <div class="CopiaeCola">
-                    <input id="copiarEmail" value="renanlima2000.aer@gmail.com" readonly>
-                    <button type="button" id="botaoEm" class="copy-button" onclick="copiarEm()" aria-label="Copiar e-mail">
-                        <img src="Imagens/ferramenta-de-copia.png" alt="">
-                    </button>
-                </div> <br>
-                <p id="copiadoEm">COPIADO!</p>
-                </article>
+        <svg class="profile-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" aria-hidden="true">
+            <path fill="#0f0f0f" d="M0,96L96,112C192,128,384,160,576,138.7C768,117,960,43,1152,32C1248,27,1344,37,1440,59L1440,220L0,220Z"></path>
+        </svg>
 
-                <article>
-                <h2>Telefone :</h2>
-                <div class="NumberCopiaeCola">
-                    <input id="copiarNumber" value="+55 21 96473-4161" readonly>
-                    <button type="button" id="botaoNum" class="copy-button" onclick="copiarNumb()" aria-label="Copiar telefone">
-                        <img src="Imagens/ferramenta-de-copia.png" alt="">
-                    </button>
-                </div> <br>
-                <p id="copiadoNum">COPIADO!</p>
-                <div class="agradecimento">
-                    <h2>Agradeço por visitar o meu <span>portifolio</span> !</h2>
-                    <h3>Caso se gostou dos meus projetos e do meu perfil e deseja me fazer uma proposta, por favor, entre em contato comigo atrávez desses meios.</h3>
+        <section id="mainContato" class="contact-section" aria-labelledby="contact-title">
+            <div class="section-container contact-container">
+                <div class="contact-copy">
+                    <p class="section-eyebrow">Contato</p>
+                    <h2 id="contact-title">Vamos conversar sobre produto e desenvolvimento.</h2>
+                    <p>Para oportunidades profissionais, projetos ou colaboração, estes são os canais mais diretos.</p>
                 </div>
-                <div class="imagensRedes">
-                    <img class="RedesContato" src="Imagens/instagram (1).png" alt="">
-                    <img class="RedesContato"src="Imagens/github.png" alt="">
-                    <img class="RedesContato" src="Imagens/linkedin.png" alt="">
+
+                <div class="contact-grid">
+                    <article class="contact-card contact-card--primary">
+                        <span class="contact-label">E-mail</span>
+                        <a class="contact-value" href="mailto:renanlima2000.aer@gmail.com">renanlima2000.aer@gmail.com</a>
+                        <button type="button" class="copy-contact" data-copy-value="renanlima2000.aer@gmail.com" aria-describedby="copy-status">Copiar e-mail</button>
+                        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+                    </article>
+
+                    <a class="contact-card contact-card--link" href="https://www.linkedin.com/in/renanxavier2000rlx/" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-label">LinkedIn</span>
+                        <strong>Perfil profissional</strong>
+                        <span>Abrir LinkedIn →</span>
+                    </a>
+
+                    <a class="contact-card contact-card--link" href="https://github.com/XavierRLX" target="_blank" rel="noopener noreferrer">
+                        <span class="contact-label">GitHub</span>
+                        <strong>@XavierRLX</strong>
+                        <span>Ver repositórios →</span>
+                    </a>
                 </div>
-                </article>
-        </main>
-      </section>
+            </div>
+        </section>
 
     </div>
 
-    <!-- Swiper JS -->
-    <script src="js/SliderJs/swiper-bundle.min.js"></script>
-    <script src="js/SliderJs/script.js"></script>
-
-    <!-- JavaScript -->
     <script src="js/preload.js"></script>
+    <script src="js/navigation.js"></script>
     <script src="js/copiarEcolar.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
 </body>
 </html>

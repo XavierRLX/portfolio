@@ -1,26 +1,48 @@
-function copiarEm() {
-    let copiarE = document.getElementById("copiarEmail").value;
+const copyContactButton = document.querySelector('.copy-contact');
+const copyStatus = document.getElementById('copy-status');
 
-    if (navigator.clipboard.writeText(copiarE)) {
-        document.getElementById("botaoEm").style.filter = "grayscale(100%)";
-        document.getElementById("copiadoEm").style.display = "inline";
+const copyText = async (value) => {
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value);
+      return;
+    } catch {
+      // Fallback below for browsers/contexts that deny the Clipboard API.
     }
-   setInterval(function() {
-    document.getElementById("botaoEm").style.filter = "none";
-    document.getElementById("copiadoEm").style.display = "none";
-   }, 3000 );
+  }
 
-}
+  const textarea = document.createElement('textarea');
+  textarea.value = value;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand('copy');
+  textarea.remove();
 
-function copiarNumb (){
-    let copiarM = document.getElementById("copiarNumber").value;
-    
-    if (navigator.clipboard.writeText(copiarM)){
-        document.getElementById("botaoNum").style.filter = "grayscale(100%)";
-        document.getElementById("copiadoNum").style.display = "inline";
+  if (!copied) {
+    throw new Error('Copy command failed');
+  }
+};
+
+if (copyContactButton && copyStatus) {
+  copyContactButton.addEventListener('click', async () => {
+    const value = copyContactButton.dataset.copyValue;
+    const defaultLabel = 'Copiar e-mail';
+
+    try {
+      await copyText(value);
+      copyStatus.textContent = 'E-mail copiado.';
+      copyContactButton.textContent = 'Copiado';
+    } catch {
+      copyStatus.textContent = 'Não foi possível copiar. Selecione o e-mail acima.';
+      copyContactButton.textContent = defaultLabel;
     }
-    setInterval(function(){
-        document.getElementById("botaoNum").style.filter = "none";
-        document.getElementById("copiadoNum").style.display = "none";
-    }, 3000);
+
+    window.setTimeout(() => {
+      copyStatus.textContent = '';
+      copyContactButton.textContent = defaultLabel;
+    }, 2400);
+  });
 }
