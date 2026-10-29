@@ -2,6 +2,13 @@
 
 Atualizado em: 2026-10-29
 
+## Publicação aprovada — 29/10/2026
+
+- Após avaliação visual, o proprietário autorizou explicitamente colocar a versão em produção. Esta autorização substitui as restrições de merge/push/deploy da etapa anterior para este release.
+- Conteúdo aprovado: `d2dcf31`, com dois carrosséis independentes e empilhados, seis cases e painel administrativo.
+- Pré-release: working tree limpa; `main` local/remota em `6c926cc`; integração fast-forward possível. GitHub Pages confirmado em `main`, raiz `/`, build legado.
+- Publicação e QA público em andamento; acompanhamento em `docs/portfolio-release-20261029.md`.
+
 ## Etapa atual — Engenharia & Backoffice (29/10/2026)
 
 - Baseline: `39fa428`, refinamento premium concluído, working tree limpa. Branch isolada `codex/portfolio-backoffice-cases-20261029`.
