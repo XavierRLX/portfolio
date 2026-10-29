@@ -197,6 +197,8 @@ button { cursor: pointer; }
   :is(.project-card,.carousel-ghost) { scroll-snap-align:center; border-radius:17px; transform-origin:center top; }
   .carousel-ready :is(.project-card,.carousel-ghost) { transform:scale(.94); }
   .carousel-ready :is(.project-card,.carousel-ghost).is-current, .carousel-ready .project-card:focus-within { transform:scale(1); border-color:rgb(176 159 255 / 35%); }
+  /* Keep physical targets above 44 px even during the .94 → 1 focus transition. */
+  .case-details summary, .case-link { min-height:48px; }
   .swipe-hint { display:none; }
   #projects-position { min-width:65px; }
 

@@ -38,6 +38,7 @@
   const logical = (index) => ((index % length) + length) % length;
   let active = length, requested = length, selected = 0;
   let width = 0, centered = true, size = 1, frame = 0, timer = 0;
+  let touching = false;
   let destinations = [], starts = [];
 
   const normalize = (index) => centered ? index : index - (logical(index) % 3 === 2 ? 1 : 0);
@@ -78,8 +79,10 @@
   };
   const settle = () => {
     clearTimeout(timer);
+    if (touching) return;
     if (track.clientWidth !== width) { resize(); return; }
     active = closest();
+    if (Math.abs(track.scrollLeft - destinations[active]) > 2) return;
     const index = logical(active);
     if (selected < index || selected >= index + size) selected = index;
     if (active < length || active >= length * 2) relocate(length + index);
@@ -131,6 +134,14 @@
     timer = setTimeout(settle, 180);
   }, { passive: true });
   track.addEventListener('scrollend', settle);
+  track.addEventListener('touchstart', () => { touching = true; }, { passive: true });
+  const releaseTouch = () => {
+    touching = false;
+    clearTimeout(timer);
+    timer = setTimeout(settle, 180);
+  };
+  track.addEventListener('touchend', releaseTouch, { passive: true });
+  track.addEventListener('touchcancel', releaseTouch, { passive: true });
   track.addEventListener('pointerdown', () => { requested = active; }, { passive: true });
   track.addEventListener('keydown', (event) => {
     if (event.target !== track || event.altKey || event.ctrlKey || event.metaKey) return;

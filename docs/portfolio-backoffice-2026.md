@@ -60,7 +60,7 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 ## B2 — Implementação e smoke
 
 - Mantido um único scroll horizontal nativo. Dois cards acima de 1100 px; até essa largura, cada um dos seis recebe snap central e vizinhos menores. Sem captura de gestos, autoplay ou conversão de scroll vertical.
-- O retorno circular usa buffers visuais inertes antes/depois dos seis cards originais. Os buffers não têm links, botões, IDs ou participação na árvore de acessibilidade. Após o snap, a trilha retorna à posição visualmente equivalente dos originais, sem transição de escala. São somente seis cases navegáveis. Os estados dos detalhes são sincronizados com as prévias de borda.
+- O retorno circular usa buffers visuais inertes antes/depois dos seis cards originais. Os buffers não têm links, botões, IDs ou participação na árvore de acessibilidade. Após soltar o toque e concluir o snap, a trilha retorna à posição visualmente equivalente dos originais, sem transição de escala. Uma pausa com o dedo apoiado não dispara o reposicionamento. São somente seis cases navegáveis. Os estados dos detalhes são sincronizados com as prévias de borda.
 - `js/projects.js` concentra o carousel, extraído do controlador geral para não misturar navegação de cases e efeitos de seção. O índice lógico selecionado é preservado ao trocar entre card central e composição de dois cards.
 - O sexto case usa três miniaturas dos componentes reais e é identificado como demonstração transversal. O botão abre `dialog` nativo, com fundo inerte, três abas, foco controlado, Escape e retorno ao contexto original.
 - Sem JavaScript, o CTA é uma âncora para a mesma apresentação inline; as três áreas e as quatro etapas ficam legíveis. Não há cópia alternativa de conteúdo para manter.
@@ -70,6 +70,8 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 - Refinamento após observação real: a captura grande do editor foi movida para disclosure, dando prioridade ao fluxo automático de produção. Imagens administrativas completas usam `contain` e link para ampliar; nenhum dado privado ou código de backend é enviado ao browser do portfólio.
 
 ### Correções de interação após QA
+
+- Nos cards centralizados, detalhes e CTA usam 48 px de altura mínima: mesmo reduzidos a 94%, seus alvos físicos continuam acima de 44 px.
 
 - Scroll padding do painel acompanha a altura real da navegação fixa; o dock mobile também recebe espaço de rolagem para não cobrir CTAs focados.
 - Tab/Shift+Tab retornam entre os extremos do diálogo, evitando que o Chrome transfira foco para sua interface. A página fica fixada na posição anterior durante a apresentação: isso também impede movimento de fundo provocado por foco programático em telas estreitas. Escape continua nativo, e o fechamento devolve foco e posição ao sexto case.
