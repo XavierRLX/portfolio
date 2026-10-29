@@ -78,9 +78,10 @@
   openers.forEach((button) => button.addEventListener('click', () => {
     opener = button;
     previousScroll = scrollY;
+    document.documentElement.style.setProperty('--backoffice-scroll-top', -previousScroll + 'px');
+    document.documentElement.classList.add('has-backoffice-dialog');
     dialog.showModal();
     syncNavigationHeight();
-    document.documentElement.classList.add('has-backoffice-dialog');
     dialog.scrollTop = 0;
     tabs[activeTab].focus({ preventScroll: true });
     enter(panels[activeTab]);
@@ -89,6 +90,7 @@
   dialog.addEventListener('close', () => {
     clearAnimation();
     document.documentElement.classList.remove('has-backoffice-dialog');
+    document.documentElement.style.removeProperty('--backoffice-scroll-top');
     if (opener && opener.isConnected) opener.focus({ preventScroll: true });
     if (scrollY !== previousScroll) scrollTo({ top: previousScroll, behavior: 'instant' });
   });

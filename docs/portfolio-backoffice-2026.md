@@ -53,7 +53,7 @@ As quatro imagens administrativas em `Imagens/backoffice/` são **demonstraçõe
 - Pugliese: dashboards Admin (1440×1112) e Teacher (1440×1186), com cursos/alunos fictícios.
 - Os quatro WebP somam cerca de 291 kB. Miniaturas separadas de 640 px evitam carregar as imagens maiores no card de capa.
 
-`plate-model.webp` deriva da arte-base existente. `plate-generated.webp` é uma prévia otimizada do PNG composto pelas funções originais de geração, executadas offline com código de amostra e URL `https://example.com/r/K8P4MX?src=qr`. `demo-qr.png` usa a mesma URL fictícia. A rota real de exportação e seus guards não foram chamados ou alterados. Os dois PNG originais foram lidos pelo Apple Vision e retornaram o payload esperado; não é validação de impressão ou de NFC físico.
+`plate-model.webp` deriva da arte-base existente. `plate-generated.webp` é uma prévia otimizada do PNG composto pelas funções originais de geração, executadas offline com código de amostra e URL `https://example.com/r/K8P4MX?src=qr`. `demo-qr.png` usa a mesma URL fictícia. A rota real de exportação e seus guards não foram chamados ou alterados. Os dois PNG originais e, depois, os arquivos públicos `demo-qr.png` e `plate-generated.webp` foram lidos pelo Apple Vision e retornaram o payload esperado; não é validação de impressão ou de NFC físico.
 
 Proveniência, capturas originais, renderizadores temporários e verificação do QR estão em `/tmp/xavier-backoffice-evidence/`, fora do site público.
 
@@ -72,5 +72,6 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 ### Correções de interação após QA
 
 - Scroll padding do painel acompanha a altura real da navegação fixa; o dock mobile também recebe espaço de rolagem para não cobrir CTAs focados.
-- Tab/Shift+Tab retornam entre os extremos do diálogo, evitando que o Chrome transfira foco para sua interface. Escape continua nativo, e o fechamento devolve foco e posição ao sexto case.
+- Tab/Shift+Tab retornam entre os extremos do diálogo, evitando que o Chrome transfira foco para sua interface. A página fica fixada na posição anterior durante a apresentação: isso também impede movimento de fundo provocado por foco programático em telas estreitas. Escape continua nativo, e o fechamento devolve foco e posição ao sexto case.
+- A atualização dos ScrollTriggers responde somente aos detalhes dos seis cards originais. Expandir uma captura dentro do diálogo não altera a geometria da página e não precisa recalcular esse contexto de scroll.
 - Transições de aba e etapa são interrompidas e limpas ao ativar movimento reduzido.

@@ -80,8 +80,9 @@
       });
     });
 
-    // Native disclosures change the document height; keep section triggers accurate.
-    document.querySelectorAll('details').forEach((details) => {
+    // Only original cards change the page height. Modal/visual-buffer disclosures
+    // must not refresh the page's scroll context behind an open presentation.
+    document.querySelectorAll('.project-card details').forEach((details) => {
       details.addEventListener('toggle', () => ScrollTrigger.refresh());
     });
     document.fonts.ready.then(() => ScrollTrigger.refresh());

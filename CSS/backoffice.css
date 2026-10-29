@@ -93,6 +93,7 @@
 .engineering-path { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:12px; margin:28px 0; padding:18px; border:1px solid var(--hairline); border-radius:10px; color:var(--muted-strong); font:500 .7rem/1.7 "DM Mono",monospace; }
 .engineering-path i { color:var(--cyan); font-style:normal; }
 html.has-backoffice-dialog,html.has-backoffice-dialog body { overflow:hidden; }
+html.has-backoffice-dialog body { position:fixed; top:var(--backoffice-scroll-top); inset-inline:0; width:100%; }
 
 @media (max-width:700px) {
   .projects-groups { gap:8px; margin-bottom:16px; }
