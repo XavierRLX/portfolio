@@ -2,6 +2,14 @@
 
 Atualizado em: 2026-10-28
 
+## Etapa atual — Engenharia & Backoffice (29/10/2026)
+
+- Baseline: `39fa428`, refinamento premium concluído, working tree limpa. Branch isolada `codex/portfolio-backoffice-cases-20261029`.
+- Solicitação explícita autoriza seis cases em dois grupos, apresentação transversal e demonstração fiel de três sistemas. Histórico de setembro e refinamento anterior permanecem preservados.
+- B1 — Inspeção e mídia: concluída. Repositórios de origem apenas lidos; seus estados locais preexistentes foram registrados. Interfaces reais renderizadas offline com fixtures fictícias e sem conexão aos bancos. QR e arte BioPlaca gerados pelas funções originais; duas imagens com payload fictício decodificadas com sucesso. Capturas e prévias WebP revisadas, sem dados privados.
+- Próximo passo: B2, navegação entre grupos e painel interativo acessível; depois B3, QA integrado.
+- Fonte desta etapa: `docs/portfolio-backoffice-2026.md`. Sem merge ou deploy.
+
 ## Evolução posterior — refinamento premium de outubro
 
 O refresh/release de setembro abaixo permanece como histórico. A solicitação explícita de 2026-10-28 autoriza o refinamento da versão premium `feat/portfolio-experience-20261028` / `efce7c3`, em nova branch `codex/portfolio-premium-refinement-20261028`. A working tree inicial estava limpa. Esta autorização substitui a restrição histórica de branch apenas para esta etapa. Sem merge, push ou deploy.
