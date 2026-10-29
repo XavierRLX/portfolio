@@ -11,6 +11,10 @@
   const stepButtons = Array.from(presentation.querySelectorAll('[data-production-step]'));
   const stages = Array.from(presentation.querySelectorAll('[data-production-stage]'));
   const closeButton = presentation.querySelector('[data-backoffice-close]');
+  const navigation = presentation.querySelector('.backoffice-navigation');
+  const syncNavigationHeight = () => {
+    if (navigation.offsetHeight) dialog.style.setProperty('--backoffice-nav-height', (navigation.offsetHeight + 12) + 'px');
+  };
   let opener = null;
   let previousScroll = 0;
   let animation = null;
@@ -75,6 +79,7 @@
     opener = button;
     previousScroll = scrollY;
     dialog.showModal();
+    syncNavigationHeight();
     document.documentElement.classList.add('has-backoffice-dialog');
     dialog.scrollTop = 0;
     tabs[activeTab].focus({ preventScroll: true });
@@ -87,7 +92,19 @@
     if (opener && opener.isConnected) opener.focus({ preventScroll: true });
     if (scrollY !== previousScroll) scrollTo({ top: previousScroll, behavior: 'instant' });
   });
-  // Native dialog handles Escape, focus containment and inert background.
+  // Keep Tab inside the presentation, including when Chrome would move to its UI.
+  // Native dialog still provides Escape and an inert background.
+  dialog.addEventListener('keydown', (event) => {
+    if (event.key !== 'Tab') return;
+    const stops = Array.from(dialog.querySelectorAll('button, a[href], summary, [tabindex]'))
+      .filter((node) => node.tabIndex >= 0 && node.getClientRects().length && !node.closest('[hidden]'));
+    const first = stops[0], last = stops[stops.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  });
   dialog.addEventListener('pointerdown', (event) => {
     const bounds = dialog.getBoundingClientRect();
     outsidePress = event.target === dialog &&
@@ -107,5 +124,7 @@
     });
   });
   stepButtons.forEach((button, index) => button.addEventListener('click', () => activateStep(index)));
+  if ('ResizeObserver' in window) new ResizeObserver(syncNavigationHeight).observe(navigation);
+  else addEventListener('resize', syncNavigationHeight, { passive: true });
   reducedMotion.addEventListener('change', clearAnimation);
 })();

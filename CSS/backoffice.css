@@ -138,3 +138,7 @@ html.has-backoffice-dialog,html.has-backoffice-dialog body { overflow:hidden; }
   .backoffice-dialog .admin-interface img { max-height:none; }
   .production-story { margin-top:20px; }
 }
+.backoffice-dialog { scroll-padding-top:var(--backoffice-nav-height,190px); scroll-padding-bottom:24px; }
+@media (max-width:700px) {
+  html { scroll-padding-bottom:calc(84px + env(safe-area-inset-bottom)); }
+}
