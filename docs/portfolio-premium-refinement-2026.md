@@ -59,3 +59,64 @@ Evidências e resultados serão registrados após cada fase validada.
 ## Finding R3 — Resize entre composições
 
 O QA adicional encontrou troca involuntária do segundo para o terceiro case ao redimensionar 851→1280 px. O navegador pode executar o novo snap antes do callback de ResizeObserver; a rotina de scroll comparava a nova posição com destinos da geometria antiga. A correção verifica a largura antes de calcular o item próximo, mede novamente e restaura o destino solicitado. Validação dirigida: 390→430→360→700→701→850→851→1280→390, mantendo o segundo case (ou o intervalo 02–03). A matriz integrada será repetida após esta correção.
+
+## R3 — QA integrado concluído
+
+**Resultado: 10/10 cenários aprovados**, após a correção de resize. Chrome real (headless), Playwright 1.62.1, emulação de viewport/toque; screenshots inspecionados visualmente. Não equivale a teste em aparelhos físicos ou Safari, nem a medição Lighthouse/rede móvel de produção.
+
+| Viewport | Resultado | Hero (px) | Trilha fechada (px) |
+| --- | --- | ---: | ---: |
+| 1440 × 900 | PASS | 860 | 707 |
+| 1280 × 800 | PASS | 800 | 695 |
+| 1024 × 768 | PASS | 768 | 606 |
+| 768 × 1024 | PASS | 1016 | 570 |
+| 430 × 932 | PASS | 805 | 513 |
+| 390 × 844 | PASS | 816 | 517 |
+| 360 × 800 | PASS | 816 | 502 |
+
+A trilha caiu de 1914→707 px no desktop, 1578→570 px no tablet e 574→517 px em 390 px. O hero em 390 px caiu de 1114→816 px. Não foram adicionadas bibliotecas de produção ou imagens raster; os elementos novos são SVG inline. A observação local de CLS inicial ficou entre 0 e 0,0011 (zero nas três larguras de celular); é uma evidência de laboratório local, não uma métrica de campo.
+
+Verificações automatizadas:
+
+- Ida/volta por todos os cases; primeiro/último centralizados e limites dos controles corretos; dois cases e contador de intervalo no desktop.
+- Scroll vertical preservado ao usar os controles horizontais. Swipe confiável via eventos de toque do Chrome em **430, 390 e 360 px**; gesto vertical sobre o card continua rolando a página.
+- Quatro toques consecutivos sem esperar a animação; setas, Home/End, Tab entre todos os summaries/links e Enter para expandir/recolher.
+- Texto e conteúdo expandido dentro dos limites do card; imagens decodificadas em todos os cinco projetos e em todas as sete viewports, lazy loading e `contain` preservados. Alvos de summary/CTA de pelo menos 44 px.
+- Alteração de reduced motion durante cada sessão remove os triggers e interrompe a rotação; navegação continua funcionando. Teste adicional com a preferência ativa desde o carregamento.
+- Navegação/menu mobile, Escape e retorno de foco; destinos das âncoras, IDs únicos, ausência de links aninhados e proteção dos links externos.
+- Sem JS: conteúdo, disclosures e navegação pelo dock disponíveis, controles dependentes de JS ausentes. Sem CDN GSAP: carousel e conteúdo funcionam.
+- Resize 390→430→360→700→701→850→851→1280→390 preservando o segundo case. Zero overflow global, falhas de assets locais, exceções JS ou erros de console nos sete cenários normais.
+- `node --check` nos scripts ativos e no teste; `git diff --check` aprovados.
+
+O teste posiciona os controles abaixo da área reservada pelo `scroll-padding-top` antes de medir scroll vertical. A checagem de cortes considera os limites reais do conteúdo dentro do card, permitindo o pequeno overflow visível do ícone de disclosure rotacionado. Essas duas correções do harness não exigiram mudanças na interface.
+
+### Evidências e reprodução
+
+- Script versionado: `tests/portfolio-ui.cjs`.
+- Resultado JSON versionado: `docs/qa/premium-refinement-20261028.json`.
+- Screenshots completos por viewport: `/tmp/portfolio-refinement-qa/final/full-{largura}.png`.
+- Hero: `hero-{largura}.png`; carousel: `projects-{largura}-{first,last}.png`; detalhes: `details-{largura}.png`; toque: `touch-{430,390,360}.png`; fallback: `no-js.png`, `no-gsap.png`, `resize-and-reduced.png`, no mesmo diretório.
+- Baseline e capturas intermediárias permanecem em `/tmp/portfolio-refinement-qa/`; não foram adicionadas imagens de QA ao bundle do site.
+
+Com servidor ativo:
+
+```bash
+python3 -m http.server 8016 --bind 127.0.0.1
+```
+
+Em outro terminal, com Google Chrome instalado:
+
+```bash
+npm install --prefix /tmp/xavier-playwright playwright@1.62.1
+PLAYWRIGHT_MODULE=/tmp/xavier-playwright/node_modules/playwright node tests/portfolio-ui.cjs
+```
+
+Pode-se usar `PORTFOLIO_URL` e `QA_OUTPUT` para alterar URL/destino. Nesta sessão, foi utilizado o Playwright já fornecido pelo runtime local, sem instalar dependências no projeto.
+
+### Entrega
+
+- `d0462ca`: hero, copy, SVGs e motion progressivo.
+- `5c881b3`: carousel nativo e conteúdo compacto.
+- `449ede3`: correção de seleção durante resize.
+- Testes, evidências e fechamento documental em commit temático posterior.
+- Branch pronta para avaliação local. Nenhum merge, push ou deploy realizado; `main` permanece em `6c926cc` e a branch de referência em `efce7c3`.

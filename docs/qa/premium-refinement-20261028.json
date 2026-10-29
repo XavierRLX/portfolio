@@ -1,0 +1,126 @@
+[
+  {
+    "scenario": "1280x800",
+    "status": "PASS",
+    "heroHeight": 800,
+    "trackHeight": 695,
+    "initialCLS": 0.0010076022148132325,
+    "cardHeights": [
+      659,
+      634,
+      634,
+      634,
+      634
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "1440x900",
+    "status": "PASS",
+    "heroHeight": 860,
+    "trackHeight": 707,
+    "initialCLS": 0.0009373540682066615,
+    "cardHeights": [
+      671,
+      647,
+      647,
+      647,
+      647
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "1024x768",
+    "status": "PASS",
+    "heroHeight": 768,
+    "trackHeight": 606,
+    "initialCLS": 0.00018867528221259514,
+    "cardHeights": [
+      570,
+      570,
+      570,
+      570,
+      570
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "768x1024",
+    "status": "PASS",
+    "heroHeight": 1016,
+    "trackHeight": 570,
+    "initialCLS": 0.00018246452479312816,
+    "cardHeights": [
+      534,
+      534,
+      534,
+      534,
+      534
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "390x844",
+    "status": "PASS",
+    "heroHeight": 816,
+    "trackHeight": 517,
+    "initialCLS": 0,
+    "cardHeights": [
+      481,
+      457,
+      458,
+      457,
+      457
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "430x932",
+    "status": "PASS",
+    "heroHeight": 805,
+    "trackHeight": 513,
+    "initialCLS": 0,
+    "cardHeights": [
+      477,
+      477,
+      477,
+      477,
+      477
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "360x800",
+    "status": "PASS",
+    "heroHeight": 816,
+    "trackHeight": 502,
+    "initialCLS": 0,
+    "cardHeights": [
+      466,
+      466,
+      466,
+      443,
+      443
+    ],
+    "errors": [],
+    "failedLocal": []
+  },
+  {
+    "scenario": "JavaScript disabled",
+    "status": "PASS"
+  },
+  {
+    "scenario": "GSAP CDN blocked",
+    "status": "PASS"
+  },
+  {
+    "scenario": "Reduced motion at load + breakpoint resize",
+    "status": "PASS"
+  }
+]

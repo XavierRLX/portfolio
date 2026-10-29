@@ -10,7 +10,11 @@ O refresh/release de setembro abaixo permanece como histórico. A solicitação 
 - Fase R1 — Hero: concluída e validada nas sete larguras (1440, 1280, 1024, 768, 430, 390 e 360). Headline preservada; nome/Full Stack em uma linha, descrição curta, CTAs em duas colunas no mobile. React vetorial simétrico, sem perspectiva; duas miniinterfaces decorativas. Sem overflow ou erros de JS; preferência de movimento pode ser alterada durante a sessão.
 - Commit R1: `d0462ca` — `feat: refine hero composition and responsive hierarchy`.
 - Fase R2 — Projetos: concluída. Trilha finita por scroll-snap; card central e vizinhos menores em até 850 px, dois cards acima disso. Resumos compactos; stack e implementação em `details`. Alvos de 44 px, setas/Início/Fim, Tab para cards fora da viewport, contador de intervalo no desktop. Swipe real via protocolo de toque do Chrome, scroll vertical, quatro toques rápidos e resize preservando seleção passaram. Centralização em mobile/tablet ficou abaixo de 1 px de erro.
-- Próximo passo: R3, QA integrado nas sete viewports, fallbacks e testes reproduzíveis.
+- Commit R2: `5c881b3` — `feat: add centered native project carousel`.
+- Fase R3 — QA integrado: concluída. Dez cenários passaram em Chrome real + Playwright: sete viewports, JS desligado, CDN GSAP bloqueada e reduced motion inicial com resize entre breakpoints. Swipe real em 430/390/360, teclado completo, detalhes, quatro toques rápidos, imagens decodificadas, âncoras, menu e ausência de overflow/erros verificados. Screenshots finais revisados.
+- Finding de resize corrigido em `449ede3` — `fix: preserve carousel selection across viewport changes`; matriz completa repetida após a correção.
+- Teste reproduzível: `tests/portfolio-ui.cjs`. Resultado persistido: `docs/qa/premium-refinement-20261028.json`. Capturas: `/tmp/portfolio-refinement-qa/final/`.
+- **Etapa de outubro concluída / pronta para avaliação visual local.** Próximo passo: avaliação humana em `http://127.0.0.1:8016`. Nenhum merge, push ou deploy foi executado. O histórico do release de setembro abaixo não representa publicação desta nova etapa.
 - Detalhes/evidências desta evolução: `docs/portfolio-premium-refinement-2026.md`.
 
 ## Estado geral

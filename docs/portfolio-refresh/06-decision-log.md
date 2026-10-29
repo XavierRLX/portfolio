@@ -45,5 +45,12 @@ O efeito visual de entrada pode continuar, mas conteúdo essencial não deve fic
 
 Para reduzir overhead, as fases serão executadas em quatro ondas: A (1–3), B (4–6), C (7–8) e D (9–10). O checkpoint obrigatório ocorre ao final da onda, salvo finding crítico ou decisão fora de escopo.
 
+## DEC-010 — Refinamento posterior ao release de setembro
+**Status:** aceita por solicitação explícita de 2026-10-28
+
+O baseline aprovado desta etapa é `feat/portfolio-experience-20261028` / `efce7c3`, com cinco cases, documentado em `docs/portfolio-experience-2026.md`. O trabalho ocorre em `codex/portfolio-premium-refinement-20261028`, preservando HTML/CSS/JS e identidade. A restrição histórica à branch do refresh não se aplica a esta autorização posterior. Não publicar nem integrar em `main` nesta etapa.
+
+O carousel passa a usar scroll-snap nativo e finito: um case central com vizinhos parciais até 850 px; dois cases em telas maiores. Sem clones, autoplay ou conversão do scroll vertical em horizontal. Decisões, skills e QA: `docs/portfolio-premium-refinement-2026.md`.
+
 ## Como usar este arquivo
 Adicionar novas decisões somente quando houver escolha relevante de produto, arquitetura, design ou processo. Não registrar detalhes triviais de implementação.
