@@ -99,31 +99,41 @@
     updateCarousel();
   }
 
-  // Progressive enhancement: a missing CDN or reduced-motion preference never hides content.
-  if (!reducedMotion.matches && window.gsap && window.ScrollTrigger) {
+  // MatchMedia reverts every tween/trigger when the preference changes, even mid-animation.
+  if (window.gsap && window.ScrollTrigger) {
     const gsap = window.gsap;
-    gsap.registerPlugin(window.ScrollTrigger);
+    const ScrollTrigger = window.ScrollTrigger;
+    gsap.registerPlugin(ScrollTrigger);
+    const motion = gsap.matchMedia();
 
-    gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'all' } })
-      .from('.hero-copy > .hero-eyebrow, .hero-name, .hero h1, .hero-description, .hero-actions', {
-        y: 24, autoAlpha: 0, duration: 0.85, stagger: 0.105
-      })
-      .from('.hero-art', { y: 18, scale: 0.96, autoAlpha: 0, duration: 1.25 }, '<0.18');
+    motion.add('(prefers-reduced-motion: no-preference)', (context) => {
+      gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'transform' } })
+        .from('.hero-eyebrow, .hero h1, .hero-description, .hero-actions', {
+          y: 16, duration: 0.6, stagger: 0.06
+        })
+        .from('.hero-art', { y: 12, scale: 0.98, duration: 0.8 }, '<');
 
-    gsap.to('.hero-light', {
-      y: 32, ease: 'none',
-      scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
-    });
+      gsap.to('.hero-light', {
+        y: 24, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
+      });
 
-    window.ScrollTrigger.batch('.reveal', {
-      start: 'top 93%',
-      once: true,
-      onEnter: (elements) => {
-        gsap.fromTo(elements, { y: 28, autoAlpha: 0 }, {
-          y: 0, autoAlpha: 1, duration: 0.75, stagger: 0.08,
-          ease: 'power2.out', overwrite: true, clearProps: 'all'
+      // Register callback-created tweens in the same context for reduced-motion cleanup.
+      context.add('reveal', (elements) => {
+        gsap.fromTo(elements, { y: 18, opacity: 0.7 }, {
+          y: 0, opacity: 1, duration: 0.55, stagger: 0.06,
+          ease: 'power2.out', overwrite: true, clearProps: 'transform,opacity'
         });
-      }
+      });
+      ScrollTrigger.batch('.reveal:not(.project-card)', {
+        start: 'top 93%', once: true, onEnter: context.reveal
+      });
     });
+
+    // Native disclosures change the document height; keep section triggers accurate.
+    document.querySelectorAll('details').forEach((details) => {
+      details.addEventListener('toggle', () => ScrollTrigger.refresh());
+    });
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
   }
 })();

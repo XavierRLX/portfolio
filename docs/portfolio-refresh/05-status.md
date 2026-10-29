@@ -1,6 +1,15 @@
 # Status — Portfolio Refresh 2026
 
-Atualizado em: 2026-09-30
+Atualizado em: 2026-10-28
+
+## Evolução posterior — refinamento premium de outubro
+
+O refresh/release de setembro abaixo permanece como histórico. A solicitação explícita de 2026-10-28 autoriza o refinamento da versão premium `feat/portfolio-experience-20261028` / `efce7c3`, em nova branch `codex/portfolio-premium-refinement-20261028`. A working tree inicial estava limpa. Esta autorização substitui a restrição histórica de branch apenas para esta etapa. Sem merge, push ou deploy.
+
+- Divergência entre status antigo e versão premium registrada antes da implementação em `docs/portfolio-premium-refinement-2026.md`.
+- Fase R1 — Hero: concluída e validada nas sete larguras (1440, 1280, 1024, 768, 430, 390 e 360). Headline preservada; nome/Full Stack em uma linha, descrição curta, CTAs em duas colunas no mobile. React vetorial simétrico, sem perspectiva; duas miniinterfaces decorativas. Sem overflow ou erros de JS; preferência de movimento pode ser alterada durante a sessão.
+- Próximo passo: R2, carousel nativo compacto e acessível; depois R3, QA integrado com screenshots e testes reproduzíveis.
+- Detalhes/evidências desta evolução: `docs/portfolio-premium-refinement-2026.md`.
 
 ## Estado geral
 **REFRESH CONCLUÍDO — RELEASE VALIDADO**
