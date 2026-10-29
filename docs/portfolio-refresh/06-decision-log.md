@@ -52,5 +52,15 @@ O baseline aprovado desta etapa é `feat/portfolio-experience-20261028` / `efce7
 
 O carousel passa a usar scroll-snap nativo e finito: um case central com vizinhos parciais até 850 px; dois cases em telas maiores. Sem clones, autoplay ou conversão do scroll vertical em horizontal. Decisões, skills e QA: `docs/portfolio-premium-refinement-2026.md`.
 
+## DEC-011 — Seis cases e bastidores verificados
+**Status:** aceita por solicitação explícita de 2026-10-29
+
+Evoluir a partir de `39fa428` em `codex/portfolio-backoffice-cases-20261029`. Produtos: AWX, BioPlaca, Galerows; Soluções & Engenharia: Pugliese, Maria e case transversal de Backoffice. As interfaces administrativas usam componentes reais com dados fictícios, capturados offline, sem publicar código privado ou consultar bancos. O fluxo BioPlaca distingue composição/exportação automática de operação física e NFC manual. Sem merge ou deploy.
+
+## DEC-012 — Dois cards e retorno circular
+**Status:** aceita após ajuste explícito do usuário em 2026-10-29
+
+O pedido acompanhado de screenshot substitui a apresentação desktop de três cards e o carousel finito da DEC-010 nesta etapa. Exibir dois cards maiores acima de 1100 px, em pares sobrepostos dentro de cada grupo de três. No mobile/tablet, manter centro destacado e vizinhos parciais. O loop usa scroll-snap nativo e buffers visuais inertes, sem duplicar a navegação assistiva. Reposicionar somente após o snap, entre quadros equivalentes. Sem autoplay ou scroll-jacking. Validar as duas fronteiras com touch, teclado, cliques rápidos e movimento reduzido.
+
 ## Como usar este arquivo
 Adicionar novas decisões somente quando houver escolha relevante de produto, arquitetura, design ou processo. Não registrar detalhes triviais de implementação.

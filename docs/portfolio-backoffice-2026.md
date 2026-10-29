@@ -28,7 +28,8 @@ As conclusões vieram dos componentes, fluxos de servidor, geradores, contratos 
 
 Manter fundo `#080c19`, superfície `#0b101f`, lilás `#9d8bff`, ciano `#75dbe3`, tipografia e acabamento aprovados. Os cinco cards existentes evoluem somente o necessário para a nova composição. O sexto é identificado como case transversal, sem simular um novo produto.
 
-- Desktop: duas páginas de três cards, com nomes de grupo e controles explícitos.
+- Desktop acima de 1100 px: dois cards maiores. Em cada grupo de três, os pares se sobrepõem (01–02, 02–03; 04–05, 05–06), preservando contexto e os atalhos de grupo. Navegação circular por setas, teclado e gesto nativo.
+- Ajuste explícito do usuário em 29/10, após screenshot da versão com três cards: dois cards e retorno infinito. Esta direção substitui a composição de três cards e a decisão finita da rodada anterior.
 - Tablet/mobile: uma trilha nativa com seis cards, centro em destaque, vizinhos parciais e grupo ativo acompanhando a posição.
 - Bastidores: painel modal com abas BioPlaca/AWX/Pugliese, imagens fiéis, descrições curtas e detalhes opcionais. Sem carousel horizontal dentro do painel.
 - BioPlaca: sequência controlada pelo visitante, do modelo à composição/exportação; nenhum autoplay que impeça leitura.
@@ -39,7 +40,7 @@ Reutilizadas `find-skills`, [Frontend Design (Anthropic)](https://github.com/ant
 
 Referências de interação: [tabs WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) e [`dialog` nativo](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog). Fontes das skills consultadas diretamente; não são dependências do site.
 
-Resultados por fase e evidências serão registrados após validação.
+Os resultados por fase e a matriz de verificação ficam registrados abaixo.
 
 ## B1 — Inspeção e mídia concluídas
 
@@ -58,11 +59,18 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 
 ## B2 — Implementação e smoke
 
-- Mantido um único scroll horizontal nativo. Acima de 1100 px, as posições de snap representam dois grupos de três cards; até essa largura, cada um dos seis cards recebe snap central e vizinhos menores. Não há clones, loop ou captura de gestos.
-- `js/projects.js` concentra o carousel, extraído do controlador geral para não misturar navegação de cases e efeitos de seção. O índice lógico selecionado é preservado ao trocar entre card e página de três cards.
+- Mantido um único scroll horizontal nativo. Dois cards acima de 1100 px; até essa largura, cada um dos seis recebe snap central e vizinhos menores. Sem captura de gestos, autoplay ou conversão de scroll vertical.
+- O retorno circular usa buffers visuais inertes antes/depois dos seis cards originais. Os buffers não têm links, botões, IDs ou participação na árvore de acessibilidade. Após o snap, a trilha retorna à posição visualmente equivalente dos originais, sem transição de escala. São somente seis cases navegáveis. Os estados dos detalhes são sincronizados com as prévias de borda.
+- `js/projects.js` concentra o carousel, extraído do controlador geral para não misturar navegação de cases e efeitos de seção. O índice lógico selecionado é preservado ao trocar entre card central e composição de dois cards.
 - O sexto case usa três miniaturas dos componentes reais e é identificado como demonstração transversal. O botão abre `dialog` nativo, com fundo inerte, três abas, foco controlado, Escape e retorno ao contexto original.
 - Sem JavaScript, o CTA é uma âncora para a mesma apresentação inline; as três áreas e as quatro etapas ficam legíveis. Não há cópia alternativa de conteúdo para manter.
 - A automação BioPlaca aparece antes do editor completo: quatro etapas controladas pelo visitante. Editor real e decisões técnicas são expansíveis. NFC manual e valores fictícios são identificados explicitamente.
 - Trocas de aba/etapa usam entrada curta GSAP, sem esperar animação para mudar conteúdo/ARIA; preferência reduzida interrompe e limpa o efeito. Sem GSAP, as operações continuam imediatas.
 - Smoke Chrome em 1440, 768, 390 e 360: seis cases, abertura/troca das abas/fechamento, foco de retorno e zero overflow/exceções. Axe inicial em 1440 e 390 (aba BioPlaca) não detectou violações WCAG A/AA; a auditoria final cobrirá as três abas.
 - Refinamento após observação real: a captura grande do editor foi movida para disclosure, dando prioridade ao fluxo automático de produção. Imagens administrativas completas usam `contain` e link para ampliar; nenhum dado privado ou código de backend é enviado ao browser do portfólio.
+
+### Correções de interação após QA
+
+- Scroll padding do painel acompanha a altura real da navegação fixa; o dock mobile também recebe espaço de rolagem para não cobrir CTAs focados.
+- Tab/Shift+Tab retornam entre os extremos do diálogo, evitando que o Chrome transfira foco para sua interface. Escape continua nativo, e o fechamento devolve foco e posição ao sexto case.
+- Transições de aba e etapa são interrompidas e limpas ao ativar movimento reduzido.
