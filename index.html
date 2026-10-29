@@ -21,9 +21,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/experience.css">
+  <link rel="stylesheet" href="CSS/backoffice.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/navigation.js" defer></script>
+  <script src="js/projects.js" defer></script>
+  <script src="js/backoffice.js" defer></script>
   <script src="js/experience.js" defer></script>
   <script src="js/copiarEcolar.js" defer></script>
   <title>Renan Xavier — Full Stack & Product Engineering</title>
@@ -115,16 +118,21 @@
           </div>
           <p class="section-intro">Produtos reais, da arquitetura à experiência.</p>
         </div>
+        <p class="projects-group-fallback">Produtos (01–03) · Soluções &amp; Engenharia (04–06)</p>
+        <div class="projects-groups" aria-label="Grupos de projetos" role="group" hidden>
+          <button type="button" data-project-page="0" aria-pressed="true" aria-controls="projects-track"><span>01</span> Produtos</button>
+          <button type="button" data-project-page="3" aria-pressed="false" aria-controls="projects-track"><span>02</span> Soluções &amp; Engenharia</button>
+        </div>
         <div class="projects-toolbar" aria-label="Navegação pelos projetos">
-          <span class="projects-count">05 CASES · 2026</span>
+          <span class="projects-count">06 CASES · 2026</span>
           <div class="carousel-controls">
             <span class="swipe-hint">Deslize para ver mais <span aria-hidden="true">↔</span></span>
             <button class="carousel-arrow" id="projects-prev" type="button" aria-label="Projeto anterior" aria-controls="projects-track" disabled>←</button>
-            <span id="projects-position" role="status" aria-live="polite" aria-atomic="true">01 / 05</span>
+            <span id="projects-position" role="status" aria-live="polite" aria-atomic="true">01 / 06</span>
             <button class="carousel-arrow" id="projects-next" type="button" aria-label="Próximo projeto" aria-controls="projects-track">→</button>
           </div>
         </div>
-        <p id="projects-help" class="sr-only">Deslize para explorar. Com o carrossel em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
+        <p id="projects-help" class="sr-only">Seis cases em dois grupos: Produtos e Soluções e Engenharia. Deslize para explorar. Com o carrossel em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
         <div class="projects-track" id="projects-track" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque" aria-describedby="projects-help">
           <article class="project-card">
             <div class="card-visual visual-awx">
@@ -195,8 +203,141 @@
               <a class="case-link" href="https://maria-thereza-enfermagem.pages.dev/" target="_blank" rel="noopener noreferrer">Visitar site <span aria-hidden="true">↗</span></a>
             </div>
           </article>
+
+          <article class="project-card project-card--backoffice">
+            <div class="card-visual visual-backoffice">
+              <div class="backoffice-montage" aria-hidden="true">
+                <div class="mini-interface"><span>BioPlaca / Produção</span><img src="Imagens/backoffice/bio-mini.webp" width="640" height="518" loading="lazy" decoding="async" alt=""></div>
+                <div class="mini-interface"><span>AWX / Operação</span><img src="Imagens/backoffice/awx-mini.webp" width="640" height="479" loading="lazy" decoding="async" alt=""></div>
+                <div class="mini-interface"><span>Pugliese / Gestão</span><img src="Imagens/backoffice/pugliese-mini.webp" width="640" height="494" loading="lazy" decoding="async" alt=""></div>
+              </div>
+              <span class="visual-corner">06 / CASE TRANSVERSAL · DEMO</span>
+            </div>
+            <div class="card-copy">
+              <div class="card-meta"><span>FULL STACK</span><span>SISTEMAS ADMINISTRATIVOS</span></div>
+              <h3>Engenharia <span>&amp; Backoffice</span></h3>
+              <p>Gestão, automação e permissões nos bastidores de três produtos reais.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>RLS</span></div><p>Produção de placas na BioPlaca, operação profissional na AWX e administração acadêmica no Pugliese. Um case de engenharia que conecta interface, regras de negócio e persistência.</p></details>
+              <button class="case-link backoffice-open" type="button" data-backoffice-open aria-haspopup="dialog" aria-controls="backoffice-dialog" hidden>Explorar bastidores <span aria-hidden="true">↗</span></button>
+              <a class="case-link backoffice-fallback" href="#backoffice-content">Explorar bastidores <span aria-hidden="true">↓</span></a>
+            </div>
+          </article>
         </div>
         <p class="projects-footnote">Cada projeto representa decisões de arquitetura, interface e entrega. <a href="https://github.com/XavierRLX" target="_blank" rel="noopener noreferrer">Mais trabalhos no GitHub ↗</a></p>
+      </div>
+    </section>
+
+    <section class="backoffice-presentation" id="backoffice-content" aria-labelledby="backoffice-title">
+      <div class="backoffice-navigation">
+      <div class="backoffice-heading">
+        <div><p class="eyebrow">CASE TRANSVERSAL / FULL STACK</p><h2 id="backoffice-title">Engenharia <span>&amp; Backoffice</span></h2>
+          <p id="backoffice-lead">Além da interface pública, a operação que faz cada produto funcionar.</p>
+        </div>
+        <button class="backoffice-close" type="button" data-backoffice-close aria-label="Fechar bastidores" hidden>Fechar <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="backoffice-tabs" role="tablist" aria-label="Sistemas administrativos" hidden>
+        <button type="button" id="tab-bioplaca" role="tab" aria-selected="true" aria-controls="panel-bioplaca" tabindex="0">BioPlaca</button>
+        <button type="button" id="tab-awx" role="tab" aria-selected="false" aria-controls="panel-awx" tabindex="-1">AWX Brasil</button>
+        <button type="button" id="tab-pugliese" role="tab" aria-selected="false" aria-controls="panel-pugliese" tabindex="-1">Cursos Pugliese</button>
+      </div>
+      </div>
+      <div class="backoffice-panels">
+        <section class="backoffice-panel" id="panel-bioplaca" aria-labelledby="bioplaca-panel-title">
+          <div class="case-panel-intro"><p class="case-kicker">PRODUÇÃO FÍSICA + GESTÃO DIGITAL</p><h3 id="bioplaca-panel-title">Da arte ao lote de placas.</h3>
+            <p>Produzir placas em escala exige mais do que um link. Desenvolvi o fluxo que conecta estabelecimentos, códigos, impressão, estoque e venda.</p>
+          </div>
+          <section class="production-story" aria-labelledby="production-title">
+            <div class="production-heading"><div><p class="case-kicker">AUTOMAÇÃO DE PRODUÇÃO</p><h4 id="production-title">Um código. Uma placa pronta.</h4></div><span class="demo-label">Exemplo fictício</span></div>
+            <ol class="production-steps" aria-label="Etapas da produção" hidden>
+              <li><button type="button" data-production-step="0" aria-pressed="true" aria-controls="production-preview"><span>01</span> Modelo</button></li>
+              <li><button type="button" data-production-step="1" aria-pressed="false" aria-controls="production-preview"><span>02</span> QR gerado</button></li>
+              <li><button type="button" data-production-step="2" aria-pressed="false" aria-controls="production-preview"><span>03</span> Composição</button></li>
+              <li><button type="button" data-production-step="3" aria-pressed="false" aria-controls="production-preview"><span>04</span> Exportação</button></li>
+            </ol>
+            <p class="sr-only" id="production-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            <div class="production-preview" id="production-preview">
+              <div class="production-stage" data-production-stage="0">
+                <div class="plate-preview"><img src="Imagens/backoffice/plate-model.webp" width="600" height="900" loading="lazy" decoding="async" alt="Arte-base real da placa, antes de receber o QR Code"></div>
+                <div class="production-explanation"><span class="production-number">01 / MODELO</span><h5>A arte define o ponto de partida.</h5><p>O administrador escolhe um modelo ou envia uma arte PNG. No editor, ajusta a posição e o tamanho do QR com mouse, toque ou valores em pixels.</p><span class="operation-kind">Configuração pelo operador</span></div>
+              </div>
+              <div class="production-stage" data-production-stage="1">
+                <div class="qr-preview"><img src="Imagens/backoffice/demo-qr.png" width="350" height="350" loading="lazy" decoding="async" alt="QR Code de demonstração gerado pela função original, com URL fictícia example.com"><span>K8P4MX / CÓDIGO DE AMOSTRA</span></div>
+                <div class="production-explanation"><span class="production-number">02 / QR GERADO</span><h5>Cada placa recebe seu próprio código.</h5><p>A criação do lote gera códigos únicos. O QR correspondente aponta para a URL da placa, que mantém o destino configurável.</p><span class="operation-kind operation-kind--auto">Geração automática</span></div>
+              </div>
+              <div class="production-stage" data-production-stage="2">
+                <div class="plate-preview plate-preview--composed"><img src="Imagens/backoffice/plate-generated.webp" width="600" height="900" loading="lazy" decoding="async" alt="Prévia da placa após composição automática do QR na área definida da arte"></div>
+                <div class="production-explanation"><span class="production-number">03 / COMPOSIÇÃO</span><h5>O QR entra na arte automaticamente.</h5><p>O gerador aplica o QR nas coordenadas do modelo. A composição acontece no tamanho final, preservando a nitidez do código para impressão.</p><span class="operation-kind operation-kind--auto">QR + arte, sem edição placa a placa</span></div>
+              </div>
+              <div class="production-stage" data-production-stage="3">
+                <div class="export-preview"><img src="Imagens/backoffice/plate-generated.webp" width="600" height="900" loading="lazy" decoding="async" alt="Placa de demonstração pronta na prévia de exportação"><div class="export-files"><span aria-hidden="true">↳</span><strong>lote.zip</strong><code>plates/K8P4MX.png</code><code>manifesto.csv</code></div></div>
+                <div class="production-explanation"><span class="production-number">04 / EXPORTAÇÃO</span><h5>Arquivos prontos para a gráfica.</h5><p>O sistema reúne os PNGs e o manifesto CSV em partes de ZIP. O operador confere os arquivos e confirma o recebimento das placas físicas.</p><span class="operation-kind operation-kind--auto">Arquivos automáticos, conferência manual</span></div>
+              </div>
+            </div>
+            <p class="operation-note">A gravação da tag NFC é manual, em aplicativo externo. O sistema prepara as URLs e a fila de conferência.</p>
+          </section>
+          <details class="backoffice-details editor-view"><summary>Ver o editor de modelos <span aria-hidden="true">+</span></summary>
+            <p>Ajuste visual por mouse/toque ou coordenadas, com prévia antes de salvar a versão do modelo.</p>
+          <figure class="admin-interface">
+            <div class="browser-chrome" aria-hidden="true"><span>● ● ●</span><span>BioPlaca / Editor de modelos</span><span>DEMO</span></div>
+            <a href="Imagens/backoffice/bioplaca-editor.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar demonstração do editor BioPlaca em nova aba"><img src="Imagens/backoffice/bioplaca-editor.webp" width="1440" height="1165" loading="lazy" decoding="async" alt="Editor real da BioPlaca renderizado com dados fictícios: arte à esquerda, coordenadas e tamanho do QR à direita e prévia composta"></a>
+            <figcaption>Componentes reais, dados fictícios. Selecione a imagem para ampliar.</figcaption>
+          </figure>
+          </details>
+          <dl class="backoffice-facts">
+            <div><dt>Operação</dt><dd>Estabelecimentos, lotes, estoque, disponibilidade, vendas e valores recebidos.</dd></div>
+            <div><dt>Produção</dt><dd>Modelos versionados, prévias, composição automática, PNGs, ZIP e manifesto.</dd></div>
+            <div><dt>Ativação</dt><dd>Destinos configuráveis, preparação NFC e contadores separados de QR/NFC.</dd></div>
+          </dl>
+          <details class="backoffice-details"><summary>Decisões de engenharia <span aria-hidden="true">+</span></summary>
+            <ul><li>A placa é a entidade central; QR e NFC são canais de acesso ao mesmo código.</li><li>O modelo é imutável: lotes exportados preservam a versão original.</li><li>Autorização administrativa, validação no servidor e RLS protegem os dados operacionais.</li><li>Um download iniciado não comprova arquivo salvo; a conferência das partes é explícita.</li></ul>
+            <p class="backoffice-stack">Next.js · TypeScript · Supabase / PostgreSQL · qrcode · sharp · JSZip</p>
+          </details>
+        </section>
+
+        <section class="backoffice-panel" id="panel-awx" aria-labelledby="awx-panel-title">
+          <div class="case-panel-intro"><p class="case-kicker">WORKSPACE PROFISSIONAL</p><h3 id="awx-panel-title">O estoque tem seu próprio contexto.</h3>
+            <p>Organizar veículos, custos e vendas sem misturar a operação da concessionária com a garagem pessoal.</p><span class="case-status">Módulo profissional em validação</span>
+          </div>
+          <figure class="admin-interface">
+            <div class="browser-chrome" aria-hidden="true"><span>● ● ●</span><span>AWX / Painel da concessionária</span><span>DEMO</span></div>
+            <a href="Imagens/backoffice/awx-workspace.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar demonstração do workspace AWX em nova aba"><img src="Imagens/backoffice/awx-workspace.webp" width="1440" height="1077" loading="lazy" decoding="async" alt="Painel real do workspace AWX renderizado com dados fictícios, com estoque, capital, entradas, saídas, margem e atalhos operacionais"></a>
+            <figcaption>Componentes reais com valores fictícios. A demonstração não representa resultados comerciais ou liberação de produção.</figcaption>
+          </figure>
+          <dl class="backoffice-facts">
+            <div><dt>Estoque e cadastro</dt><dd>Veículos da loja, limites próprios, cadastro, edição e manutenção.</dd></div>
+            <div><dt>Custos e operação</dt><dd>Aquisição, despesas e relatórios de custo, margem e ciclo do estoque.</dd></div>
+            <div><dt>Venda e transferência</dt><dd>Saída do estoque com histórico e mudança de titularidade por operação validada.</dd></div>
+          </dl>
+          <div class="engineering-path" aria-label="Fluxo técnico: interface, serviços e regras de negócio, PostgreSQL e RLS"><span>Interface</span><i aria-hidden="true">→</i><span>Serviços &amp; regras</span><i aria-hidden="true">→</i><span>PostgreSQL / RLS</span></div>
+          <details class="backoffice-details"><summary>Decisões de engenharia <span aria-hidden="true">+</span></summary>
+            <ul><li>Garagem pessoal e estoque profissional usam escopos separados.</li><li>Membership e papéis de proprietário, administrador e vendedor limitam as ações; financeiro exige permissão específica.</li><li>Operações transacionais preservam ciclo e histórico, sem transferir informações financeiras privadas ao comprador.</li><li>O case mostra a implementação existente em validação. Emissão fiscal, DRE, conciliação e financiamento não fazem parte desta apresentação.</li></ul>
+            <p class="backoffice-stack">Next.js · React · TypeScript · Supabase / PostgreSQL · RPCs · RLS</p>
+          </details>
+        </section>
+
+        <section class="backoffice-panel" id="panel-pugliese" aria-labelledby="pugliese-panel-title">
+          <div class="case-panel-intro"><p class="case-kicker">ADMINISTRAÇÃO ACADÊMICA</p><h3 id="pugliese-panel-title">Autonomia para ensinar. Permissões para organizar.</h3>
+            <p>Uma estrutura acadêmica completa, com visão global para o Admin e um espaço de trabalho restrito ao conteúdo de cada professor.</p>
+          </div>
+          <figure class="admin-interface">
+            <div class="browser-chrome" aria-hidden="true"><span>● ● ●</span><span>Cursos Pugliese / Administração</span><span>DEMO</span></div>
+            <a href="Imagens/backoffice/pugliese-admin.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar demonstração do dashboard Admin Pugliese em nova aba"><img src="Imagens/backoffice/pugliese-admin.webp" width="1440" height="1112" loading="lazy" decoding="async" alt="Dashboard Admin real renderizado com dados fictícios: cursos por estado, professores, alunos, acessos e atenção operacional"></a>
+            <figcaption>Componentes reais, com nomes e números fictícios. Nenhum dado de professor ou aluno foi capturado.</figcaption>
+          </figure>
+          <dl class="backoffice-facts">
+            <div><dt>Conteúdo</dt><dd>Cursos, matérias, módulos, aulas, materiais e publicação contextual.</dd></div>
+            <div><dt>Alunos e acessos</dt><dd>Diretório de alunos, concessão e validade de acesso, planos e progresso.</dd></div>
+            <div><dt>Papéis separados</dt><dd>Admin com escopo global; Teacher no próprio domínio; Student no conteúdo autorizado.</dd></div>
+          </dl>
+          <details class="backoffice-details teacher-view"><summary>Ver a visão do professor <span aria-hidden="true">+</span></summary>
+            <p>O professor acompanha cursos, turmas, alunos e planejamento semanal sem acessar a administração global.</p>
+            <figure class="admin-interface"><a href="Imagens/backoffice/pugliese-teacher.webp" target="_blank" rel="noopener noreferrer" aria-label="Ampliar demonstração do dashboard Teacher Pugliese em nova aba"><img src="Imagens/backoffice/pugliese-teacher.webp" width="1440" height="1186" loading="lazy" decoding="async" alt="Dashboard Teacher real com cursos, planos, alunos e turma de demonstração, todos fictícios"></a><figcaption>Demonstração do componente Teacher com dados fictícios.</figcaption></figure>
+          </details>
+          <details class="backoffice-details"><summary>Decisões de engenharia <span aria-hidden="true">+</span></summary>
+            <ul><li>Autenticação SSR e autorização por papel são conferidas no servidor; RLS mantém o isolamento no banco.</li><li>Planos compõem cursos. A concessão de acesso efetivo é validada separadamente.</li><li>Turmas e planejamento organizam a experiência; não concedem acesso por si só.</li><li>Publicação, revogação e ações sensíveis possuem validações e confirmações próprias.</li></ul>
+            <p class="backoffice-stack">Next.js · TypeScript · Supabase Auth SSR · PostgreSQL · RLS</p>
+          </details>
+        </section>
       </div>
     </section>
 
@@ -239,6 +380,8 @@
       </div>
     </section>
   </main>
+
+  <dialog class="backoffice-dialog" id="backoffice-dialog" aria-labelledby="backoffice-title" aria-describedby="backoffice-lead"></dialog>
 
   <nav class="mobile-dock" aria-label="Acesso rápido">
     <a href="#inicio">Início</a><a href="#projeto">Projetos</a><a href="#hSobre">Sobre</a><a href="#mainContato">Contato</a>

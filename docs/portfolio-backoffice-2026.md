@@ -55,3 +55,14 @@ As quatro imagens administrativas em `Imagens/backoffice/` são **demonstraçõe
 `plate-model.webp` deriva da arte-base existente. `plate-generated.webp` é uma prévia otimizada do PNG composto pelas funções originais de geração, executadas offline com código de amostra e URL `https://example.com/r/K8P4MX?src=qr`. `demo-qr.png` usa a mesma URL fictícia. A rota real de exportação e seus guards não foram chamados ou alterados. Os dois PNG originais foram lidos pelo Apple Vision e retornaram o payload esperado; não é validação de impressão ou de NFC físico.
 
 Proveniência, capturas originais, renderizadores temporários e verificação do QR estão em `/tmp/xavier-backoffice-evidence/`, fora do site público.
+
+## B2 — Implementação e smoke
+
+- Mantido um único scroll horizontal nativo. Acima de 1100 px, as posições de snap representam dois grupos de três cards; até essa largura, cada um dos seis cards recebe snap central e vizinhos menores. Não há clones, loop ou captura de gestos.
+- `js/projects.js` concentra o carousel, extraído do controlador geral para não misturar navegação de cases e efeitos de seção. O índice lógico selecionado é preservado ao trocar entre card e página de três cards.
+- O sexto case usa três miniaturas dos componentes reais e é identificado como demonstração transversal. O botão abre `dialog` nativo, com fundo inerte, três abas, foco controlado, Escape e retorno ao contexto original.
+- Sem JavaScript, o CTA é uma âncora para a mesma apresentação inline; as três áreas e as quatro etapas ficam legíveis. Não há cópia alternativa de conteúdo para manter.
+- A automação BioPlaca aparece antes do editor completo: quatro etapas controladas pelo visitante. Editor real e decisões técnicas são expansíveis. NFC manual e valores fictícios são identificados explicitamente.
+- Trocas de aba/etapa usam entrada curta GSAP, sem esperar animação para mudar conteúdo/ARIA; preferência reduzida interrompe e limpa o efeito. Sem GSAP, as operações continuam imediatas.
+- Smoke Chrome em 1440, 768, 390 e 360: seis cases, abertura/troca das abas/fechamento, foco de retorno e zero overflow/exceções. Axe inicial em 1440 e 390 (aba BioPlaca) não detectou violações WCAG A/AA; a auditoria final cobrirá as três abas.
+- Refinamento após observação real: a captura grande do editor foi movida para disclosure, dando prioridade ao fluxo automático de produção. Imagens administrativas completas usam `contain` e link para ampliar; nenhum dado privado ou código de backend é enviado ao browser do portfólio.

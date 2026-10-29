@@ -7,7 +7,9 @@ Atualizado em: 2026-10-28
 - Baseline: `39fa428`, refinamento premium concluído, working tree limpa. Branch isolada `codex/portfolio-backoffice-cases-20261029`.
 - Solicitação explícita autoriza seis cases em dois grupos, apresentação transversal e demonstração fiel de três sistemas. Histórico de setembro e refinamento anterior permanecem preservados.
 - B1 — Inspeção e mídia: concluída. Repositórios de origem apenas lidos; seus estados locais preexistentes foram registrados. Interfaces reais renderizadas offline com fixtures fictícias e sem conexão aos bancos. QR e arte BioPlaca gerados pelas funções originais; duas imagens com payload fictício decodificadas com sucesso. Capturas e prévias WebP revisadas, sem dados privados.
-- Próximo passo: B2, navegação entre grupos e painel interativo acessível; depois B3, QA integrado.
+- Commit B1: `8f15134` — curadoria e mídia fiel com dados fictícios.
+- B2 — Implementação: seis cases e dois grupos em funcionamento. Desktop acima de 1100 px usa duas páginas com três cards; tablet/mobile preservam trilha nativa centralizada. Painel `dialog` com três abas, Escape/foco nativos, conteúdo inline como fallback sem JS, detalhes e sequência de produção em quatro etapas. Smoke visual em 1440/768/390/360 sem overflow ou exceções. Auditoria axe inicial do painel em 1440/390 sem violações WCAG A/AA detectadas.
+- Próximo passo: B3, matriz completa e regressão do hero, gesto touch, teclado, fallbacks, resize e auditoria das três abas.
 - Fonte desta etapa: `docs/portfolio-backoffice-2026.md`. Sem merge ou deploy.
 
 ## Evolução posterior — refinamento premium de outubro
