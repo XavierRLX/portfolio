@@ -1,0 +1,311 @@
+{
+  "date": "2026-10-29",
+  "branch": "codex/portfolio-backoffice-cases-20261029",
+  "baseline": "39fa428",
+  "implementationCommit": "69648aa",
+  "browser": "Google Chrome through Playwright 1.62.1",
+  "solution": "Two independent stacked carousels, three cases each. Three visible per row above 1100px; native circular centered scroll-snap below. No autoplay.",
+  "ui": [
+    {
+      "scenario": "1280x800",
+      "status": "PASS",
+      "heroHeight": 800,
+      "trackHeights": [
+        558,
+        558
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 3,
+      "cardHeights": [
+        522,
+        522,
+        522,
+        522,
+        522,
+        522
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": false,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "1440x900",
+      "status": "PASS",
+      "heroHeight": 860,
+      "trackHeights": [
+        566,
+        566
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 3,
+      "cardHeights": [
+        530,
+        530,
+        530,
+        530,
+        530,
+        530
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": false,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "768x1024",
+      "status": "PASS",
+      "heroHeight": 1016,
+      "trackHeights": [
+        575,
+        575
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 1,
+      "cardHeights": [
+        539,
+        536,
+        539,
+        539,
+        539,
+        539,
+        539,
+        539,
+        539,
+        539,
+        539,
+        539
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": false,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "1024x768",
+      "status": "PASS",
+      "heroHeight": 768,
+      "trackHeights": [
+        585,
+        585
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 1,
+      "cardHeights": [
+        549,
+        545,
+        548,
+        549,
+        548,
+        548,
+        549,
+        549,
+        548,
+        549,
+        548,
+        548
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": false,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "430x932",
+      "status": "PASS",
+      "heroHeight": 805,
+      "trackHeights": [
+        521,
+        521
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 1,
+      "cardHeights": [
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485,
+        485
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": true,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "390x844",
+      "status": "PASS",
+      "heroHeight": 816,
+      "trackHeights": [
+        525,
+        532
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 1,
+      "cardHeights": [
+        489,
+        466,
+        466,
+        489,
+        465,
+        465,
+        466,
+        465,
+        496,
+        466,
+        465,
+        495
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": true,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "360x800",
+      "status": "PASS",
+      "heroHeight": 816,
+      "trackHeights": [
+        510,
+        540
+      ],
+      "carousels": 2,
+      "casesPerCarousel": 3,
+      "visibleCardsPerCarousel": 1,
+      "cardHeights": [
+        474,
+        474,
+        474,
+        474,
+        474,
+        474,
+        451,
+        451,
+        503,
+        451,
+        451,
+        503
+      ],
+      "modalTabs": 3,
+      "productionSteps": 4,
+      "touch": true,
+      "errors": [],
+      "failedLocal": []
+    },
+    {
+      "scenario": "JavaScript disabled",
+      "status": "PASS"
+    },
+    {
+      "scenario": "GSAP CDN blocked",
+      "status": "PASS"
+    },
+    {
+      "scenario": "Reduced motion at load + breakpoint resize",
+      "status": "PASS"
+    }
+  ],
+  "accessibility": [
+    {
+      "width": 1440,
+      "scenario": "main",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "scenario": "bioplaca",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "scenario": "awx",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "scenario": "pugliese",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "scenario": "main",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "scenario": "bioplaca",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "scenario": "awx",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "scenario": "pugliese",
+      "violations": []
+    }
+  ],
+  "localPerformanceSample": {
+    "browser": "Chrome",
+    "viewport": "390x844",
+    "localDevelopmentServer": true,
+    "cls": 0.0015407898746572488,
+    "domContentLoadedMs": 470,
+    "backofficeResources": 6,
+    "uniqueBackofficeResources": 6,
+    "backofficeTransferBytes": 222486,
+    "requestsToOriginalBackends": []
+  },
+  "demoQR": [
+    {
+      "decoded": "https://example.com/r/K8P4MX?src=qr",
+      "file": "demo-qr.png",
+      "pass": true
+    },
+    {
+      "decoded": "https://example.com/r/K8P4MX?src=qr",
+      "file": "plate-generated.webp",
+      "pass": true
+    }
+  ],
+  "sourceRepositories": [
+    {
+      "repository": "qr-code-new-link",
+      "headUnchanged": true,
+      "statusUnchanged": true
+    },
+    {
+      "repository": "wisecar",
+      "headUnchanged": true,
+      "statusUnchanged": true
+    },
+    {
+      "repository": "plataforma-curso",
+      "headUnchanged": true,
+      "statusUnchanged": true
+    }
+  ],
+  "screenshots": "Viewport captures preserve the UI. Whole-section overview captures hide fixed header, dock, skip link and progress only during capture to avoid overlays in the tall image.",
+  "limits": "Chrome with touch events through CDP; not physical iOS/Android certification. Performance sample is local, not a field benchmark."
+}

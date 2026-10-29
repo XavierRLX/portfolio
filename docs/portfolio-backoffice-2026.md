@@ -79,3 +79,25 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 - Tab/Shift+Tab retornam entre os extremos do diálogo, evitando que o Chrome transfira foco para sua interface. A página fica fixada na posição anterior durante a apresentação: isso também impede movimento de fundo provocado por foco programático em telas estreitas. Escape continua nativo, e o fechamento devolve foco e posição ao sexto case.
 - A atualização dos ScrollTriggers responde somente aos detalhes dos seis cards originais. Expandir uma captura dentro do diálogo não altera a geometria da página e não precisa recalcular esse contexto de scroll.
 - Transições de aba e etapa são interrompidas e limpas ao ativar movimento reduzido.
+
+## B3 — Validação final concluída
+
+- **10 cenários Playwright passaram em Chrome:** 1440×900, 1280×800, 1024×768, 768×1024, 430×932, 390×844 e 360×800; JavaScript desligado; CDN GSAP bloqueada; movimento reduzido inicial com resize entre 360/390/430/700/701/1100/1101/1280 px.
+- Duas faixas realmente empilhadas, três cases originais por faixa, controles/seleção independentes. Navegar uma não altera a posição da outra. Todos os seis cases, imagens e detalhes verificados.
+- Nos três tamanhos mobile, cada faixa passou por swipe real via CDP, cruzamento circular nos dois sentidos, pausa com o dedo apoiado na borda, cinco toques rápidos e alternativa por teclado/botões. Snap com erro inferior a 2 px. Scroll vertical nativo preservado.
+- Painel validado em todas as larguras: limites e overflow, três abas, quatro etapas, editor/Teacher expansíveis, imagens decodificadas, setas/Home/End nas abas, Tab/Shift+Tab, Escape/fechar, fundo fixo e restauração do foco/scroll.
+- Sem overflow horizontal, links aninhados, IDs duplicados, assets locais com erro, exceções ou erros de console na matriz final. Hero, navegação, dock e reduced motion também passaram.
+- **8 auditorias axe sem violações detectadas** nas regras WCAG A/AA 2.0/2.1/2.2 selecionadas: conteúdo principal e três abas, em 1440/390. Isso complementa a verificação manual; não é certificação de acessibilidade.
+- Amostra local em 390 px: CLS ≈ 0,0015; DOMContentLoaded ≈ 470 ms. As seis URLs de mídia administrativa visitadas nessa sequência foram transferidas uma vez cada, sem solicitações aos backends dos projetos originais. Valores de desenvolvimento local, sem afirmar desempenho de campo.
+- Apple Vision confirmou a URL fictícia tanto no QR isolado quanto na placa WebP efetivamente publicada. Impressão física e gravação NFC não foram executadas.
+- Os três repositórios de origem terminaram com o mesmo HEAD e `git status` da auditoria inicial. O servidor temporário de captura foi encerrado; somente o preview público do portfólio continua na porta 8016.
+
+### Evidências e reprodução
+
+- Relatório versionado: [report.json](qa/backoffice-20261029/report.json).
+- Visão geral: [desktop](qa/backoffice-20261029/desktop.png) e [mobile](qa/backoffice-20261029/mobile.png). Nestas duas capturas altas, os elementos fixos globais foram ocultados somente durante a captura para não sobrepor a seção; as capturas de viewport preservam a interface completa.
+- [Sexto case no mobile](qa/backoffice-20261029/backoffice-mobile.png) e [composição BioPlaca](qa/backoffice-20261029/bioplaca-production.png).
+- Demais screenshots e JSONs: `/tmp/portfolio-backoffice-qa/stacked-final/`.
+- Testes reproduzíveis: `tests/portfolio-ui.cjs` e `tests/portfolio-accessibility.cjs`; comandos no README. Os testes usam dependências externas temporárias, sem adicionar runtime ao site.
+
+Branch: `codex/portfolio-backoffice-cases-20261029`. Commits principais: `8f15134` (curadoria/mídia), `9b17889` (seis cases e painel), `69648aa` (dois carrosséis empilhados), com correções de foco, posição de fundo, alvos de toque e gesto nos commits intermediários. Nenhum merge, push ou deploy.

@@ -9,7 +9,9 @@ Atualizado em: 2026-10-29
 - B1 — Inspeção e mídia: concluída. Repositórios de origem apenas lidos; seus estados locais preexistentes foram registrados. Interfaces reais renderizadas offline com fixtures fictícias e sem conexão aos bancos. QR e arte BioPlaca gerados pelas funções originais; duas imagens com payload fictício decodificadas com sucesso. Capturas e prévias WebP revisadas, sem dados privados.
 - Commit B1: `8f15134` — curadoria e mídia fiel com dados fictícios.
 - B2 — Implementação: seis cases e dois grupos em funcionamento. Conforme clarificação explícita do usuário de 29/10, são dois carrosséis independentes e empilhados, cada um com três projetos. Desktop acima de 1100 px mostra os três cards de cada faixa; tablet/mobile usam trilhas nativas centralizadas e circulares com controles próprios. Painel `dialog` com três abas, Escape nativo, foco contido e restaurado, conteúdo inline como fallback sem JS, detalhes e sequência de produção em quatro etapas. Smoke visual em 1440/768/390/360 sem overflow ou exceções. Auditoria axe inicial do painel em 1440/390 sem violações WCAG A/AA detectadas.
-- Próximo passo: B3, matriz completa e regressão do hero, gesto touch, teclado, fallbacks, resize e auditoria das três abas.
+- B3 — Concluída: 10 cenários Playwright/Chrome nas sete larguras e três fallbacks; ambas as faixas independentes, swipe circular nos dois sentidos, pausa do dedo na borda, teclado, cinco toques rápidos, modal, foco/scroll, imagens, hero e ausência de overflow/erros passaram. Oito auditorias axe (principal + três abas, 1440/390) sem violações detectadas. QR e arte WebP públicos decodificados; três repositórios originais com HEAD/status preservados.
+- Implementação final das duas faixas: `69648aa`. Relatório e quatro screenshots em `docs/qa/backoffice-20261029/`; demais capturas em `/tmp/portfolio-backoffice-qa/stacked-final/`.
+- Etapa pronta para avaliação visual em `http://127.0.0.1:8016/`. Sem merge, push ou deploy.
 - Fonte desta etapa: `docs/portfolio-backoffice-2026.md`. Sem merge ou deploy.
 
 ## Evolução posterior — refinamento premium de outubro
