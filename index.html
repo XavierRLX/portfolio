@@ -113,34 +113,34 @@
           <div><p class="eyebrow"><span class="section-index">01 /</span> TRABALHOS SELECIONADOS</p>
             <h2 id="projects-title">Não são apenas telas.<br><span>São produtos funcionando.</span></h2>
           </div>
-          <p class="section-intro">Da operação de negócios ao entretenimento mobile. Projetos com decisões reais de engenharia e experiência.</p>
+          <p class="section-intro">Produtos reais, da arquitetura à experiência.</p>
         </div>
         <div class="projects-toolbar" aria-label="Navegação pelos projetos">
           <span class="projects-count">05 CASES · 2026</span>
           <div class="carousel-controls">
             <span class="swipe-hint">Deslize para ver mais <span aria-hidden="true">↔</span></span>
-            <button class="carousel-arrow" id="projects-prev" type="button" aria-label="Projeto anterior">←</button>
-            <span id="projects-position" aria-live="polite">01 / 05</span>
-            <button class="carousel-arrow" id="projects-next" type="button" aria-label="Próximo projeto">→</button>
+            <button class="carousel-arrow" id="projects-prev" type="button" aria-label="Projeto anterior" aria-controls="projects-track" disabled>←</button>
+            <span id="projects-position" role="status" aria-live="polite" aria-atomic="true">01 / 05</span>
+            <button class="carousel-arrow" id="projects-next" type="button" aria-label="Próximo projeto" aria-controls="projects-track">→</button>
           </div>
         </div>
-        <div class="projects-track" id="projects-track" aria-label="Projetos em destaque">
-          <article class="project-card project-card--feature reveal">
+        <p id="projects-help" class="sr-only">Deslize para explorar. Com o carrossel em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
+        <div class="projects-track" id="projects-track" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque" aria-describedby="projects-help">
+          <article class="project-card">
             <div class="card-visual visual-awx">
-              <img src="Imagens/awx_preview.jpg" width="960" height="540" alt="Interface real do AWX com garagem e gerenciamento automotivo" decoding="async" fetchpriority="high">
+              <img src="Imagens/awx_preview.jpg" width="960" height="540" alt="Interface real do AWX com garagem e gerenciamento automotivo" decoding="async" loading="lazy">
               <span class="visual-corner">01 / FEATURED PRODUCT</span>
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>PRODUTO AUTORAL</span><span>WEB + MOBILE</span></div>
               <h3>AWX <span>Brasil</span></h3>
-              <p>Um ecossistema para cuidar do veículo, acompanhar despesas e registrar manutenções com dados protegidos.</p>
-              <div class="card-stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Capacitor</span></div>
-              <details class="case-details"><summary>O que construí <span aria-hidden="true">+</span></summary><p>Arquitetura full stack, autenticação, autorização com RLS, modelagem do domínio automotivo, FIPE, histórico de manutenção e experiência mobile via Capacitor.</p></details>
+              <p>Gestão automotiva: manutenções, despesas e histórico do veículo em um só lugar.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Capacitor</span></div><p>Arquitetura full stack, autenticação, autorização com RLS, modelagem do domínio automotivo, FIPE, histórico de manutenção e experiência mobile via Capacitor.</p></details>
               <a class="case-link" href="https://www.awxbrasil.com.br/" target="_blank" rel="noopener noreferrer">Explorar produto <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="project-card reveal">
+          <article class="project-card">
             <div class="card-visual visual-bioplaca">
               <img src="Imagens/bioplaca_real.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Demonstração real dos modelos BioSites e sua experiência visual">
               <span class="visual-corner">02 / COMMERCE EXPERIENCE</span>
@@ -148,29 +148,27 @@
             <div class="card-copy">
               <div class="card-meta"><span>NEGÓCIOS LOCAIS</span><span>QR + NFC</span></div>
               <h3>BioPlaca <span>& BioSites</span></h3>
-              <p>Presença digital, avaliações e ferramentas de gestão para aproximar estabelecimentos de seus clientes.</p>
-              <div class="card-stack"><span>Next.js</span><span>Supabase</span><span>QR / NFC</span></div>
-              <details class="case-details"><summary>O que construí <span aria-hidden="true">+</span></summary><p>Fluxo administrativo de placas, identidade visual para impressão, códigos e redirecionamentos, integração NFC, vitrine BioSites e personalização de páginas.</p></details>
+              <p>Presença digital e ferramentas de gestão para negócios locais, com QR e NFC.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>Supabase</span><span>QR / NFC</span></div><p>Fluxo administrativo de placas, identidade visual para impressão, códigos e redirecionamentos, integração NFC, vitrine BioSites e personalização de páginas.</p></details>
               <a class="case-link" href="https://qr-code-new-link.vercel.app/demo" target="_blank" rel="noopener noreferrer">Ver demonstração <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="project-card reveal">
+          <article class="project-card">
             <div class="card-visual visual-galerows">
-              <img src="Imagens/galerows_preview.jpg" width="960" height="540" loading="lazy" decoding="async" alt="Prévia real do Galerows com aplicativo mobile e cartas ilustradas">
+              <img src="Imagens/galerows_preview.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Prévia real do Galerows com aplicativo mobile e cartas ilustradas">
               <span class="visual-corner">03 / MOBILE & MULTIPLAYER</span>
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>JOGOS SOCIAIS</span><span>ANDROID / IOS</span></div>
               <h3>Galerows<span class="title-dot">.</span></h3>
-              <p>Jogos para encontros presenciais, com partidas no mesmo celular e multiplayer local sem internet.</p>
-              <div class="card-stack"><span>React</span><span>TypeScript</span><span>Capacitor</span><span>LAN / WS</span></div>
-              <details class="case-details"><summary>O que construí <span aria-hidden="true">+</span></summary><p>Arquitetura dos jogos, estados de partida, salas LAN com runtime autoritativo, reconexão, segurança de comunicação e testes automatizados.</p></details>
+              <p>Jogos para encontros, no mesmo celular ou em multiplayer local sem internet.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>React</span><span>TypeScript</span><span>Capacitor</span><span>LAN / WS</span></div><p>Arquitetura dos jogos, estados de partida, salas LAN com runtime autoritativo, reconexão, segurança de comunicação e testes automatizados.</p></details>
               <a class="case-link" href="https://github.com/XavierRLX/Galerows" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="project-card reveal">
+          <article class="project-card">
             <div class="card-visual visual-cursos">
               <img src="Imagens/pugliese_real.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Página pública real da plataforma Cursos Pugliese">
               <span class="visual-corner">04 / EDUCATION PLATFORM</span>
@@ -178,14 +176,13 @@
             <div class="card-copy">
               <div class="card-meta"><span>EDTECH</span><span>FULL STACK</span></div>
               <h3>Cursos <span>Pugliese</span></h3>
-              <p>Plataforma educacional com experiências distintas para gestão, professores e estudantes.</p>
-              <div class="card-stack"><span>Next.js</span><span>Supabase Auth</span><span>RLS</span></div>
-              <details class="case-details"><summary>O que construí <span aria-hidden="true">+</span></summary><p>Gestão de conteúdo, cursos, módulos e progresso; autenticação SSR, permissões por papel, RLS, operações transacionais e fluxos de segurança para produção. Código privado.</p></details>
+              <p>Uma plataforma de cursos para gestão, professores e estudantes.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>Supabase Auth</span><span>RLS</span></div><p>Gestão de conteúdo, cursos, módulos e progresso; autenticação SSR, permissões por papel, RLS, operações transacionais e fluxos de segurança para produção. Código privado.</p></details>
               <a class="case-link" href="https://pugliesecursos.com.br/" target="_blank" rel="noopener noreferrer">Visitar site <span aria-hidden="true">↗</span></a>
             </div>
           </article>
 
-          <article class="project-card reveal">
+          <article class="project-card">
             <div class="card-visual visual-maria">
               <img src="Imagens/maria_real.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Landing page real da Maria Thereza, Enfermagem e Home Care">
               <span class="visual-corner">05 / EDITORIAL WEB DESIGN</span>
@@ -193,9 +190,8 @@
             <div class="card-copy">
               <div class="card-meta"><span>SAÚDE & SERVIÇOS</span><span>LANDING PAGE</span></div>
               <h3>Maria <span>Thereza</span></h3>
-              <p>Uma experiência editorial para apresentar cuidados domiciliares com clareza, elegância e confiança.</p>
-              <div class="card-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Cloudflare</span></div>
-              <details class="case-details"><summary>O que construí <span aria-hidden="true">+</span></summary><p>Design responsivo, animação em vídeo acionada pela rolagem sem controlar quadros, acessibilidade, performance e implantação estática na Cloudflare Pages.</p></details>
+              <p>Cuidados domiciliares apresentados com clareza, elegância e confiança.</p>
+              <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Cloudflare</span></div><p>Design responsivo, animação em vídeo acionada pela rolagem sem controlar quadros, acessibilidade, performance e implantação estática na Cloudflare Pages.</p></details>
               <a class="case-link" href="https://maria-thereza-enfermagem.pages.dev/" target="_blank" rel="noopener noreferrer">Visitar site <span aria-hidden="true">↗</span></a>
             </div>
           </article>

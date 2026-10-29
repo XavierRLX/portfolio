@@ -44,3 +44,14 @@ Evidências e resultados serão registrados após cada fase validada.
 - Matriz real em Chrome/Playwright: 1440×900, 1280×800, 1024×768, 768×1024, 430×932, 390×844, 360×800. Sem overflow, colisão entre texto/arte ou exceções JS; os dois CTAs estão visíveis na primeira dobra em todas elas.
 - Finding corrigido durante QA: os botões quebravam para duas linhas em 360 e 430 px. Agora usam Grid com duas colunas fluidas. A chamada inferior do hero foi removida no mobile, onde competia com o dock.
 - Hero em 390 px: altura 1114 → 816 px (−27%); em tablet: 1246 → 1016 px. Screenshots `hero-{largura}.png` e medidas `hero-results.json` no diretório de evidências.
+
+## R2 — Carousel validado
+
+- Escolha: trilha **finita, nativa**, com CSS Scroll Snap; sem duplicar DOM, autoplay, captura de ponteiro ou conversão do scroll vertical em horizontal.
+- Até 850 px: card de `min(78vw, 420px)`, snap no centro, vizinhos em escala 0,94 e borda discreta no selecionado. Padding simétrico permite centralizar também primeiro/último. Em telas maiores: dois cards, snap no início e contador de intervalo (ex.: `02–03 / 05`). Não foi adicionado breakpoint corretivo para cada celular.
+- Loop infinito foi descartado: com cinco projetos, os limites explícitos preservam ordem, foco, links únicos e semântica. Não há benefício que compense clones e reposicionamentos.
+- Botões/summary/CTA com alvos de pelo menos 44 px; área do carousel focável com instruções para leitores de tela, setas e Home/End. Tab centra o card que contém o foco sem reordenar elementos. A região viva atualiza quando a navegação termina.
+- Resumos curtos visíveis. Stack e implementação permanecem completas no disclosure HTML; imagens reais em `object-fit: contain`, proporção reservada e carregamento lazy. Dimensões declaradas do Galerows corrigidas para 1200×750.
+- QA real em Chrome: botões e Home/End em 1440, 768, 430, 390 e 360 px; primeiro/último e contador corretos, sem overflow ou erros de JS. Desvio máximo medido da centralização: 0,45 px.
+- Toque real pelo CDP (`Input.dispatchTouchEvent`) em 390 px: swipe → segundo card, sem mover o scroll vertical; gesto vertical sobre o card mantém o scroll da página. Tab/Enter abre detalhes; Tab seguinte chega ao link e depois ao próximo case. Quatro toques rápidos chegam ao quinto case; resize 390→768 mantém a seleção.
+- Capturas `carousel-{largura}-{first,second}.png` e `touch-after-swipe.png` em `/tmp/portfolio-refinement-qa/`. As capturas finais aguardam o decode das imagens lazy, evitando confundir um frame de carregamento com falha de asset.

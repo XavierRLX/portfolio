@@ -8,7 +8,9 @@ O refresh/release de setembro abaixo permanece como histórico. A solicitação 
 
 - Divergência entre status antigo e versão premium registrada antes da implementação em `docs/portfolio-premium-refinement-2026.md`.
 - Fase R1 — Hero: concluída e validada nas sete larguras (1440, 1280, 1024, 768, 430, 390 e 360). Headline preservada; nome/Full Stack em uma linha, descrição curta, CTAs em duas colunas no mobile. React vetorial simétrico, sem perspectiva; duas miniinterfaces decorativas. Sem overflow ou erros de JS; preferência de movimento pode ser alterada durante a sessão.
-- Próximo passo: R2, carousel nativo compacto e acessível; depois R3, QA integrado com screenshots e testes reproduzíveis.
+- Commit R1: `d0462ca` — `feat: refine hero composition and responsive hierarchy`.
+- Fase R2 — Projetos: concluída. Trilha finita por scroll-snap; card central e vizinhos menores em até 850 px, dois cards acima disso. Resumos compactos; stack e implementação em `details`. Alvos de 44 px, setas/Início/Fim, Tab para cards fora da viewport, contador de intervalo no desktop. Swipe real via protocolo de toque do Chrome, scroll vertical, quatro toques rápidos e resize preservando seleção passaram. Centralização em mobile/tablet ficou abaixo de 1 px de erro.
+- Próximo passo: R3, QA integrado nas sete viewports, fallbacks e testes reproduzíveis.
 - Detalhes/evidências desta evolução: `docs/portfolio-premium-refinement-2026.md`.
 
 ## Estado geral

@@ -54,49 +54,103 @@
     updateLinks('inicio');
   }
 
-  // Mobile carousel: native horizontal swipe, scroll-snap, arrow alternatives.
+  // Finite native carousel: no cloned links, pointer capture, autoplay or wheel interception.
   if (track && cards.length && prev && next && position) {
     let activeIndex = 0;
+    let requestedIndex = 0;
     let carouselFrame = 0;
+    let settleTimer = 0;
+    let previousWidth = 0;
+    let centered = false;
+    let visibleCount = 2;
+    let destinations = [];
 
-    const findClosestIndex = () => {
-      const trackRect = track.getBoundingClientRect();
-      let closestIndex = 0;
-      let smallestDistance = Number.POSITIVE_INFINITY;
-      cards.forEach((card, index) => {
-        const distance = Math.abs(card.getBoundingClientRect().left - trackRect.left);
-        if (distance < smallestDistance) {
-          closestIndex = index;
-          smallestDistance = distance;
-        }
-      });
-      return closestIndex;
+    const measure = () => {
+      centered = getComputedStyle(track).getPropertyValue('--carousel-centered').trim() === '1';
+      visibleCount = centered ? 1 : 2;
+      const maxLeft = track.scrollWidth - track.clientWidth;
+      // offsetLeft ignores the presentation scale, keeping snap positions stable.
+      destinations = cards.map((card) => Math.max(0, Math.min(maxLeft,
+        centered ? card.offsetLeft + card.offsetWidth / 2 - track.clientWidth / 2 : card.offsetLeft
+      )));
     };
-
-    const updateCarousel = () => {
+    const lastIndex = () => cards.length - visibleCount;
+    const closestIndex = () => {
+      let closest = 0;
+      for (let i = 1; i <= lastIndex(); i += 1) {
+        if (Math.abs(destinations[i] - track.scrollLeft) <
+            Math.abs(destinations[closest] - track.scrollLeft)) closest = i;
+      }
+      return closest;
+    };
+    const updateVisual = () => {
       carouselFrame = 0;
-      activeIndex = findClosestIndex();
-      position.textContent = String(activeIndex + 1).padStart(2, '0') +
-        ' / ' + String(cards.length).padStart(2, '0');
-      prev.disabled = activeIndex === 0;
-      next.disabled = activeIndex === cards.length - 1;
+      activeIndex = closestIndex();
+      cards.forEach((card, index) => card.classList.toggle('is-current',
+        index >= activeIndex && index < activeIndex + visibleCount));
+    };
+    const updateControls = () => {
+      const start = String(activeIndex + 1).padStart(2, '0');
+      const end = visibleCount > 1 ? '–' + String(activeIndex + visibleCount).padStart(2, '0') : '';
+      const text = start + end + ' / ' + String(cards.length).padStart(2, '0');
+      if (position.textContent !== text) position.textContent = text;
+      prev.disabled = requestedIndex === 0;
+      next.disabled = requestedIndex === lastIndex();
+    };
+    const settle = () => {
+      window.clearTimeout(settleTimer);
+      updateVisual();
+      requestedIndex = activeIndex;
+      updateControls();
+    };
+    const scrollToIndex = (index, behavior = reducedMotion.matches ? 'instant' : 'smooth') => {
+      requestedIndex = Math.max(0, Math.min(lastIndex(), index));
+      track.scrollTo({ left: destinations[requestedIndex], behavior });
+      updateControls();
+      if (behavior === 'instant') settle();
     };
 
-    const scrollToIndex = (index) => {
-      const targetIndex = Math.min(cards.length - 1, Math.max(0, index));
-      const left = cards[targetIndex].getBoundingClientRect().left -
-        track.getBoundingClientRect().left + track.scrollLeft;
-      track.scrollTo({ left, behavior: reducedMotion.matches ? 'auto' : 'smooth' });
-    };
-
-    prev.addEventListener('click', () => scrollToIndex(activeIndex - 1));
-    next.addEventListener('click', () => scrollToIndex(activeIndex + 1));
-
+    cards.forEach((card, index) => {
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-roledescription', 'slide');
+      card.setAttribute('aria-label', (index + 1) + ' de ' + cards.length + ': ' + card.querySelector('h3').textContent);
+    });
+    track.closest('.projects-section').classList.add('carousel-ready');
+    measure();
+    settle();
+    prev.addEventListener('click', () => scrollToIndex(requestedIndex - 1));
+    next.addEventListener('click', () => scrollToIndex(requestedIndex + 1));
     track.addEventListener('scroll', () => {
-      if (!carouselFrame) carouselFrame = window.requestAnimationFrame(updateCarousel);
+      if (!carouselFrame) carouselFrame = window.requestAnimationFrame(updateVisual);
+      // Fallback for engines without scrollend; the live region updates only when settled.
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(settle, 160);
     }, { passive: true });
-    window.addEventListener('resize', updateCarousel, { passive: true });
-    updateCarousel();
+    track.addEventListener('scrollend', settle);
+    track.addEventListener('pointerdown', () => { requestedIndex = activeIndex; }, { passive: true });
+    track.addEventListener('keydown', (event) => {
+      if (event.target !== track || event.altKey || event.ctrlKey || event.metaKey) return;
+      const keys = { ArrowLeft: requestedIndex - 1, ArrowRight: requestedIndex + 1, Home: 0, End: lastIndex() };
+      if (!(event.key in keys)) return;
+      event.preventDefault();
+      scrollToIndex(keys[event.key]);
+    });
+    // Tab brings each real disclosure/link into view without moving the vertical page.
+    track.addEventListener('focusin', (event) => {
+      const card = event.target.closest('.project-card');
+      const index = cards.indexOf(card);
+      if (index < 0 || (index >= activeIndex && index < activeIndex + visibleCount)) return;
+      scrollToIndex(index < activeIndex ? index : index - visibleCount + 1, 'instant');
+    });
+    const resize = () => {
+      if (previousWidth === track.clientWidth) return;
+      previousWidth = track.clientWidth;
+      measure();
+      scrollToIndex(activeIndex, 'instant');
+    };
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(track);
+    else window.addEventListener('resize', resize, { passive: true });
+    reducedMotion.addEventListener('change', () => scrollToIndex(activeIndex, 'instant'));
   }
 
   // MatchMedia reverts every tween/trigger when the preference changes, even mid-animation.
