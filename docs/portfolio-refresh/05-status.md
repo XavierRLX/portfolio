@@ -7,7 +7,9 @@ Atualizado em: 2026-10-29
 - Após avaliação visual, o proprietário autorizou explicitamente colocar a versão em produção. Esta autorização substitui as restrições de merge/push/deploy da etapa anterior para este release.
 - Conteúdo aprovado: `d2dcf31`, com dois carrosséis independentes e empilhados, seis cases e painel administrativo.
 - Pré-release: working tree limpa; `main` local/remota em `6c926cc`; integração fast-forward possível. GitHub Pages confirmado em `main`, raiz `/`, build legado.
-- Publicação e QA público em andamento; acompanhamento em `docs/portfolio-release-20261029.md`.
+- Publicado por fast-forward e push normal para `main` em `4314baa`. GitHub Pages confirmou build `built`, sem erro.
+- QA público concluído: dez cenários Playwright/Chrome, oito auditorias axe sem violações detectadas; HTML e 26 assets publicados com HTTP 200 e hashes iguais à versão local.
+- Site: `https://xavierrlx.github.io/portfolio/`. Relatório e capturas em `docs/qa/production-20261029/`; detalhes em `docs/portfolio-release-20261029.md`.
 
 ## Etapa atual — Engenharia & Backoffice (29/10/2026)
 
@@ -18,8 +20,8 @@ Atualizado em: 2026-10-29
 - B2 — Implementação: seis cases e dois grupos em funcionamento. Conforme clarificação explícita do usuário de 29/10, são dois carrosséis independentes e empilhados, cada um com três projetos. Desktop acima de 1100 px mostra os três cards de cada faixa; tablet/mobile usam trilhas nativas centralizadas e circulares com controles próprios. Painel `dialog` com três abas, Escape nativo, foco contido e restaurado, conteúdo inline como fallback sem JS, detalhes e sequência de produção em quatro etapas. Smoke visual em 1440/768/390/360 sem overflow ou exceções. Auditoria axe inicial do painel em 1440/390 sem violações WCAG A/AA detectadas.
 - B3 — Concluída: 10 cenários Playwright/Chrome nas sete larguras e três fallbacks; ambas as faixas independentes, swipe circular nos dois sentidos, pausa do dedo na borda, teclado, cinco toques rápidos, modal, foco/scroll, imagens, hero e ausência de overflow/erros passaram. Oito auditorias axe (principal + três abas, 1440/390) sem violações detectadas. QR e arte WebP públicos decodificados; três repositórios originais com HEAD/status preservados.
 - Implementação final das duas faixas: `69648aa`. Relatório e quatro screenshots em `docs/qa/backoffice-20261029/`; demais capturas em `/tmp/portfolio-backoffice-qa/stacked-final/`.
-- Etapa pronta para avaliação visual em `http://127.0.0.1:8016/`. Sem merge, push ou deploy.
-- Fonte desta etapa: `docs/portfolio-backoffice-2026.md`. Sem merge ou deploy.
+- Etapa aprovada e publicada em 29/10/2026, conforme autorização posterior registrada acima. Preview local permanece disponível em `http://127.0.0.1:8016/`.
+- Fonte da implementação: `docs/portfolio-backoffice-2026.md`. Publicação posterior: `docs/portfolio-release-20261029.md`.
 
 ## Evolução posterior — refinamento premium de outubro
 

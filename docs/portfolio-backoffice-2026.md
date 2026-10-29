@@ -101,3 +101,7 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 - Testes reproduzíveis: `tests/portfolio-ui.cjs` e `tests/portfolio-accessibility.cjs`; comandos no README. Os testes usam dependências externas temporárias, sem adicionar runtime ao site.
 
 Branch: `codex/portfolio-backoffice-cases-20261029`. Commits principais: `8f15134` (curadoria/mídia), `9b17889` (seis cases e painel), `69648aa` (dois carrosséis empilhados), com correções de foco, posição de fundo, alvos de toque e gesto nos commits intermediários. Nenhum merge, push ou deploy.
+
+## Publicação posterior
+
+Após a avaliação visual, o proprietário aprovou colocar esta versão em produção em 29/10/2026. A integração e o QA no GitHub Pages estão registrados em [portfolio-release-20261029.md](portfolio-release-20261029.md). As restrições de não publicar acima descrevem a fase de implementação anterior à autorização.

@@ -2,7 +2,7 @@
 
 Portfólio autoral de um Desenvolvedor Full Stack. Versão **Experience**, com direção visual editorial, cases reais e navegação orientada a mobile/touch.
 
-> **Status desta etapa:** seis cases e Engenharia & Backoffice em `codex/portfolio-backoffice-cases-20261029`, sobre o refinamento premium `39fa428` (ancestral `efce7c3`). Versão aprovada pelo proprietário para publicação em 29/10/2026. Release e validação pública em `docs/portfolio-release-20261029.md`.
+> **Status:** publicado no [GitHub Pages](https://xavierrlx.github.io/portfolio/) em 29/10/2026, após aprovação visual. Versão premium com seis cases e dois carrosséis independentes. Release e QA público em `docs/portfolio-release-20261029.md`.
 
 ## Projetos
 

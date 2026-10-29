@@ -21,4 +21,22 @@ O proprietário aprovou a avaliação local e autorizou explicitamente colocar a
 
 ## Integração e validação
 
-Método: `git merge --ff-only`, seguido de push normal para `origin/main`, sem force push. A confirmação do build de Pages e a verificação em navegador público serão registradas após a publicação.
+- Integração concluída: `git merge --ff-only`, de `6c926cc` para `4314baa2bd2fe9d89b3fb3864dc5b01f2c9742c0`.
+- Push normal para `origin/main` confirmado; sem force push, conflitos ou exclusão de branches.
+- GitHub Pages: build `built`, commit `4314baa`, sem mensagem de erro. Conclusão em 29/10/2026 às 01:05:21, horário de São Paulo.
+- HTML e 26 assets referenciados no site retornaram HTTP 200 e SHA-256 idêntico aos arquivos locais da versão publicada. Inclui CSS/JS, imagens administrativas, QR/arte, favicon, imagem OG e currículo PDF.
+- A documentação de fechamento não modifica HTML, CSS, JavaScript ou mídia da versão aprovada.
+
+## QA no site publicado
+
+Os testes foram executados contra `https://xavierrlx.github.io/portfolio/`, usando Chrome e Playwright:
+
+- Dez cenários passaram: 1440, 1280, 1024, 768, 430, 390 e 360 px; JavaScript desligado; GSAP bloqueado; movimento reduzido inicial com resize.
+- Dois carrosséis independentes/empilhados, swipe circular em ambos os sentidos, pausa de toque, cliques rápidos, teclado, imagens, ausência de overflow, erros de console e assets locais com falha.
+- Painel de bastidores: BioPlaca/AWX/Pugliese, quatro etapas de produção, detalhes expansíveis, foco contido, Escape, restauração do fundo e suporte a movimento reduzido.
+- Oito auditorias axe (principal e três abas, desktop/mobile) sem violações detectadas nas regras selecionadas.
+- Capturas públicas desktop e mobile revisadas visualmente.
+
+Relatório versionado: [produção](qa/production-20261029/report.json). Capturas: [desktop](qa/production-20261029/desktop.png), [bastidores mobile](qa/production-20261029/mobile-backoffice.png). Demais evidências: `/tmp/portfolio-release-20261029/browser/`.
+
+**Release concluído e validado.** A branch de implementação permanece preservada. Nenhum projeto ou banco de origem foi modificado.
