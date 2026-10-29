@@ -55,3 +55,7 @@ Evidências e resultados serão registrados após cada fase validada.
 - QA real em Chrome: botões e Home/End em 1440, 768, 430, 390 e 360 px; primeiro/último e contador corretos, sem overflow ou erros de JS. Desvio máximo medido da centralização: 0,45 px.
 - Toque real pelo CDP (`Input.dispatchTouchEvent`) em 390 px: swipe → segundo card, sem mover o scroll vertical; gesto vertical sobre o card mantém o scroll da página. Tab/Enter abre detalhes; Tab seguinte chega ao link e depois ao próximo case. Quatro toques rápidos chegam ao quinto case; resize 390→768 mantém a seleção.
 - Capturas `carousel-{largura}-{first,second}.png` e `touch-after-swipe.png` em `/tmp/portfolio-refinement-qa/`. As capturas finais aguardam o decode das imagens lazy, evitando confundir um frame de carregamento com falha de asset.
+
+## Finding R3 — Resize entre composições
+
+O QA adicional encontrou troca involuntária do segundo para o terceiro case ao redimensionar 851→1280 px. O navegador pode executar o novo snap antes do callback de ResizeObserver; a rotina de scroll comparava a nova posição com destinos da geometria antiga. A correção verifica a largura antes de calcular o item próximo, mede novamente e restaura o destino solicitado. Validação dirigida: 390→430→360→700→701→850→851→1280→390, mantendo o segundo case (ou o intervalo 02–03). A matriz integrada será repetida após esta correção.

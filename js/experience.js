@@ -66,6 +66,7 @@
     let destinations = [];
 
     const measure = () => {
+      previousWidth = track.clientWidth;
       centered = getComputedStyle(track).getPropertyValue('--carousel-centered').trim() === '1';
       visibleCount = centered ? 1 : 2;
       const maxLeft = track.scrollWidth - track.clientWidth;
@@ -85,6 +86,12 @@
     };
     const updateVisual = () => {
       carouselFrame = 0;
+      // A browser may re-snap before ResizeObserver runs. Never compare new offsets
+      // against stale destinations or it can select a neighboring project on resize.
+      if (track.clientWidth !== previousWidth) {
+        resize();
+        return;
+      }
       activeIndex = closestIndex();
       cards.forEach((card, index) => card.classList.toggle('is-current',
         index >= activeIndex && index < activeIndex + visibleCount));
@@ -142,12 +149,12 @@
       if (index < 0 || (index >= activeIndex && index < activeIndex + visibleCount)) return;
       scrollToIndex(index < activeIndex ? index : index - visibleCount + 1, 'instant');
     });
-    const resize = () => {
+    function resize() {
       if (previousWidth === track.clientWidth) return;
-      previousWidth = track.clientWidth;
+      const selected = requestedIndex;
       measure();
-      scrollToIndex(activeIndex, 'instant');
-    };
+      scrollToIndex(selected, 'instant');
+    }
     if ('ResizeObserver' in window) new ResizeObserver(resize).observe(track);
     else window.addEventListener('resize', resize, { passive: true });
     reducedMotion.addEventListener('change', () => scrollToIndex(activeIndex, 'instant'));
