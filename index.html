@@ -118,22 +118,18 @@
           </div>
           <p class="section-intro">Produtos reais, da arquitetura à experiência.</p>
         </div>
-        <p class="projects-group-fallback">Produtos (01–03) · Soluções &amp; Engenharia (04–06)</p>
-        <div class="projects-groups" aria-label="Grupos de projetos" role="group" hidden>
-          <button type="button" data-project-page="0" aria-pressed="true" aria-controls="projects-track"><span>01</span> Produtos</button>
-          <button type="button" data-project-page="3" aria-pressed="false" aria-controls="projects-track"><span>02</span> Soluções &amp; Engenharia</button>
-        </div>
-        <div class="projects-toolbar" aria-label="Navegação pelos projetos">
-          <span class="projects-count">06 CASES · 2026</span>
-          <div class="carousel-controls">
-            <span class="swipe-hint">Deslize para ver mais <span aria-hidden="true">↔</span></span>
-            <button class="carousel-arrow" id="projects-prev" type="button" aria-label="Projeto anterior" aria-controls="projects-track">←</button>
-            <span id="projects-position" role="status" aria-live="polite" aria-atomic="true">01 / 06</span>
-            <button class="carousel-arrow" id="projects-next" type="button" aria-label="Próximo projeto" aria-controls="projects-track">→</button>
+        <section class="projects-carousel" data-project-carousel aria-labelledby="products-title">
+          <div class="projects-toolbar">
+            <h3 class="projects-group-title" id="products-title"><span>01</span> Produtos</h3>
+            <div class="carousel-controls" role="group" aria-label="Navegação: Produtos">
+              <span class="carousel-total">03 CASES</span>
+              <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Projeto anterior em Produtos" aria-controls="projects-track-products">←</button>
+              <span class="carousel-position" data-carousel-position role="status" aria-live="polite" aria-atomic="true">01 / 03</span>
+              <button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximo projeto em Produtos" aria-controls="projects-track-products">→</button>
+            </div>
           </div>
-        </div>
-        <p id="projects-help" class="sr-only">Seis cases em dois grupos: Produtos e Soluções e Engenharia. Navegação circular: após o último case, volte ao primeiro. No desktop, dois cards por vez. Deslize para explorar. Com o carrossel em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
-        <div class="projects-track" id="projects-track" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Projetos em destaque" aria-describedby="projects-help">
+          <p id="products-help" class="sr-only">Três cases neste carrossel, com navegação circular. Deslize para explorar. Com a trilha em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
+          <div class="projects-track" id="projects-track-products" tabindex="0" role="region" aria-roledescription="carrossel" aria-labelledby="products-title" aria-describedby="products-help">
           <article class="project-card">
             <div class="card-visual visual-awx">
               <img src="Imagens/awx_preview.jpg" width="960" height="540" alt="Interface real do AWX com garagem e gerenciamento automotivo" decoding="async" loading="lazy">
@@ -141,7 +137,7 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>PRODUTO AUTORAL</span><span>WEB + MOBILE</span></div>
-              <h3>AWX <span>Brasil</span></h3>
+              <h4>AWX <span>Brasil</span></h4>
               <p>Gestão automotiva: manutenções, despesas e histórico do veículo em um só lugar.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>Capacitor</span></div><p>Arquitetura full stack, autenticação, autorização com RLS, modelagem do domínio automotivo, FIPE, histórico de manutenção e experiência mobile via Capacitor.</p></details>
               <a class="case-link" href="https://www.awxbrasil.com.br/" target="_blank" rel="noopener noreferrer">Explorar produto <span aria-hidden="true">↗</span></a>
@@ -155,7 +151,7 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>NEGÓCIOS LOCAIS</span><span>QR + NFC</span></div>
-              <h3>BioPlaca <span>& BioSites</span></h3>
+              <h4>BioPlaca <span>& BioSites</span></h4>
               <p>Presença digital e ferramentas de gestão para negócios locais, com QR e NFC.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>Supabase</span><span>QR / NFC</span></div><p>Fluxo administrativo de placas, identidade visual para impressão, códigos e redirecionamentos, integração NFC, vitrine BioSites e personalização de páginas.</p></details>
               <a class="case-link" href="https://qr-code-new-link.vercel.app/demo" target="_blank" rel="noopener noreferrer">Ver demonstração <span aria-hidden="true">↗</span></a>
@@ -169,13 +165,26 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>JOGOS SOCIAIS</span><span>ANDROID / IOS</span></div>
-              <h3>Galerows<span class="title-dot">.</span></h3>
+              <h4>Galerows<span class="title-dot">.</span></h4>
               <p>Jogos para encontros, no mesmo celular ou em multiplayer local sem internet.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>React</span><span>TypeScript</span><span>Capacitor</span><span>LAN / WS</span></div><p>Arquitetura dos jogos, estados de partida, salas LAN com runtime autoritativo, reconexão, segurança de comunicação e testes automatizados.</p></details>
               <a class="case-link" href="https://github.com/XavierRLX/Galerows" target="_blank" rel="noopener noreferrer">Ver repositório <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-
+          </div>
+        </section>
+        <section class="projects-carousel" data-project-carousel aria-labelledby="engineering-title">
+          <div class="projects-toolbar">
+            <h3 class="projects-group-title" id="engineering-title"><span>02</span> Soluções &amp; Engenharia</h3>
+            <div class="carousel-controls" role="group" aria-label="Navegação: Soluções &amp; Engenharia">
+              <span class="carousel-total">03 CASES</span>
+              <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Projeto anterior em Soluções &amp; Engenharia" aria-controls="projects-track-engineering">←</button>
+              <span class="carousel-position" data-carousel-position role="status" aria-live="polite" aria-atomic="true">01 / 03</span>
+              <button class="carousel-arrow" type="button" data-carousel-next aria-label="Próximo projeto em Soluções &amp; Engenharia" aria-controls="projects-track-engineering">→</button>
+            </div>
+          </div>
+          <p id="engineering-help" class="sr-only">Três cases neste carrossel, com navegação circular. Deslize para explorar. Com a trilha em foco, use as setas esquerda e direita, Início e Fim. Tab acessa os detalhes e links de cada projeto.</p>
+          <div class="projects-track" id="projects-track-engineering" tabindex="0" role="region" aria-roledescription="carrossel" aria-labelledby="engineering-title" aria-describedby="engineering-help">
           <article class="project-card">
             <div class="card-visual visual-cursos">
               <img src="Imagens/pugliese_real.jpg" width="1200" height="750" loading="lazy" decoding="async" alt="Página pública real da plataforma Cursos Pugliese">
@@ -183,7 +192,7 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>EDTECH</span><span>FULL STACK</span></div>
-              <h3>Cursos <span>Pugliese</span></h3>
+              <h4>Cursos <span>Pugliese</span></h4>
               <p>Uma plataforma de cursos para gestão, professores e estudantes.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>Supabase Auth</span><span>RLS</span></div><p>Gestão de conteúdo, cursos, módulos e progresso; autenticação SSR, permissões por papel, RLS, operações transacionais e fluxos de segurança para produção. Código privado.</p></details>
               <a class="case-link" href="https://pugliesecursos.com.br/" target="_blank" rel="noopener noreferrer">Visitar site <span aria-hidden="true">↗</span></a>
@@ -197,7 +206,7 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>SAÚDE & SERVIÇOS</span><span>LANDING PAGE</span></div>
-              <h3>Maria <span>Thereza</span></h3>
+              <h4>Maria <span>Thereza</span></h4>
               <p>Cuidados domiciliares apresentados com clareza, elegância e confiança.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Cloudflare</span></div><p>Design responsivo, animação em vídeo acionada pela rolagem sem controlar quadros, acessibilidade, performance e implantação estática na Cloudflare Pages.</p></details>
               <a class="case-link" href="https://maria-thereza-enfermagem.pages.dev/" target="_blank" rel="noopener noreferrer">Visitar site <span aria-hidden="true">↗</span></a>
@@ -215,14 +224,15 @@
             </div>
             <div class="card-copy">
               <div class="card-meta"><span>FULL STACK</span><span>SISTEMAS ADMINISTRATIVOS</span></div>
-              <h3>Engenharia <span>&amp; Backoffice</span></h3>
+              <h4>Engenharia <span>&amp; Backoffice</span></h4>
               <p>Gestão, automação e permissões nos bastidores de três produtos reais.</p>
               <details class="case-details"><summary>Detalhes técnicos <span aria-hidden="true">+</span></summary><div class="card-stack"><span>Next.js</span><span>TypeScript</span><span>PostgreSQL</span><span>RLS</span></div><p>Produção de placas na BioPlaca, operação profissional na AWX e administração acadêmica no Pugliese. Um case de engenharia que conecta interface, regras de negócio e persistência.</p></details>
               <button class="case-link backoffice-open" type="button" data-backoffice-open aria-haspopup="dialog" aria-controls="backoffice-dialog" hidden>Explorar bastidores <span aria-hidden="true">↗</span></button>
               <a class="case-link backoffice-fallback" href="#backoffice-content">Explorar bastidores <span aria-hidden="true">↓</span></a>
             </div>
           </article>
-        </div>
+          </div>
+        </section>
         <p class="projects-footnote">Cada projeto representa decisões de arquitetura, interface e entrega. <a href="https://github.com/XavierRLX" target="_blank" rel="noopener noreferrer">Mais trabalhos no GitHub ↗</a></p>
       </div>
     </section>

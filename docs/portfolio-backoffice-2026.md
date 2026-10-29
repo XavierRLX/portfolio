@@ -28,9 +28,10 @@ As conclusões vieram dos componentes, fluxos de servidor, geradores, contratos 
 
 Manter fundo `#080c19`, superfície `#0b101f`, lilás `#9d8bff`, ciano `#75dbe3`, tipografia e acabamento aprovados. Os cinco cards existentes evoluem somente o necessário para a nova composição. O sexto é identificado como case transversal, sem simular um novo produto.
 
-- Desktop acima de 1100 px: dois cards maiores. Em cada grupo de três, os pares se sobrepõem (01–02, 02–03; 04–05, 05–06), preservando contexto e os atalhos de grupo. Navegação circular por setas, teclado e gesto nativo.
-- Ajuste explícito do usuário em 29/10, após screenshot da versão com três cards: dois cards e retorno infinito. Esta direção substitui a composição de três cards e a decisão finita da rodada anterior.
-- Tablet/mobile: uma trilha nativa com seis cards, centro em destaque, vizinhos parciais e grupo ativo acompanhando a posição.
+- Dois carrosséis independentes e empilhados: **Produtos** (AWX, BioPlaca, Galerows) e **Soluções & Engenharia** (Pugliese, Maria, Backoffice).
+- Acima de 1100 px, os três cases de cada faixa cabem integralmente. Os buffers e controles ficam ocultos: não há deslocamento desnecessário nem cards duplicados visíveis.
+- Tablet/mobile: cada faixa tem três cases, swipe nativo circular, centro em destaque, vizinhos parciais e controles próprios. Navegar uma faixa não altera a outra.
+- A clarificação explícita do usuário em 29/10 define dois carrosséis um abaixo do outro, cada um com três projetos.
 - Bastidores: painel modal com abas BioPlaca/AWX/Pugliese, imagens fiéis, descrições curtas e detalhes opcionais. Sem carousel horizontal dentro do painel.
 - BioPlaca: sequência controlada pelo visitante, do modelo à composição/exportação; nenhum autoplay que impeça leitura.
 
@@ -59,9 +60,10 @@ Proveniência, capturas originais, renderizadores temporários e verificação d
 
 ## B2 — Implementação e smoke
 
-- Mantido um único scroll horizontal nativo. Dois cards acima de 1100 px; até essa largura, cada um dos seis recebe snap central e vizinhos menores. Sem captura de gestos, autoplay ou conversão de scroll vertical.
-- O retorno circular usa buffers visuais inertes antes/depois dos seis cards originais. Os buffers não têm links, botões, IDs ou participação na árvore de acessibilidade. Após soltar o toque e concluir o snap, a trilha retorna à posição visualmente equivalente dos originais, sem transição de escala. Uma pausa com o dedo apoiado não dispara o reposicionamento. São somente seis cases navegáveis. Os estados dos detalhes são sincronizados com as prévias de borda.
-- `js/projects.js` concentra o carousel, extraído do controlador geral para não misturar navegação de cases e efeitos de seção. O índice lógico selecionado é preservado ao trocar entre card central e composição de dois cards.
+- Duas instâncias do mesmo controlador modular, cada uma com três cases, controles, contador e seleção próprios. Os grupos permanecem no fluxo vertical, um abaixo do outro.
+- Os três cards ficam visíveis por faixa acima de 1100 px. Até essa largura, cada trilha usa snap central e vizinhos menores. Sem captura de gestos, autoplay ou conversão de scroll vertical.
+- O retorno circular mobile/tablet usa buffers visuais inertes antes/depois dos três cards originais de cada faixa. Os buffers não têm links, botões, IDs ou participação na árvore de acessibilidade. Após soltar o toque e concluir o snap, a trilha retorna à posição equivalente dos originais, sem transição de escala. Uma pausa com o dedo apoiado não dispara reposicionamento. São somente seis cases navegáveis no total.
+- `js/projects.js` preserva a seleção de cada faixa ao trocar entre card central e composição completa de três cards.
 - O sexto case usa três miniaturas dos componentes reais e é identificado como demonstração transversal. O botão abre `dialog` nativo, com fundo inerte, três abas, foco controlado, Escape e retorno ao contexto original.
 - Sem JavaScript, o CTA é uma âncora para a mesma apresentação inline; as três áreas e as quatro etapas ficam legíveis. Não há cópia alternativa de conteúdo para manter.
 - A automação BioPlaca aparece antes do editor completo: quatro etapas controladas pelo visitante. Editor real e decisões técnicas são expansíveis. NFC manual e valores fictícios são identificados explicitamente.
