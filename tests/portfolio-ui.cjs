@@ -42,6 +42,14 @@ async function noOverflow(page) {
 async function assertCard(page, index) {
   const card = page.locator('.project-card').nth(index);
   await card.locator('img').evaluateAll((images) => Promise.all(images.map((image) => image.decode())));
+  // Motion is intentional during navigation; check clipping in the settled layout.
+  await page.waitForFunction((cardIndex) => {
+    const current = document.querySelectorAll('.project-card')[cardIndex];
+    if (!current) return false;
+    if (!window.gsap) return true;
+    return ![...current.querySelectorAll('.card-visual, .card-copy')]
+      .some((node) => gsap.isTweening(node));
+  }, index, { timeout: 5000 });
   const info = await card.evaluate((element) => {
     const image = element.querySelector('img');
     const rect = element.getBoundingClientRect();

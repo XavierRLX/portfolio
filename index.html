@@ -25,13 +25,14 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/experience.css">
   <link rel="stylesheet" href="CSS/backoffice.css">
+  <script src="js/intro-motion.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="js/navigation.js" defer></script>
   <script src="js/projects.js" defer></script>
+  <script src="js/project-motion.js" defer></script>
   <script src="js/backoffice.js" defer></script>
   <script src="js/experience.js" defer></script>
-  <script src="js/intro-motion.js" defer></script>
   <script src="js/react-interaction.js" defer></script>
   <script src="js/copiarEcolar.js" defer></script>
   <title>Renan Xavier — Full Stack & Product Engineering</title>
@@ -125,7 +126,14 @@
         </div>
       </div>
       <div class="hero-bottom section-container"><a href="#projeto">DESLIZE PARA EXPLORAR <span aria-hidden="true">↓</span></a></div>
-      <svg class="hero-wave" viewBox="0 0 1440 132" preserveAspectRatio="none" aria-hidden="true"><path d="M0 65C220 35 370 123 620 93S1050 -20 1440 74V132H0Z" fill="#0b101f"/></svg>
+      <div class="section-wave section-wave--projects" aria-hidden="true">
+        <svg class="wave-current" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 58 C240 25 480 90 720 58 C960 26 1200 88 1440 58 C1680 25 1920 90 2160 58 C2400 26 2640 88 2880 58 V120 H0Z" fill="currentColor"/>
+        </svg>
+        <svg class="wave-echo" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 48 C240 15 480 80 720 48 C960 16 1200 78 1440 48 C1680 15 1920 80 2160 48 C2400 16 2640 78 2880 48" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
     </section>
 
     <section class="projects-section" id="projeto" aria-labelledby="projects-title">
@@ -252,6 +260,14 @@
           </div>
         </section>
         <p class="projects-footnote">Cada projeto representa decisões de arquitetura, interface e entrega. <a href="https://github.com/XavierRLX" target="_blank" rel="noopener noreferrer">Mais trabalhos no GitHub ↗</a></p>
+      </div>
+      <div class="section-wave section-wave--approach" aria-hidden="true">
+        <svg class="wave-current" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 58 C240 25 480 90 720 58 C960 26 1200 88 1440 58 C1680 25 1920 90 2160 58 C2400 26 2640 88 2880 58 V120 H0Z" fill="currentColor"/>
+        </svg>
+        <svg class="wave-echo" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 48 C240 15 480 80 720 48 C960 16 1200 78 1440 48 C1680 15 1920 80 2160 48 C2400 16 2640 78 2880 48" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
       </div>
     </section>
 
@@ -380,6 +396,14 @@
           <article class="approach-item reveal"><span class="approach-number">03</span><h3>Entrega verificável.</h3><p>No Galerows, valido gestos, partidas e conexão local entre celulares, além do layout responsivo.</p></article>
         </div>
       </div>
+      <div class="section-wave section-wave--profile" aria-hidden="true">
+        <svg class="wave-current" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 58 C240 25 480 90 720 58 C960 26 1200 88 1440 58 C1680 25 1920 90 2160 58 C2400 26 2640 88 2880 58 V120 H0Z" fill="currentColor"/>
+        </svg>
+        <svg class="wave-echo" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 48 C240 15 480 80 720 48 C960 16 1200 78 1440 48 C1680 15 1920 80 2160 48 C2400 16 2640 78 2880 48" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
+      </div>
     </section>
 
     <section class="profile-section" id="hSobre" aria-labelledby="about-title">
@@ -394,6 +418,14 @@
             <div class="stack-lists"><div><strong>FRONTEND</strong><p>React · Next.js · TypeScript · Tailwind CSS</p></div><div><strong>BACKEND & DADOS</strong><p>C# · .NET · PostgreSQL · Supabase · SQL Server · RLS</p></div><div><strong>MOBILE & INFRA</strong><p>Capacitor · WebSocket · Vercel · Cloudflare · GitHub Actions</p></div><div><strong>IA & QUALIDADE</strong><p>LLMs · RAG · agentes · testes automatizados · revisão de código</p></div></div>
           </details>
         </div>
+      </div>
+      <div class="section-wave section-wave--contact" aria-hidden="true">
+        <svg class="wave-current" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 58 C240 25 480 90 720 58 C960 26 1200 88 1440 58 C1680 25 1920 90 2160 58 C2400 26 2640 88 2880 58 V120 H0Z" fill="currentColor"/>
+        </svg>
+        <svg class="wave-echo" viewBox="0 0 2880 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 48 C240 15 480 80 720 48 C960 16 1200 78 1440 48 C1680 15 1920 80 2160 48 C2400 16 2640 78 2880 48" fill="none" stroke="currentColor" stroke-width="2"/>
+        </svg>
       </div>
     </section>
 

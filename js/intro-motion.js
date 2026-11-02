@@ -1,78 +1,93 @@
 (() => {
   'use strict';
 
-  // Text and structure already exist in HTML; motion is a progressive enhancement.
-  const gsap = window.gsap;
-  const heading = document.querySelector('.hero h1');
+  // Runs before the GSAP CDN: the opening and typing remain available offline.
+  // The complete sentence is always present in HTML for accessibility and no-JS.
   const description = document.querySelector('[data-typewriter]');
-  const reserve = description?.querySelector('.typewriter-reserve');
+  const original = description?.querySelector('.typewriter-reserve');
   const typed = description?.querySelector('.typewriter-render');
-  if (!gsap || !heading || !reserve || !typed) return;
+  if (!description || !original || !typed) return;
 
-  const content = reserve.textContent;
-  const motion = gsap.matchMedia();
+  const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const sentence = original.textContent;
+  const animations = [];
+  let frameId = 0;
+  let started = false;
+  let finished = false;
+  let typingStart = 0;
 
-  motion.add('(prefers-reduced-motion: no-preference)', () => {
-    // Direct deep links should not briefly move the hero into the viewport.
-    if (location.hash && location.hash !== '#inicio') return;
+  const restore = () => {
+    animations.forEach((animation) => animation.cancel());
+    cancelAnimationFrame(frameId);
+    description.classList.remove('is-typing');
+    typed.textContent = '';
+    finished = true;
+    document.documentElement.dataset.intro = 'complete';
+  };
 
-    const offscreen = Math.max(window.innerWidth + 180, 700);
-    const below = window.innerHeight + 200;
-    const counter = { value: 0 };
-    description.classList.add('is-typing');
+  const enter = (selector, from, delay, duration = 1200) => {
+    for (const element of document.querySelectorAll(selector)) {
+      // WAAPI updates only transform and opacity. It doesn't change document flow.
+      animations.push(element.animate([
+        { transform: from, opacity: 0.3 },
+        { transform: 'translate3d(0,0,0) scale(1)', opacity: 1 }
+      ], {
+        duration, delay, easing: 'cubic-bezier(.19,1,.22,1)', fill: 'backwards'
+      }));
+    }
+  };
 
-    const timeline = gsap.timeline({
-      defaults: { ease: 'power4.out' },
-      onComplete: () => {
-        description.classList.remove('is-typing');
-        typed.textContent = '';
-      }
-    });
-
-    // Entrance directions are intentional; no layout properties are animated.
-    timeline
-      .from('.site-header .logotipo', {
-        y: -160, opacity: 0.3, duration: 0.75, clearProps: 'transform,opacity'
-      }, 0)
-      .from('.site-header .menu, .site-header .menu-toggle', {
-        y: -160, opacity: 0.2, duration: 0.85, stagger: 0.05,
-        clearProps: 'transform,opacity'
-      }, 0.08)
-      .from('.hero-eyebrow', {
-        x: -offscreen, opacity: 0.65, duration: 0.85, clearProps: 'transform,opacity'
-      }, 0.04)
-      .from(heading, {
-        x: -offscreen, opacity: 0.6, duration: 1.06, clearProps: 'transform,opacity'
-      }, 0.13)
-      .from(description, {
-        y: 95, opacity: 0.4, duration: 0.72, clearProps: 'transform,opacity'
-      }, 0.33)
-      .from('.hero-actions', {
-        y: below, opacity: 0.45, duration: 1.08, clearProps: 'transform,opacity'
-      }, 0.2)
-      .from('.hero-art', {
-        x: offscreen, rotateY: -17, opacity: 0.65, duration: 1.16,
-        clearProps: 'transform,opacity'
-      }, 0.15)
-      .from('.tech-panel--interface', {
-        x: 140, y: -100, opacity: 0, duration: 0.65,
-        clearProps: 'transform,opacity'
-      }, 0.7)
-      .from('.tech-panel--architecture', {
-        x: -140, y: 90, opacity: 0, duration: 0.65,
-        clearProps: 'transform,opacity'
-      }, 0.77)
-      .to(counter, {
-        value: content.length, duration: 1.17, ease: 'none',
-        onUpdate: () => {
-          typed.textContent = content.slice(0, Math.floor(counter.value));
-        }
-      }, 0.46);
-
-    return () => {
-      timeline.kill();
+  const tick = (time) => {
+    if (finished) return;
+    const elapsed = time - typingStart;
+    const ratio = Math.min(1, Math.max(0, (elapsed - 430) / 2200));
+    typed.textContent = sentence.slice(0, Math.floor(sentence.length * ratio));
+    if (ratio === 1) {
       description.classList.remove('is-typing');
       typed.textContent = '';
-    };
-  });
+      finished = true;
+      document.documentElement.dataset.intro = 'complete';
+      return;
+    }
+    frameId = requestAnimationFrame(tick);
+  };
+
+  const play = () => {
+    if (started || finished || motion.matches) return;
+    if (location.hash && location.hash !== '#inicio') return;
+    started = true;
+    document.documentElement.dataset.intro = 'playing';
+    description.classList.add('is-typing');
+    typed.textContent = '';
+    typingStart = performance.now();
+
+    const left = 'translate3d(-105vw,0,0) scale(.97)';
+    const right = 'translate3d(105vw,0,0) scale(.95)';
+    enter('.site-header .logotipo', 'translate3d(0,-180px,0)', 20, 920);
+    enter('.site-header .menu, .site-header .menu-toggle', 'translate3d(0,-180px,0)', 130, 1060);
+    enter('.hero-eyebrow', left, 110, 1180);
+    enter('.hero h1', left, 220, 1480);
+    enter('.hero-description', 'translate3d(0,95px,0)', 510, 1040);
+    enter('.hero-actions', 'translate3d(0,115vh,0)', 400, 1390);
+    enter('.hero-art', right, 270, 1500);
+    frameId = requestAnimationFrame(tick);
+  };
+
+  const onMotionChange = () => {
+    if (motion.matches) restore();
+    // Do not restart after user switches preference mid-session.
+  };
+  motion.addEventListener('change', onMotionChange);
+
+  if (motion.matches || (location.hash && location.hash !== '#inicio')) {
+    restore();
+  } else if (document.visibilityState === 'hidden') {
+    document.addEventListener('visibilitychange', function visible() {
+      if (document.visibilityState !== 'visible') return;
+      document.removeEventListener('visibilitychange', visible);
+      play();
+    });
+  } else {
+    play();
+  }
 })();
