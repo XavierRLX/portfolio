@@ -357,3 +357,36 @@ button { cursor: pointer; }
   .hero-description.is-typing .typewriter-reserve { color:inherit; }
   .hero-description.is-typing .typewriter-render { display:none; }
 }
+
+
+/* React kinetic interaction: one bounded loop, scale/translate/opacity only. */
+.react-control {
+  position:relative; z-index:1; width:min(73%,372px);
+  padding:0; border:0; border-radius:50%; appearance:none;
+  background:transparent; color:inherit; touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.react-control:disabled { cursor:default; }
+.react-control:not(:disabled) { cursor:pointer; }
+.react-control:focus-visible { outline:2px solid var(--cyan); outline-offset:7px; }
+.hero-art[data-react-level="1"] .react-control,
+.hero-art[data-react-level="2"] .react-control,
+.hero-art[data-react-level="3"] .react-control { z-index:3; }
+.hero-art.is-react-kinetic .react-mark { animation:none; }
+.react-control .react-mark { display:block; width:100%; }
+.react-hint {
+  position:absolute; z-index:4; top:10%; left:4%;
+  max-width:55%; pointer-events:none;
+  color:var(--cyan); font:500 .56rem/1.55 "DM Mono",monospace;
+  letter-spacing:.09em; opacity:.75;
+}
+.hero-art:not(.is-react-kinetic):not(.is-react-reduced) .react-hint { display:none; }
+.hero-art[data-react-level="1"] .react-hint,
+.hero-art[data-react-level="2"] .react-hint,
+.hero-art[data-react-level="3"] .react-hint { color:var(--accent-light); opacity:1; }
+@media (max-width:700px) {
+  .react-hint { top:6%; left:2%; max-width:62%; font-size:.48rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero-art.is-react-reduced .react-mark { animation:none; }
+}
