@@ -168,7 +168,7 @@ async function runViewport(width, height) {
       await page.keyboard.press('Tab');
       const link = page.locator('.project-card').nth(index).locator('.case-link:visible');
       assert(await link.evaluate((element) => element === document.activeElement));
-      if (mobile) { const bounds = await link.boundingBox(); assert(bounds.y + bounds.height <= height - 70, 'Dock covers focused CTA'); }
+      if (mobile) { const bounds = await link.boundingBox(); assert(bounds.y >= -1 && bounds.y + bounds.height <= height + 1, 'Focused CTA outside viewport'); }
       if (index < offset + 2) await page.keyboard.press('Tab');
     }
   }
@@ -185,9 +185,15 @@ async function runViewport(width, height) {
     await page.locator('.menu-toggle').click(); assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true');
     await page.keyboard.press('Escape'); assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
     assert(await page.locator('.menu-toggle').evaluate((element) => element === document.activeElement));
+    // Header is now the only mobile navigation. It must reopen and close after selection.
+    assert.equal(await page.locator('.mobile-dock').count(), 0);
     for (const destination of ['#hSobre', '#mainContato', '#projeto', '#inicio']) {
-      await page.locator(`.mobile-dock a[href="${destination}"]`).click();
-      await page.waitForFunction((hash) => location.hash === hash, destination); await noOverflow(page);
+      await page.locator('.menu-toggle').click();
+      assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'true');
+      await page.locator(`#menu-principal a[href="${destination}"]`).click();
+      await page.waitForFunction((hash) => location.hash === hash, destination);
+      assert.equal(await page.locator('.menu-toggle').getAttribute('aria-expanded'), 'false');
+      await noOverflow(page);
     }
   }
   for (const selector of ['#hSobre', '#mainContato']) await page.locator(selector).scrollIntoViewIfNeeded();
@@ -308,7 +314,14 @@ async function fallbacks() {
   assert.equal(await page.locator('[data-production-stage]').count(), 4);
   assert(await page.locator('.backoffice-fallback').isVisible());
   assert(!(await page.locator('[data-carousel-next]').first().isVisible()));
-  assert(await page.locator('.mobile-dock').isVisible());
+  assert.equal(await page.locator('.mobile-dock').count(), 0);
+  assert(await page.locator('#menu-principal').isVisible(), 'Header links must remain available with JavaScript disabled');
+  const noJsHeader = await page.locator('.site-header').boundingBox();
+  const noJsEyebrow = await page.locator('.hero-eyebrow').boundingBox();
+  assert(noJsHeader.y + noJsHeader.height <= noJsEyebrow.y, 'No-JS header overlaps hero introduction');
+  await page.locator('#menu-principal a[href="#hSobre"]').click();
+  await page.waitForFunction(() => location.hash === '#hSobre');
+  assert(await page.locator('.hero-actions').isVisible());
   await projectView(page);
   await page.locator('.project-card .case-details summary').first().click();
   assert(await page.locator('.project-card .case-details').first().evaluate((element) => element.open));

@@ -3,9 +3,9 @@
 
   const header = document.querySelector('.site-header');
   const progress = document.querySelector('.scroll-progress');
-  const navLinks = Array.from(document.querySelectorAll(
-    '.navegacao-principal a[href^="#"], .mobile-dock a[href^="#"]'
-  ));
+  const navLinks = Array.from(
+    document.querySelectorAll('.navegacao-principal a[href^="#"]')
+  );
 
   // One read + one write per frame. Passive scrolling and no scroll interception.
   let scheduled = false;

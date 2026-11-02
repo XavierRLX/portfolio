@@ -23,3 +23,10 @@
 ## Limitações
 - QA automatizado em Chrome local, não equivale a teste físico em Android/iPhone ou a uma medição Lighthouse. Se o CDN GSAP não carregar, a entrada dinâmica não roda, mas todo o conteúdo permanece visível; o cubo CSS roda independentemente em movimento normal.
 - A animação 3D é propositalmente curta e decorativa. Não há preloader bloqueante, porcentagens simuladas, sincronização com recursos externos nem dependência Three.js.
+
+## Ajuste posterior — navegação mobile
+
+- Removida a navegação fixa inferior (`mobile-dock`), incluindo o HTML, os estilos e as referências JavaScript.
+- O header passa a ser o único ponto de navegação mobile; menu expansível mantém Escape, foco e fechamento após seleção. Sem JavaScript, links aparecem no próprio header em duas linhas, com espaço adequado antes do hero.
+- Eliminados o espaço artificial no rodapé e o `scroll-padding-bottom` destinado ao antigo dock.
+- Suite Playwright atualizada para navegação pelo header. Validado em 360, 390 e 430 px com JavaScript ligado/desligado sem overflow e sem sobreposição no hero; suíte completa de 10 cenários de interface aprovada. Publicação não autorizada nesta etapa.
