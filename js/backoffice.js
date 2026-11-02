@@ -125,7 +125,17 @@
       activateTab(keys[event.key], true);
     });
   });
-  stepButtons.forEach((button, index) => button.addEventListener('click', () => activateStep(index)));
+  stepButtons.forEach((button, index) => {
+    button.addEventListener('click', () => activateStep(index));
+    button.addEventListener('keydown', (event) => {
+      const keys = { ArrowLeft: Math.max(0, index - 1), ArrowRight: Math.min(stages.length - 1, index + 1), Home: 0, End: stages.length - 1 };
+      if (!(event.key in keys) || event.altKey || event.ctrlKey || event.metaKey) return;
+      event.preventDefault();
+      const next = keys[event.key];
+      activateStep(next);
+      stepButtons[next].focus({ preventScroll: true });
+    });
+  });
   if ('ResizeObserver' in window) new ResizeObserver(syncNavigationHeight).observe(navigation);
   else addEventListener('resize', syncNavigationHeight, { passive: true });
   reducedMotion.addEventListener('change', clearAnimation);

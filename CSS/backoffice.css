@@ -46,12 +46,13 @@
 .admin-interface a { display:block; }
 .admin-interface img { width:100%; height:auto; object-fit:contain; background:#f7f9fb; }
 .admin-interface figcaption { padding:11px 14px; color:#a0aec7; font-size:.73rem; line-height:1.7; }
-.production-story { margin-top:32px; padding:22px; border:1px solid var(--hairline); border-radius:18px; background:linear-gradient(145deg,#151d34,#101729); }
+.production-story { margin-top:32px; padding:22px; border:1px solid var(--hairline); border-radius:14px; background:#101729; }
 .production-heading { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; margin-bottom:20px; }
 .production-heading h4 { margin:0; font:700 1.35rem/1.25 "Space Grotesk",sans-serif; letter-spacing:-.025em; }
 .production-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:0 0 22px; padding:0; list-style:none; }
-.production-steps button { display:flex; align-items:center; gap:8px; width:100%; min-height:44px; padding:9px 12px; border:1px solid var(--hairline); border-radius:10px; background:rgb(255 255 255 / 2%); color:var(--muted-strong); font-size:.78rem; font-weight:700; }
+.production-steps button { display:flex; align-items:center; gap:8px; width:100%; min-height:44px; padding:9px 12px; border:1px solid var(--hairline); border-radius:6px; background:transparent; color:var(--muted-strong); font-size:.78rem; font-weight:700; }
 .production-steps button span { color:#9e9ab9; font:500 .6rem "DM Mono",monospace; }
+.production-steps button:hover { border-color:var(--cyan); }
 .production-steps button[aria-pressed="true"] { border-color:rgb(117 219 227 / 50%); background:rgb(117 219 227 / 7%); color:var(--cyan); }
 .production-stage { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:28px; align-items:center; min-height:320px; }
 .production-stage + .production-stage { margin-top:24px; }
@@ -123,8 +124,6 @@ html.has-backoffice-dialog body { position:fixed; top:var(--backoffice-scroll-to
   .backoffice-facts { grid-template-columns:1fr; gap:16px; margin-block:24px; }
   .backoffice-facts dd { margin-top:6px; }
   .engineering-path { justify-content:flex-start; gap:10px; padding:14px; font-size:.65rem; }
-}
-@media (prefers-reduced-motion:reduce) {
 }
 .admin-interface a:focus-visible { outline-offset:-3px; }
 .editor-view { margin-top:24px; }
