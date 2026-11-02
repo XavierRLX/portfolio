@@ -56,17 +56,22 @@
     const motion = gsap.matchMedia();
 
     motion.add('(prefers-reduced-motion: no-preference)', (context) => {
-      gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'transform' } })
-        .from('.hero-eyebrow, .hero h1, .hero-description, .hero-actions', {
-          y: 12, duration: 0.48, stagger: 0.055
-        })
-        .from('.hero-art', { y: 10, scale: 0.98, duration: 0.65 }, 0.08);
-
       // Register callback-created tweens in the same context for reduced-motion cleanup.
       context.add('reveal', (elements) => {
-        gsap.fromTo(elements, { y: 18, opacity: 0.7 }, {
-          y: 0, opacity: 1, duration: 0.55, stagger: 0.06,
-          ease: 'power2.out', overwrite: true, clearProps: 'transform,opacity'
+        const range = Math.min(window.innerWidth * 1.1, 1100);
+        elements.forEach((element, index) => {
+          const left = element.classList.contains('section-top') ||
+            element.classList.contains('approach-intro') ||
+            element.classList.contains('about-portrait') ||
+            (element.classList.contains('approach-item') && index === 0);
+          const right = element.classList.contains('about-copy') ||
+            (element.classList.contains('approach-item') && index > 0);
+          const x = left ? -range : right ? range : 0;
+          gsap.fromTo(element, { x, y: x ? 0 : 90, opacity: 0.25 }, {
+            x: 0, y: 0, opacity: 1, duration: x ? 0.95 : 0.8,
+            ease: 'power3.out', delay: Math.min(index * 0.07, 0.21),
+            overwrite: true, clearProps: 'transform,opacity'
+          });
         });
       });
       ScrollTrigger.batch('.reveal:not(.project-card)', {
