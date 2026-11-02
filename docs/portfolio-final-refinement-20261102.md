@@ -27,3 +27,12 @@ AGENTS.md e os seis documentos de refresh foram lidos em ordem, seguidos dos doc
 ## Validação por lote
 
 Resultados de implementação, QA e limites serão registrados após observação real no navegador.
+
+## Lote 2 — hero e cases
+
+- Hero mantém headline, nome/Full Stack, dois CTAs, onda e React vetorial simétrico. Removidas moldura, órbita interna e luz com parallax; grade reduzida a linhas verticais quase imperceptíveis. Rotação de 48 s e gradiente ciano/lilás controlado. Entrada de texto de 480 ms, arte de 650 ms, sem ocultar leitura.
+- Capas com molduras tonais, legendas fora do conteúdo das screenshots e enquadramento `contain`. Removidos grandes fundos/sombras dos cards; alinhamento por Flex/Grid, detalhes e CTAs alinhados por faixa, sem alturas fixas de texto.
+- Mesmos seis cases e dois carrosséis, com controladores preservados.
+- Chrome real em 1440/768/390/360: zero overflow global e exceções. Capturas em `/tmp/portfolio-final-20261102/lot2/`; desktop/mobile inspecionados. Mídias carregadas antes da captura.
+- [Showcase Equator](https://www.getlayers.ai/layer/showcase-equator): página pública consultada. Prompt premium inacessível sem assinatura; não adquirido. Descartado o scroll fixado por incompatibilidade com a navegação nativa solicitada.
+- Teste existente dirigido: 1440/390 + sem JS, sem CDN e reduced motion/resize passaram (5 cenários), incluindo os dois carrosséis, toque, teclado, modal e foco. Evidências em `lot2/qa/`.

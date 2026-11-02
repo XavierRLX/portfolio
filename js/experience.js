@@ -3,7 +3,6 @@
 
   const header = document.querySelector('.site-header');
   const progress = document.querySelector('.scroll-progress');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const navLinks = Array.from(document.querySelectorAll(
     '.navegacao-principal a[href^="#"], .mobile-dock a[href^="#"]'
   ));
@@ -59,14 +58,9 @@
     motion.add('(prefers-reduced-motion: no-preference)', (context) => {
       gsap.timeline({ defaults: { ease: 'power3.out', clearProps: 'transform' } })
         .from('.hero-eyebrow, .hero h1, .hero-description, .hero-actions', {
-          y: 16, duration: 0.6, stagger: 0.06
+          y: 12, duration: 0.48, stagger: 0.055
         })
-        .from('.hero-art', { y: 12, scale: 0.98, duration: 0.8 }, '<');
-
-      gsap.to('.hero-light', {
-        y: 24, ease: 'none',
-        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 }
-      });
+        .from('.hero-art', { y: 10, scale: 0.98, duration: 0.65 }, 0.08);
 
       // Register callback-created tweens in the same context for reduced-motion cleanup.
       context.add('reveal', (elements) => {

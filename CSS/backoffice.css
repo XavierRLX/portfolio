@@ -5,10 +5,10 @@
 .backoffice-open { border:0; background:none; text-align:left; cursor:pointer; }
 .backoffice-ready .backoffice-fallback { display:none; }
 .visual-backoffice { background:radial-gradient(ellipse at 35% 35%,#303363,transparent 75%),#131c34; }
-.backoffice-montage { position:relative; height:100%; width:100%; }
+.backoffice-montage { position:relative; flex:1; min-height:0; width:100%; }
 .mini-interface { position:absolute; width:63%; overflow:hidden; border:1px solid #5a6286; border-radius:7px; background:#1c253d; box-shadow:0 12px 25px rgb(0 0 0 / 28%); }
 .mini-interface > span { display:block; padding:4px 8px; color:#d4daf4; font:500 .5rem/1.4 "DM Mono",monospace; }
-.mini-interface img { aspect-ratio:1.8; object-fit:cover; object-position:top; }
+.mini-interface img { width:100%; height:auto; aspect-ratio:1.8; object-fit:cover; object-position:top; }
 .mini-interface:nth-child(1) { top:5%; left:5%; transform:rotate(-4deg); }
 .mini-interface:nth-child(2) { top:28%; right:4%; transform:rotate(3deg); }
 .mini-interface:nth-child(3) { top:52%; left:10%; transform:rotate(-2deg); }
