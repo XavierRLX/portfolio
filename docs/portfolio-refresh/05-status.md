@@ -434,4 +434,4 @@ A revisão visual percorreu Hero, projetos, Sobre, experiência, stack e contato
 - Após aprovação do redesign MTP, a imagem do card foi substituída por captura real da hero da landing (1200 × 833 px, JPEG otimizado, sem geração de pessoa).
 - O texto técnico foi atualizado para refletir foto editorial, vídeo por clique, GSAP e identidade mel/lilás; contraste de fundo do card passou a ameixa.
 - Arquivos: `Imagens/maria-mtp-2026.jpg`, `index.html`, `CSS/experience.css` e `README.md`.
-- A publicação depende de validação da imagem, testes locais e push autorizado para `main`.
+- Publicado em 04/11/2026 no commit `f589f91`, enviado por push normal para `origin/main`; GitHub Pages respondeu HTTP 200 e serviu a nova imagem com SHA-256 idêntico ao arquivo local. Testes locais: 10 cenários Playwright aprovados e inspeção específica do card em 390/1440 px.

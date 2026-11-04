@@ -2,7 +2,7 @@
 
 Portfólio autoral de um Desenvolvedor Full Stack. Versão **Experience**, com direção visual editorial, cases reais e navegação orientada a mobile/touch.
 
-> **Status:** publicado no [GitHub Pages](https://xavierrlx.github.io/portfolio/) em 29/10/2026, após aprovação visual. Versão premium com seis cases e dois carrosséis independentes. Release e QA público em `docs/portfolio-release-20261029.md`.
+> **Status:** atualizado no [GitHub Pages](https://xavierrlx.github.io/portfolio/) em 04/11/2026, incluindo a nova prévia do case Maria Thereza (commit `f589f91`). Versão premium com seis cases e dois carrosséis independentes. Histórico do release e QA em `docs/portfolio-release-20261029.md`.
 
 ## Projetos
 
