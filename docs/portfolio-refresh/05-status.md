@@ -428,3 +428,10 @@ A revisão visual percorreu Hero, projetos, Sobre, experiência, stack e contato
 - Refresh profissional: **CONCLUÍDO / RELEASE VALIDADO** em 2026-09-30.
 - A branch `refresh/portfolio-2026` permanece preservada; não foi deletada.
 - Este bloco é a atualização documental final feita em `main` após a validação publicada. O SHA definitivo de `main` é confirmado pós-commit no relatório de encerramento, evitando autorreferência impossível dentro do próprio commit.
+
+## Atualização do case Maria Thereza — 04/11/2026
+
+- Após aprovação do redesign MTP, a imagem do card foi substituída por captura real da hero da landing (1200 × 833 px, JPEG otimizado, sem geração de pessoa).
+- O texto técnico foi atualizado para refletir foto editorial, vídeo por clique, GSAP e identidade mel/lilás; contraste de fundo do card passou a ameixa.
+- Arquivos: `Imagens/maria-mtp-2026.jpg`, `index.html`, `CSS/experience.css` e `README.md`.
+- A publicação depende de validação da imagem, testes locais e push autorizado para `main`.

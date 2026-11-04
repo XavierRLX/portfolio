@@ -10,7 +10,7 @@ Portfólio autoral de um Desenvolvedor Full Stack. Versão **Experience**, com d
 - **BioPlaca + BioSites:** solução de placas QR/NFC, avaliações e presença digital para comerciantes locais. [Demonstração](https://qr-code-new-link.vercel.app/demo).
 - **Galerows:** coleção de jogos sociais mobile com React, TypeScript, Capacitor e multiplayer LAN. [Repositório](https://github.com/XavierRLX/Galerows).
 - **Cursos Pugliese:** plataforma educacional full stack com papéis, autorização e segurança. [Site](https://pugliesecursos.com.br/).
-- **Maria Thereza:** landing page editorial de Enfermagem e Home Care com vídeo ativado por rolagem. [Site](https://maria-thereza-enfermagem.pages.dev/).
+- **Maria Thereza:** landing editorial com identidade MTP, fotografia real, animações GSAP e vídeo sob demanda. [Site](https://maria-thereza-enfermagem.pages.dev/).
 
 - **Engenharia & Backoffice:** case transversal com interfaces administrativas BioPlaca, AWX e Pugliese; componentes reais com dados fictícios, capturados offline. Inclui o fluxo de QR → composição da placa → exportação.
 
