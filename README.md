@@ -1,8 +1,24 @@
-# Renan Xavier — Portfolio Experience 2026
+# Portfólio Full Stack — Renan Xavier
+
+**[Visualizar o portfólio](https://xavierrlx.github.io/portfolio/)** · **[GitHub](https://github.com/XavierRLX)** · **[LinkedIn](https://www.linkedin.com/in/renanxavier2000rlx)**
 
 Portfólio autoral de um Desenvolvedor Full Stack. Versão **Experience**, com direção visual editorial, cases reais e navegação orientada a mobile/touch.
 
 > **Status:** atualizado no [GitHub Pages](https://xavierrlx.github.io/portfolio/) em 04/11/2026, incluindo a nova prévia do case Maria Thereza (commit `f589f91`). Versão premium com seis cases e dois carrosséis independentes. Histórico do release e QA em `docs/portfolio-release-20261029.md`.
+
+## Para recrutadores e avaliadores técnicos
+
+Este repositório contém **o código do próprio portfólio**, não o código-fonte de todos os produtos exibidos. Os cases comerciais apresentam contexto, interfaces e decisões de engenharia; os repositórios privados permanecem protegidos por razões de segurança, negócio ou confidencialidade.
+
+| Se você quer avaliar… | Comece por… |
+| --- | --- |
+| **React, TypeScript, mobile e testes** | [Galerows — código público](https://github.com/XavierRLX/Galerows) |
+| **APIs, autenticação e persistência** | [Carteirinha Digital — projeto acadêmico full stack](https://github.com/XavierRLX/CarteirinhaDigital) |
+| **Frontend acessível, motion e qualidade** | [Landing Maria Thereza — código público](https://github.com/XavierRLX/landing-page-enfermeira) |
+| **IA aplicada e contratos de agentes** | [AI English Coach — documentação e exemplos](https://github.com/XavierRLX/ai-english-coach) |
+| **Projetos completos e decisões de produto** | Cases de AWX, BioPlaca e Pugliese Cursos no portfólio publicado |
+
+**O diferencial técnico deste portfólio:** implementação sem framework desnecessário, componentes de navegação acessíveis, controle de movimento reduzido, carrosséis com interação touch/teclado e automação de testes de interface.
 
 ## Projetos
 
